@@ -10,7 +10,7 @@ An AI-powered customer support system for AccessBank built during an AI hackatho
 
 - Python 3.11+
 - An OpenAI API key
-- (Optional) Google Cloud credentials for Gmail-based email routing
+- Google Cloud credentials for Gmail-based email routing
 
 ### 1. Clone and install
 
@@ -46,7 +46,7 @@ cp backend/.env.example backend/.env
 
 Email routing is optional — the chatbot works fully without it. If `credentials.json` is absent or the variables are blank, email dispatch is silently skipped.
 
-### 3. Set up Google Gmail credentials (optional)
+### 3. Set up Google Gmail credentials
 
 If you want department email routing, place `credentials.json` (downloaded from Google Cloud Console, OAuth 2.0 desktop app) in the `backend/` directory. On first run the browser will open for authentication and create `token.json` automatically.
 
