@@ -9,6 +9,7 @@ from models import Conversation, Message
 from auth.router import router as auth_router
 from auth.service import TokenClaims, get_claims
 from conversations.router import router as conversations_router
+from admin.router import router as admin_router
 
 models.Base.metadata.create_all(bind=engine)
 
@@ -16,6 +17,7 @@ app = FastAPI(title="AccessBank Support Agent")
 
 app.include_router(auth_router)
 app.include_router(conversations_router)
+app.include_router(admin_router)
 
 
 class ChatRequest(BaseModel):

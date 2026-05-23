@@ -21,10 +21,16 @@
 <body>
   <span>Loading...</span>
   <script>
-    if (localStorage.getItem('access_token')) {
-      window.location.replace('chat.html');
-    } else {
+    const token = localStorage.getItem('access_token');
+    if (!token) {
       window.location.replace('login.html');
+    } else {
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        window.location.replace(payload.is_admin ? 'admin.html' : 'chat.html');
+      } catch {
+        window.location.replace('login.html');
+      }
     }
   </script>
 </body>

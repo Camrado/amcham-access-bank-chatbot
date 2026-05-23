@@ -22,6 +22,7 @@ class TokenClaims(BaseModel):
     user_id: int
     email: str
     username: str
+    is_admin: bool = False
 
 
 def hash_password(password: str) -> str:
@@ -32,11 +33,12 @@ def verify_password(plain: str, hashed: str) -> bool:
     return bcrypt.checkpw(plain.encode(), hashed.encode())
 
 
-def create_access_token(user_id: int, email: str, username: str) -> str:
+def create_access_token(user_id: int, email: str, username: str, is_admin: bool = False) -> str:
     payload = {
         "sub": str(user_id),
         "email": email,
         "username": username,
+        "is_admin": is_admin,
         "exp": datetime.now(timezone.utc) + timedelta(days=_EXPIRY_DAYS),
     }
     return jwt.encode(payload, _SECRET, algorithm=_ALGORITHM)
@@ -49,6 +51,7 @@ def get_claims(credentials: HTTPAuthorizationCredentials = Depends(_bearer)) -> 
             user_id=int(payload["sub"]),
             email=payload["email"],
             username=payload["username"],
+            is_admin=payload.get("is_admin", False),
         )
     except (JWTError, KeyError, ValueError):
         raise HTTPException(
@@ -56,3 +59,9 @@ def get_claims(credentials: HTTPAuthorizationCredentials = Depends(_bearer)) -> 
             detail="Invalid or expired token",
             headers={"WWW-Authenticate": "Bearer"},
         )
+
+
+def require_admin(claims: TokenClaims = Depends(get_claims)) -> TokenClaims:
+    if not claims.is_admin:
+        raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="Admin access required")
+    return claims

@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey
+from sqlalchemy import Column, Integer, String, Text, DateTime, ForeignKey, Boolean
 from sqlalchemy.sql import func
 from database import Base
 
@@ -10,6 +10,7 @@ class User(Base):
     email = Column(String, unique=True, index=True, nullable=False)
     username = Column(String, unique=True, index=True, nullable=False)
     hashed_password = Column(String, nullable=False)
+    is_admin = Column(Boolean, default=False, nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
 
@@ -36,10 +37,13 @@ class Case(Base):
     __tablename__ = "cases"
 
     id = Column(Integer, primary_key=True, index=True)
+    user_id = Column(Integer, ForeignKey("users.id"), nullable=True)
+    conversation_id = Column(Integer, ForeignKey("conversations.id"), nullable=True)
     user_name = Column(String, nullable=False)
     user_contact = Column(String, nullable=False)
     issue_summary = Column(Text, nullable=False)
     department = Column(String, nullable=False)
     status = Column(String, nullable=False, default="open")  # open | resolved
-    email_ref = Column(String, nullable=True)  # Gmail message ID
+    email_ref = Column(String, nullable=True)
+    admin_reply = Column(Text, nullable=True)
     created_at = Column(DateTime(timezone=True), server_default=func.now())

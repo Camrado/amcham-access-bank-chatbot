@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Panel — AccessBank Support</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html, body {
+      height: 100%;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f0f4f8;
+      color: #0f172a;
+    }
+
+    .app { display: flex; height: 100vh; overflow: hidden; }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      width: 268px;
+      flex-shrink: 0;
+      background: #0f1f35;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .sidebar-header {
+      padding: 20px 16px 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .admin-badge {
+      font-size: 10px;
+      font-weight: 600;
+      color: #fde68a;
+      background: rgba(250,204,21,0.15);
+      border: 1px solid rgba(250,204,21,0.25);
+      border-radius: 4px;
+      padding: 2px 6px;
+      letter-spacing: 0.4px;
+    }
+
+    .sidebar-section-title {
+      padding: 14px 16px 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: #64748b;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .user-list {
+      flex: 1;
+      overflow-y: auto;
+      padding: 4px 0 8px;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255,255,255,0.1) transparent;
+    }
+    .user-list::-webkit-scrollbar { width: 4px; }
+    .user-list::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 4px; }
+
+    .user-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      margin: 1px 8px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.1s;
+      color: #cbd5e1;
+    }
+    .user-item:hover { background: rgba(255,255,255,0.07); }
+    .user-item.active { background: rgba(255,255,255,0.12); color: #fff; }
+
+    .user-item-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background: #1e3a5f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 600;
+      color: #93c5fd;
+      flex-shrink: 0;
+    }
+
+    .user-item-info { flex: 1; min-width: 0; }
+    .user-item-name { font-size: 13px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .user-item-email { font-size: 11px; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .user-item.active .user-item-email { color: #94a3b8; }
+
+    .badge-open {
+      min-width: 20px;
+      height: 20px;
+      background: #f59e0b;
+      color: #fff;
+      border-radius: 10px;
+      font-size: 11px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 5px;
+      flex-shrink: 0;
+    }
+
+    .sidebar-footer {
+      padding: 12px 16px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .user-avatar {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      background: #1e3a5f;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 600;
+      color: #93c5fd;
+      flex-shrink: 0;
+    }
+    .user-info { flex: 1; min-width: 0; }
+    .user-name { font-size: 13px; font-weight: 500; color: #e2e8f0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .user-role { font-size: 11px; color: #64748b; }
+
+    .logout-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      color: #64748b;
+      cursor: pointer;
+      transition: background 0.1s, color 0.1s;
+    }
+    .logout-btn:hover { background: rgba(239,68,68,0.15); color: #f87171; }
+
+    /* ── Main ── */
+    .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
+
+    .main-header {
+      height: 56px;
+      padding: 0 24px;
+      background: #fff;
+      border-bottom: 1px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .main-header-title { font-size: 15px; font-weight: 600; color: #0f172a; }
+
+    .content {
+      flex: 1;
+      overflow-y: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      scrollbar-width: thin;
+      scrollbar-color: #cbd5e1 transparent;
+    }
+    .content::-webkit-scrollbar { width: 5px; }
+    .content::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+    .empty-state {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      color: #94a3b8;
+      text-align: center;
+    }
+    .empty-state-icon {
+      width: 52px;
+      height: 52px;
+      background: #e2e8f0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 4px;
+    }
+    .empty-state h2 { font-size: 17px; font-weight: 600; color: #475569; }
+    .empty-state p { font-size: 13px; max-width: 280px; line-height: 1.5; }
+
+    .loading-text { color: #94a3b8; font-size: 13px; text-align: center; padding: 40px; }
+
+    /* ── Conversation accordion card ── */
+    .conv-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: box-shadow 0.15s;
+    }
+    .conv-card:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.06); }
+
+    .conv-card-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 14px 16px;
+      cursor: pointer;
+      user-select: none;
+      transition: background 0.1s;
+    }
+    .conv-card-header:hover { background: #f8fafc; }
+    .conv-card.open .conv-card-header { background: #f8fafc; border-bottom: 1px solid #f1f5f9; }
+
+    /* Chevron */
+    .conv-chevron {
+      flex-shrink: 0;
+      color: #94a3b8;
+      transition: transform 0.2s ease;
+    }
+    .conv-card.open .conv-chevron { transform: rotate(90deg); }
+
+    .conv-card-title {
+      flex: 1;
+      font-size: 14px;
+      font-weight: 500;
+      color: #1e293b;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* Department tag */
+    .dept-tag {
+      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 10px;
+      white-space: nowrap;
+    }
+
+    .conv-card-date { flex-shrink: 0; font-size: 12px; color: #94a3b8; }
+
+    /* Collapsible body — hidden by default */
+    .conv-card-body {
+      display: none;
+      flex-direction: column;
+      gap: 14px;
+      padding: 16px 18px;
+    }
+    .conv-card.open .conv-card-body { display: flex; }
+
+    /* ── Message thread ── */
+    .thread-scroll {
+      max-height: 320px;
+      overflow-y: auto;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px;
+      background: #f8fafc;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      scrollbar-width: thin;
+      scrollbar-color: #cbd5e1 transparent;
+    }
+    .thread-scroll::-webkit-scrollbar { width: 4px; }
+    .thread-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 4px; }
+
+    .msg-row { display: flex; flex-direction: column; gap: 2px; }
+    .msg-row.msg-user { align-items: flex-end; }
+    .msg-row.msg-assistant { align-items: flex-start; }
+
+    .msg-sender { font-size: 10px; font-weight: 600; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.4px; }
+    .msg-bubble {
+      max-width: 82%;
+      padding: 8px 12px;
+      border-radius: 12px;
+      font-size: 13px;
+      line-height: 1.45;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+    .msg-row.msg-user .msg-bubble { background: #1e3a5f; color: #fff; border-bottom-right-radius: 3px; }
+    .msg-row.msg-assistant .msg-bubble { background: #fff; color: #0f172a; border: 1px solid #e2e8f0; border-bottom-left-radius: 3px; }
+    .msg-time { font-size: 10px; color: #94a3b8; }
+    .no-messages { font-size: 12px; color: #94a3b8; text-align: center; padding: 12px; }
+
+    /* ── Case section ── */
+    .case-section {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .case-section-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      background: #f8fafc;
+      border-bottom: 1px solid #f1f5f9;
+    }
+    .case-dept { font-size: 13px; font-weight: 600; color: #1e3a5f; }
+
+    .status-badge {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 10px;
+    }
+    .status-open { background: #fef3c7; color: #b45309; }
+    .status-resolved { background: #dcfce7; color: #166534; }
+
+    .case-section-body { padding: 12px 14px; display: flex; flex-direction: column; gap: 10px; }
+
+    .case-meta { display: flex; flex-direction: column; gap: 4px; }
+    .meta-row { display: flex; align-items: baseline; gap: 6px; font-size: 13px; color: #334155; }
+    .meta-label {
+      font-size: 10px;
+      font-weight: 700;
+      color: #94a3b8;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      flex-shrink: 0;
+      min-width: 72px;
+    }
+    .meta-code {
+      font-size: 11px;
+      color: #475569;
+      background: #f1f5f9;
+      padding: 1px 6px;
+      border-radius: 3px;
+      font-family: 'SF Mono', 'Fira Code', monospace;
+    }
+    .issue-box {
+      font-size: 13px;
+      color: #334155;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      padding: 8px 12px;
+      line-height: 1.5;
+    }
+
+    /* ── Reply form ── */
+    .reply-section { display: flex; flex-direction: column; gap: 8px; }
+    .reply-label { font-size: 10px; font-weight: 700; color: #64748b; text-transform: uppercase; letter-spacing: 0.5px; }
+    .reply-textarea {
+      width: 100%;
+      min-height: 80px;
+      border: 1.5px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 13px;
+      font-family: inherit;
+      color: #0f172a;
+      background: #f8fafc;
+      outline: none;
+      resize: vertical;
+      transition: border-color 0.15s, background 0.15s;
+    }
+    .reply-textarea:focus { border-color: #1e3a5f; background: #fff; }
+    .reply-actions { display: flex; justify-content: flex-end; }
+    .reply-btn {
+      padding: 9px 18px;
+      background: #1e3a5f;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.15s;
+    }
+    .reply-btn:hover:not(:disabled) { background: #2d5a9e; }
+    .reply-btn:disabled { opacity: 0.55; cursor: default; }
+
+    .resolved-section { display: flex; flex-direction: column; gap: 6px; }
+    .resolved-label { font-size: 10px; font-weight: 700; color: #166534; text-transform: uppercase; letter-spacing: 0.5px; }
+    .resolved-text {
+      font-size: 13px;
+      color: #166534;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      border-radius: 6px;
+      padding: 8px 12px;
+      line-height: 1.5;
+    }
+
+    /* ── Toast ── */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1e3a5f;
+      color: #fff;
+      padding: 11px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+      z-index: 100;
+    }
+    .toast.show { opacity: 1; }
+    .toast.success { background: #16a34a; }
+    .toast.error { background: #dc2626; }
+
+    .no-users { padding: 16px; font-size: 12px; color: #475569; text-align: center; }
+  </style>
+</head>
+<body>
+  <div class="app">
+
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <img src="/accessbank-logo.svg" alt="AccessBank" style="height:22px;">
+        <span class="admin-badge">Admin</span>
+      </div>
+      <div class="sidebar-section-title">Customers</div>
+      <div class="user-list" id="userList"></div>
+      <div class="sidebar-footer">
+        <div class="user-avatar" id="userAvatar"></div>
+        <div class="user-info">
+          <div class="user-name" id="userName"></div>
+          <div class="user-role">Administrator</div>
+        </div>
+        <button class="logout-btn" id="logoutBtn" title="Sign out">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <path d="M6 2H3a1 1 0 00-1 1v10a1 1 0 001 1h3M10 11l3-3-3-3M13 8H6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <div class="main-header">
+        <div class="main-header-title" id="mainTitle">Admin Panel</div>
+      </div>
+      <div class="content" id="content">
+        <div class="empty-state">
+          <div class="empty-state-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <h2>Select a customer</h2>
+          <p>Choose a customer from the sidebar to view their chat history.</p>
+        </div>
+      </div>
+    </main>
+
+  </div>
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const API = '';
+    const token = localStorage.getItem('access_token');
+    if (!token) window.location.replace('login.html');
+
+    function parseToken(t) {
+      try { return JSON.parse(atob(t.split('.')[1])); } catch { return {}; }
+    }
+    const claims = parseToken(token);
+    if (!claims.is_admin) window.location.replace('chat.html');
+
+    const authHeaders = {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`,
+    };
+
+    const displayName = claims.username || claims.email || 'Admin';
+    document.getElementById('userName').textContent = displayName;
+    document.getElementById('userAvatar').textContent = displayName[0].toUpperCase();
+
+    async function apiFetch(path, options = {}) {
+      const res = await fetch(`${API}${path}`, {
+        ...options,
+        headers: { ...authHeaders, ...(options.headers || {}) },
+      });
+      if (res.status === 401) { logout(); throw new Error('Unauthorized'); }
+      return res;
+    }
+
+    function logout() {
+      localStorage.removeItem('access_token');
+      window.location.replace('login.html');
+    }
+
+    function escapeHtml(str) {
+      return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    function formatTime(isoString) {
+      return new Date(isoString).toLocaleString('en-US', {
+        month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit',
+      });
+    }
+
+    function showToast(msg, type = '') {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.className = `toast show ${type}`;
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(() => { toast.classList.remove('show'); }, 4000);
+    }
+
+    // ── Department tag colours (stable hash by name) ──
+    const TAG_PALETTE = [
+      { bg: '#dbeafe', text: '#1d4ed8' }, // blue
+      { bg: '#ede9fe', text: '#6d28d9' }, // purple
+      { bg: '#cffafe', text: '#0e7490' }, // cyan
+      { bg: '#d1fae5', text: '#065f46' }, // green
+      { bg: '#fce7f3', text: '#9d174d' }, // pink
+    ];
+    const GENERAL_TAG = { bg: '#f1f5f9', text: '#475569' };
+
+    function deptTagStyle(dept) {
+      if (!dept) return GENERAL_TAG;
+      let hash = 0;
+      for (let i = 0; i < dept.length; i++) hash = (hash + dept.charCodeAt(i)) | 0;
+      return TAG_PALETTE[Math.abs(hash) % TAG_PALETTE.length];
+    }
+
+    function deptTagHtml(dept) {
+      const label = dept || 'General';
+      const { bg, text } = deptTagStyle(dept);
+      return `<span class="dept-tag" style="background:${bg};color:${text}">${escapeHtml(label)}</span>`;
+    }
+
+    // ── Users ──
+    let selectedUserId = null;
+    let selectedUserName = '';
+
+    async function loadUsers() {
+      const res = await apiFetch('/admin/users');
+      const users = await res.json();
+      renderUsers(users);
+    }
+
+    function renderUsers(users) {
+      const list = document.getElementById('userList');
+      if (users.length === 0) {
+        list.innerHTML = '<div class="no-users">No customers yet</div>';
+        return;
+      }
+      list.innerHTML = '';
+      for (const u of users) {
+        const item = document.createElement('div');
+        item.className = 'user-item' + (u.id === selectedUserId ? ' active' : '');
+        item.dataset.id = u.id;
+        item.innerHTML = `
+          <div class="user-item-avatar">${escapeHtml(u.username[0].toUpperCase())}</div>
+          <div class="user-item-info">
+            <div class="user-item-name">${escapeHtml(u.username)}</div>
+            <div class="user-item-email">${escapeHtml(u.email)}</div>
+          </div>
+          ${u.open_cases > 0 ? `<div class="badge-open">${u.open_cases}</div>` : ''}
+        `;
+        item.addEventListener('click', () => selectUser(u.id, u.username));
+        list.appendChild(item);
+      }
+    }
+
+    // ── Conversations ──
+    async function selectUser(userId, username) {
+      selectedUserId = userId;
+      selectedUserName = username;
+      document.getElementById('mainTitle').textContent = `${username}'s Conversations`;
+      document.querySelectorAll('.user-item').forEach(el => {
+        el.classList.toggle('active', Number(el.dataset.id) === userId);
+      });
+
+      const content = document.getElementById('content');
+      content.innerHTML = '<div class="loading-text">Loading conversations…</div>';
+
+      const res = await apiFetch(`/admin/users/${userId}/conversations`);
+      const conversations = await res.json();
+      renderConversations(conversations);
+    }
+
+    function renderConversations(conversations) {
+      const content = document.getElementById('content');
+      if (conversations.length === 0) {
+        content.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z" stroke="#94a3b8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h2>No conversations</h2>
+            <p>This customer has not started any conversations yet.</p>
+          </div>`;
+        return;
+      }
+
+      content.innerHTML = '';
+      for (const conv of conversations) {
+        const card = document.createElement('div');
+        card.className = 'conv-card';
+        card.innerHTML = buildConvCard(conv);
+
+        // Toggle open/close on header click
+        card.querySelector('.conv-card-header').addEventListener('click', () => {
+          card.classList.toggle('open');
+        });
+
+        content.appendChild(card);
+      }
+    }
+
+    function buildConvCard(conv) {
+      const dept = conv.case ? conv.case.department : null;
+
+      const threadHtml = conv.messages.length > 0
+        ? `<div class="thread-scroll">${conv.messages.map(m => `
+            <div class="msg-row msg-${m.role}">
+              <div class="msg-sender">${m.role === 'user' ? 'Customer' : 'Support'}</div>
+              <div class="msg-bubble">${escapeHtml(m.content)}</div>
+              <div class="msg-time">${formatTime(m.created_at)}</div>
+            </div>`).join('')}
+          </div>`
+        : '<div class="no-messages">No messages in this conversation.</div>';
+
+      const caseHtml = conv.case ? buildCaseSection(conv.case) : '';
+
+      return `
+        <div class="conv-card-header">
+          <svg class="conv-chevron" width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M5 3l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <div class="conv-card-title">${escapeHtml(conv.title)}</div>
+          ${deptTagHtml(dept)}
+          <div class="conv-card-date">${formatTime(conv.created_at)}</div>
+        </div>
+        <div class="conv-card-body">
+          ${threadHtml}
+          ${caseHtml}
+        </div>`;
+    }
+
+    function buildCaseSection(c) {
+      const statusClass = c.status === 'open' ? 'status-open' : 'status-resolved';
+      const statusLabel = c.status === 'open' ? 'Open' : 'Resolved';
+
+      const emailRef = c.email_ref
+        ? `<div class="meta-row"><span class="meta-label">Email Ref</span><span class="meta-code">${escapeHtml(c.email_ref)}</span></div>`
+        : '';
+
+      const actionHtml = c.status === 'open' ? `
+        <div class="reply-section">
+          <div class="reply-label">Reply to customer</div>
+          <textarea class="reply-textarea" id="reply-${c.id}" placeholder="Type your response…"></textarea>
+          <div class="reply-actions">
+            <button class="reply-btn" id="reply-btn-${c.id}" onclick="sendReply(${c.id})">
+              Send Reply &amp; Close Case
+            </button>
+          </div>
+        </div>` : c.admin_reply ? `
+        <div class="resolved-section">
+          <div class="resolved-label">Admin reply sent</div>
+          <div class="resolved-text">${escapeHtml(c.admin_reply)}</div>
+        </div>` : '';
+
+      return `
+        <div class="case-section">
+          <div class="case-section-header">
+            <span class="case-dept">${escapeHtml(c.department)}</span>
+            <span class="status-badge ${statusClass}">${statusLabel}</span>
+          </div>
+          <div class="case-section-body">
+            <div class="case-meta">
+              <div class="meta-row"><span class="meta-label">Name</span>${escapeHtml(c.user_name)}</div>
+              <div class="meta-row"><span class="meta-label">Contact</span>${escapeHtml(c.user_contact)}</div>
+              ${emailRef}
+            </div>
+            <div class="issue-box">${escapeHtml(c.issue_summary)}</div>
+            ${actionHtml}
+          </div>
+        </div>`;
+    }
+
+    async function sendReply(caseId) {
+      const textarea = document.getElementById(`reply-${caseId}`);
+      const btn = document.getElementById(`reply-btn-${caseId}`);
+      const replyText = textarea ? textarea.value.trim() : '';
+      if (!replyText) { showToast('Please enter a reply before sending.', 'error'); return; }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+
+      try {
+        const res = await apiFetch(`/admin/cases/${caseId}/reply`, {
+          method: 'POST',
+          body: JSON.stringify({ reply_text: replyText }),
+        });
+        if (!res.ok) throw new Error('Failed');
+        showToast('Reply sent and case closed.', 'success');
+        await Promise.all([loadUsers(), selectUser(selectedUserId, selectedUserName)]);
+      } catch {
+        btn.disabled = false;
+        btn.textContent = 'Send Reply & Close Case';
+        showToast('Failed to send reply. Please try again.', 'error');
+      }
+    }
+
+    document.getElementById('logoutBtn').addEventListener('click', logout);
+    loadUsers();
+  </script>
+</body>
+</html>

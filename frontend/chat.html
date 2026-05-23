@@ -377,6 +377,47 @@
       margin-top: 6px;
     }
 
+    /* ── Toast notification ── */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #1e3a5f;
+      color: #fff;
+      padding: 11px 20px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+      z-index: 100;
+    }
+    .toast.show { opacity: 1; }
+
+    /* ── Admin link ── */
+    .admin-link {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      width: calc(100% - 24px);
+      margin: 0 12px 8px;
+      padding: 8px 14px;
+      background: rgba(250,204,21,0.12);
+      border: 1px solid rgba(250,204,21,0.25);
+      border-radius: 8px;
+      color: #fde68a;
+      font-size: 12px;
+      font-weight: 500;
+      cursor: pointer;
+      text-decoration: none;
+      transition: background 0.15s;
+    }
+    .admin-link:hover { background: rgba(250,204,21,0.2); }
+
     /* ── Utility ── */
     .hidden { display: none !important; }
   </style>
@@ -389,6 +430,13 @@
       <div class="sidebar-header">
         <img src="/accessbank-logo.svg" alt="AccessBank" style="height:22px;">
       </div>
+
+      <a class="admin-link hidden" id="adminLink" href="/admin.html">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+          <path d="M12 2a5 5 0 100 10A5 5 0 0012 2zM2 20c0-4 4-7 10-7s10 3 10 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+        Admin Panel
+      </a>
 
       <button class="new-chat-btn" id="newChatBtn">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
@@ -446,6 +494,7 @@
     </main>
 
   </div>
+  <div class="toast" id="toast"></div>
 
   <script>
     const API = '';
@@ -465,6 +514,8 @@
     }
 
     const claims = parseToken(token);
+    if (claims.is_admin) window.location.replace('admin.html');
+
     const username = claims.username || claims.email || 'User';
     document.getElementById('userName').textContent = username;
     document.getElementById('userAvatar').textContent = username[0].toUpperCase();
@@ -600,7 +651,9 @@
 
     // ── Select conversation ──
     async function selectConversation(id, title) {
+      stopPolling();
       currentConvId = id;
+      lastMessageId = 0;
       document.getElementById('chatTitle').textContent = title;
 
       // Highlight active
@@ -629,6 +682,8 @@
         for (const msg of msgs) appendBubble(msg.role, msg.content, msg.created_at);
         scrollToBottom();
       }
+      if (msgs.length) lastMessageId = msgs[msgs.length - 1].id;
+      startPolling(id);
     }
 
     // ── New chat ──
@@ -643,6 +698,7 @@
     async function deleteConversation(id) {
       await apiFetch(`/conversations/${id}`, { method: 'DELETE' });
       if (currentConvId === id) {
+        stopPolling();
         currentConvId = null;
         document.getElementById('chatTitle').textContent = 'AccessBank Support';
         document.getElementById('sendBtn').disabled = true;
@@ -710,6 +766,13 @@
 
         // Refresh sidebar to pick up updated title
         await loadConversations();
+        // Sync lastMessageId so the poller doesn't re-render these messages
+        const savedConvId = currentConvId;
+        if (savedConvId) {
+          const syncRes = await apiFetch(`/conversations/${savedConvId}/messages`);
+          const syncMsgs = await syncRes.json();
+          if (syncMsgs.length) lastMessageId = syncMsgs[syncMsgs.length - 1].id;
+        }
       } catch (err) {
         typingRow.remove();
         appendBubble('assistant', 'Something went wrong. Please try again.');
@@ -757,6 +820,45 @@
 
     document.getElementById('sendBtn').addEventListener('click', sendMessage);
     document.getElementById('logoutBtn').addEventListener('click', logout);
+
+    // ── Toast ──
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toast._timer);
+      toast._timer = setTimeout(() => toast.classList.remove('show'), 4000);
+    }
+
+    // ── Polling for new messages (e.g. admin replies) ──
+    let pollInterval = null;
+    let lastMessageId = 0;
+
+    function startPolling(convId) {
+      stopPolling();
+      pollInterval = setInterval(() => pollMessages(convId), 10000);
+    }
+
+    function stopPolling() {
+      if (pollInterval) { clearInterval(pollInterval); pollInterval = null; }
+    }
+
+    async function pollMessages(convId) {
+      if (convId !== currentConvId || document.getElementById('typing')) return;
+      try {
+        const res = await apiFetch(`/conversations/${convId}/messages`);
+        const msgs = await res.json();
+        const newMsgs = msgs.filter(m => m.id > lastMessageId);
+        if (!newMsgs.length) return;
+        lastMessageId = msgs[msgs.length - 1].id;
+        const messagesEl = document.getElementById('messages');
+        const emptyState = messagesEl.querySelector('.empty-state');
+        if (emptyState) emptyState.remove();
+        const hasNewAssistant = newMsgs.some(m => m.role === 'assistant');
+        for (const msg of newMsgs) appendBubble(msg.role, msg.content, msg.created_at);
+        if (hasNewAssistant) { scrollToBottom(); showToast('New reply from support team'); }
+      } catch {}
+    }
 
     // ── Init ──
     loadConversations();
