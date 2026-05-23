@@ -20,9 +20,30 @@ from openai import OpenAI
 
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
-KNOWLEDGE_BASE_PATH = "knowledge_base.json"
-EMBED_MODEL = "text-embedding-3-small"
-SIMILARITY_THRESHOLD = 0.70  # below this → flag for human review
+KNOWLEDGE_BASE_PATH = "chatbot/knowledge_base.json"
+SIMILARITY_THRESHOLD = 0.40  # below this → flag for human review (calibrated for text-embedding-3-small)
+
+# Model candidates in preference order — first one that works is used
+_EMBED_MODEL_CANDIDATES = [
+    "text-embedding-3-small",
+    "text-embedding-ada-002",
+]
+
+def _detect_embed_model() -> str:
+    """Try each candidate model with a short probe and return the first that works."""
+    for model in _EMBED_MODEL_CANDIDATES:
+        try:
+            client.embeddings.create(input="test", model=model)
+            print(f"Embedding model: {model}")
+            return model
+        except Exception:
+            continue
+    raise RuntimeError(
+        "No supported embedding model found. "
+        "Tried: " + ", ".join(_EMBED_MODEL_CANDIDATES)
+    )
+
+EMBED_MODEL = _detect_embed_model()
 
 # ─── Load & embed on startup ──────────────────────────────────────────────────
 

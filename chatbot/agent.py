@@ -43,7 +43,7 @@ from prompts import (
     SAFETY_PROMPT,
     SUMMARY_PROMPT,
 )
-from rag_loader import retrieve
+from chatbot.rag_loader import retrieve
 
 # ─── Logging ──────────────────────────────────────────────────────────────────
 logging.basicConfig(
