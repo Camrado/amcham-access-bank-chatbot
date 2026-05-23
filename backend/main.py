@@ -17,6 +17,7 @@ from models import Conversation, Message
 from auth.router import router as auth_router
 from auth.service import TokenClaims, get_claims
 from conversations.router import router as conversations_router
+from admin.router import router as admin_router
 
 # ─── Agent imports ────────────────────────────────────────────────────────────
 from chatbot.agent import Agent, get_case, update_case_status
@@ -46,6 +47,7 @@ app.add_middleware(
 
 app.include_router(auth_router)
 app.include_router(conversations_router)
+app.include_router(admin_router)
 
 
 # ─── HTTP request / response logging ─────────────────────────────────────────

@@ -30,12 +30,31 @@ def list_conversations(
     claims: TokenClaims = Depends(get_claims),
     db: Session = Depends(get_db),
 ):
-    return (
+    convs = (
         db.query(Conversation)
         .filter(Conversation.user_id == claims.user_id)
         .order_by(Conversation.created_at.desc())
         .all()
     )
+    result = []
+    for conv in convs:
+        last_msg = (
+            db.query(Message)
+            .filter(
+                Message.conversation_id == conv.id,
+                Message.role.in_(["user", "assistant"]),
+            )
+            .order_by(Message.created_at.desc())
+            .first()
+        )
+        result.append(ConversationOut(
+            id=conv.id,
+            title=conv.title,
+            created_at=conv.created_at,
+            last_message_at=last_msg.created_at if last_msg else None,
+            last_message_role=last_msg.role if last_msg else None,
+        ))
+    return result
 
 
 @router.get("/{conversation_id}/messages", response_model=list[MessageOut])

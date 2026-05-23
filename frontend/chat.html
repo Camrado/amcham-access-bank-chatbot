@@ -113,6 +113,29 @@
       padding: 0;
     }
     .conv-item:hover .conv-item-action { display: flex; }
+
+    .unread-dot {
+      position: relative;
+      width: 9px;
+      height: 9px;
+      background: #ef4444;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .unread-dot::after {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      background: #ef4444;
+      border-radius: 50%;
+      opacity: 0.4;
+      animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+    }
+    @keyframes ping {
+      0% { transform: scale(1); opacity: 0.4; }
+      75%, 100% { transform: scale(2.2); opacity: 0; }
+    }
+    .conv-item:hover .unread-dot { display: none; }
     .conv-item-action.edit:hover { background: rgba(96,165,250,0.2); color: #60a5fa; }
     .conv-item-action.delete:hover { background: rgba(239,68,68,0.2); color: #f87171; }
 
@@ -589,6 +612,11 @@
     // ── State ──
     let currentConvId = null;
 
+    // ── Unread notification state ──
+    const _lastKnownAt     = new Map();  // convId → last_message_at from previous API call
+    const _unreadIds       = new Set();  // convIds with unseen admin reply
+    let   _convInitialized = false;
+
     // ── API helpers ──
     async function apiFetch(path, options = {}) {
       const res = await fetch(`${API}${path}`, {
@@ -660,6 +688,29 @@
     async function loadConversations() {
       const res = await apiFetch('/conversations');
       const convs = await res.json();
+
+      if (!_convInitialized) {
+        // First load: use localStorage to detect admin replies that came in since last visit
+        for (const c of convs) {
+          const lastSeen = localStorage.getItem(`seen_${c.id}`) || '';
+          if (c.last_message_role === 'assistant' && c.last_message_at && c.last_message_at > lastSeen) {
+            _unreadIds.add(c.id);
+          }
+          _lastKnownAt.set(c.id, c.last_message_at || '');
+        }
+        _convInitialized = true;
+      } else {
+        // Subsequent loads: detect new assistant messages since last snapshot
+        for (const c of convs) {
+          const prev = _lastKnownAt.get(c.id) || '';
+          const curr = c.last_message_at || '';
+          if (curr > prev && c.last_message_role === 'assistant' && c.id !== currentConvId) {
+            _unreadIds.add(c.id);
+          }
+          _lastKnownAt.set(c.id, curr);
+        }
+      }
+
       renderConversations(convs);
     }
 
@@ -689,8 +740,12 @@
           const item = document.createElement('div');
           item.className = 'conv-item' + (conv.id === currentConvId ? ' active' : '');
           item.dataset.id = conv.id;
+
+          const hasUnread = _unreadIds.has(conv.id);
+
           item.innerHTML = `
             <span class="conv-item-title">${escapeHtml(conv.title)}</span>
+            ${hasUnread ? '<span class="unread-dot"></span>' : ''}
             <button class="conv-item-action edit" title="Rename">
               <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
                 <path d="M8.5 1.5a1.414 1.414 0 012 2L3.5 10.5l-3 .5.5-3 7.5-6.5z" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -715,9 +770,16 @@
       }
     }
 
+    // ── Mark conversation seen (clears unread dot) ──
+    function markSeen(id) {
+      _unreadIds.delete(id);
+      localStorage.setItem(`seen_${id}`, new Date().toISOString());
+    }
+
     // ── Select conversation ──
     async function selectConversation(id, title) {
       logger.info('chat: conversation selected', id);
+      markSeen(id);
       stopPolling();
       closeSidebar();
       currentConvId = id;
@@ -926,7 +988,11 @@
         if (emptyState) emptyState.remove();
         const hasNewAssistant = newMsgs.some(m => m.role === 'assistant');
         for (const msg of newMsgs) appendBubble(msg.role, msg.content, msg.created_at);
-        if (hasNewAssistant) { scrollToBottom(); showToast('New reply from support team'); }
+        if (hasNewAssistant) {
+          scrollToBottom();
+          showToast('New reply from support team');
+          markSeen(convId);
+        }
       } catch {}
     }
 
@@ -946,6 +1012,8 @@
 
     // ── Init ──
     loadConversations();
+    // Refresh sidebar every 5s so unread dots appear quickly for admin replies
+    setInterval(loadConversations, 5000);
   </script>
 </body>
 </html>

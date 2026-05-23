@@ -38,7 +38,7 @@ except ImportError:
 
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
-KNOWLEDGE_BASE_PATH = "chatbot/knowledge_base.json"
+KNOWLEDGE_BASE_PATH = Path(__file__).parent / "knowledge_base.json"
 SIMILARITY_THRESHOLD = 0.40
 QUERY_EXPANSION_ENABLED = True
 CHUNK_MAX_WORDS = 100

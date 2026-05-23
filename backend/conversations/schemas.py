@@ -1,5 +1,6 @@
 from pydantic import BaseModel, ConfigDict, Field
 from datetime import datetime
+from typing import Optional
 
 
 class ConversationOut(BaseModel):
@@ -8,6 +9,8 @@ class ConversationOut(BaseModel):
     id: int
     title: str
     created_at: datetime
+    last_message_at: Optional[datetime] = None
+    last_message_role: Optional[str] = None
 
 
 class ConversationUpdate(BaseModel):
