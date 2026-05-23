@@ -4,8 +4,14 @@
     "description": "Simple greeting → capabilities overview",
     "language": "en",
     "turns": [
-      { "role": "user", "content": "Hello!" },
-      { "role": "assistant", "content": "Hi there! Welcome to AccessBank's support chat 👋 I'm here to help you with a wide range of services — whether it's questions about your cards, loans, transfers, or the mobile app. I can also help you report issues or create support cases. What can I help you with today?" }
+      {
+        "role": "user",
+        "content": "Hello!"
+      },
+      {
+        "role": "assistant",
+        "content": "Hi there! Welcome to AccessBank's support chat 👋 I'm here to help you with a wide range of services - whether it's questions about your cards, loans, transfers, or the mobile app. I can also help you report issues or create support cases. What can I help you with today?"
+      }
     ]
   },
   {
@@ -13,8 +19,14 @@
     "description": "Azerbaijani greeting",
     "language": "az",
     "turns": [
-      { "role": "user", "content": "Salam!" },
-      { "role": "assistant", "content": "Salam! AccessBank-ın dəstək xidmətinə xoş gəlmisiniz 👋 Kart xidmətləri, kreditlər, köçürmələr, mobil tətbiq və hesab açılışı barədə hər cür sualınıza cavab verməyə hazıram. Sizə necə kömək edə bilərəm?" }
+      {
+        "role": "user",
+        "content": "Salam!"
+      },
+      {
+        "role": "assistant",
+        "content": "Salam! AccessBank-ın dəstək xidmətinə xoş gəlmisiniz 👋 Kart xidmətləri, kreditlər, köçürmələr, mobil tətbiq və hesab açılışı barədə hər cür sualınıza cavab verməyə hazıram. Sizə necə kömək edə bilərəm?"
+      }
     ]
   },
   {
@@ -22,77 +34,143 @@
     "description": "Russian greeting",
     "language": "ru",
     "turns": [
-      { "role": "user", "content": "Привет" },
-      { "role": "assistant", "content": "Привет! Добро пожаловать в чат поддержки AccessBank 👋 Я могу помочь вам с вопросами по картам, кредитам, переводам, мобильному приложению и не только. Расскажите, чем могу быть полезен?" }
+      {
+        "role": "user",
+        "content": "Привет"
+      },
+      {
+        "role": "assistant",
+        "content": "Привет! Добро пожаловать в чат поддержки AccessBank 👋 Я могу помочь вам с вопросами по картам, кредитам, переводам, мобильному приложению и не только. Расскажите, чем могу быть полезен?"
+      }
     ]
   },
   {
     "id": "conv_004",
-    "description": "Exploratory — user types 'Debit card'",
+    "description": "Exploratory - user types 'Debit card'",
     "language": "en",
     "turns": [
-      { "role": "user", "content": "Debit card" },
-      { "role": "assistant", "content": "Great choice! Here's what AccessBank's debit cards have to offer 🎉\n\n✅ **Instant access** to your money at 2,000+ ATMs across Azerbaijan\n✅ **Contactless NFC** payments — just tap and go\n✅ **Real-time notifications** for every transaction via the app\n✅ **Free internal transfers** between AccessBank accounts\n✅ Available as Visa Electron, Visa Classic, or Mastercard Standard\n\nAnnual fee is just 10 AZN, and your card is ready in 3–5 business days. Want to know how to apply, or do you have a specific question about your card?" }
+      {
+        "role": "user",
+        "content": "Debit card"
+      },
+      {
+        "role": "assistant",
+        "content": "Great choice! Here's what AccessBank's debit cards have to offer 🎉\n\n✅ **Instant access** to your money at 2,000+ ATMs across Azerbaijan\n✅ **Contactless NFC** payments - just tap and go\n✅ **Real-time notifications** for every transaction via the app\n✅ **Free internal transfers** between AccessBank accounts\n✅ Available as Visa Electron, Visa Classic, or Mastercard Standard\n\nAnnual fee is just 10 AZN, and your card is ready in 3-5 business days. Want to know how to apply, or do you have a specific question about your card?"
+      }
     ]
   },
   {
     "id": "conv_005",
-    "description": "Exploratory — user types 'Loans'",
+    "description": "Exploratory - user types 'Loans'",
     "language": "en",
     "turns": [
-      { "role": "user", "content": "Loans" },
-      { "role": "assistant", "content": "AccessBank loans are designed to make financing simple and fast! 🏦\n\n✅ **Consumer loans**: 500–50,000 AZN, repay over 6–60 months, rates from 18%\n✅ **Mortgage loans**: up to 200,000 AZN, up to 20 years, from 12% — MIDA subsidised options available\n✅ **Fast approval**: decision within 1–2 business days\n✅ **No collateral** needed for amounts up to 20,000 AZN\n✅ **Early repayment** allowed without penalty after month 3\n\nYou can apply at any branch or through the mobile app. Would you like details on a specific loan type, or help checking the status of an existing application?" }
+      {
+        "role": "user",
+        "content": "Loans"
+      },
+      {
+        "role": "assistant",
+        "content": "AccessBank has several loan options designed for different needs:\n\n✅ **Cash loan**: 500-50,000 AZN, 6-48 months, annual rate from 9.5% to 24%, annuity repayment\n✅ **myCard credit / loan card**: up to 10,000 AZN, 36 months, grace period up to 50 days, 0% commission costs\n✅ **Secured loan**: 10,000-70,000 AZN, backed by real estate, term up to 59 months\n✅ **Lombard loan**: 200-100,000 AZN, backed by gold jewelry, term up to 48 months\n\nFinal terms depend on income, workplace, credit history and bank assessment. Would you like the cash loan, card loan, secured loan or lombard loan details?"
+      }
     ]
   },
   {
     "id": "conv_006",
-    "description": "Exploratory — user types 'Mobile app' in Russian",
+    "description": "Exploratory - user types 'Mobile app' in Russian",
     "language": "ru",
     "turns": [
-      { "role": "user", "content": "Мобильное приложение" },
-      { "role": "assistant", "content": "Мобильное приложение AccessBank — это ваш банк в кармане! 📱\n\n✅ Проверяйте баланс и историю операций в любое время\n✅ Переводы на карты любых банков Азербайджана и за рубеж\n✅ Оплата коммунальных услуг, интернета и мобильного за несколько секунд\n✅ Управление картами: блокировка, установка лимитов\n✅ Вход по отпечатку пальца или Face ID\n✅ Уведомления о каждой операции в реальном времени\n\nДоступно бесплатно в App Store и Google Play. Есть вопросы по регистрации или использованию приложения?" }
+      {
+        "role": "user",
+        "content": "Мобильное приложение"
+      },
+      {
+        "role": "assistant",
+        "content": "Мобильное приложение AccessBank - это ваш банк в кармане! 📱\n\n✅ Проверяйте баланс и историю операций в любое время\n✅ Переводы на карты любых банков Азербайджана и за рубеж\n✅ Оплата коммунальных услуг, интернета и мобильного за несколько секунд\n✅ Управление картами: блокировка, установка лимитов\n✅ Вход по отпечатку пальца или Face ID\n✅ Уведомления о каждой операции в реальном времени\n\nДоступно бесплатно в App Store и Google Play. Есть вопросы по регистрации или использованию приложения?"
+      }
     ]
   },
   {
     "id": "conv_007",
-    "description": "Exploratory — 'Credit card' then specific question",
+    "description": "Exploratory - 'Credit card' then specific question",
     "language": "en",
     "turns": [
-      { "role": "user", "content": "Credit card" },
-      { "role": "assistant", "content": "AccessBank credit cards give you financial flexibility! 💳\n\n✅ **Up to 55 days interest-free** — pay within the grace period and pay zero interest\n✅ Credit limits from **500 to 10,000 AZN** based on your income\n✅ **Cashback** on select spending categories\n✅ Globally accepted Visa Classic and Visa Gold options\n✅ Apply online or at a branch — approved in 1–2 business days\n\nAnnual fee: 30 AZN (Classic) or 60 AZN (Gold). What would you like to know more about?" },
-      { "role": "user", "content": "What's the minimum monthly payment?" },
-      { "role": "assistant", "content": "The minimum monthly payment on your AccessBank credit card is **5% of your outstanding balance**. You can of course pay more — or pay the full balance within the 55-day grace period to avoid any interest charges entirely." }
+      {
+        "role": "user",
+        "content": "Credit card"
+      },
+      {
+        "role": "assistant",
+        "content": "AccessBank's myCard credit / loan card gives you flexible access to funds:\n\n✅ Limit up to **10,000 AZN**\n✅ Term: **36 months**\n✅ Annual interest: **24%-26%**\n✅ Grace period: **up to 50 days** for card payments\n✅ 0% commission costs\n✅ Cashback may be available through AccessQazanc\n\nEligibility usually requires an ID and official salary, and the bank may request extra documents after review. What would you like to know more about?"
+      },
+      {
+        "role": "user",
+        "content": "What's the minimum monthly payment?"
+      },
+      {
+        "role": "assistant",
+        "content": "For the current myCard credit / loan card, AccessBank highlights a grace period of up to 50 days and card account tracking through myAccess. The exact minimum payment can depend on the contract and tariff package, so check your agreement in myAccess or call *8880 before the due date."
+      }
     ]
   },
   {
     "id": "conv_008",
-    "description": "General question — working hours",
+    "description": "General question - working hours",
     "language": "en",
     "turns": [
-      { "role": "user", "content": "What are your branch working hours?" },
-      { "role": "assistant", "content": "AccessBank branches are open **Monday to Friday from 09:00 to 18:00**, and on **Saturdays from 10:00 to 15:00**. Branches are closed on Sundays and public holidays.\n\nAccessBank operates over 40 branches across Azerbaijan, including multiple locations in Baku, Ganja, Sumgayit, and other major cities. You can find your nearest branch on accessbank.az or by calling *8880 — available 24/7." }
+      {
+        "role": "user",
+        "content": "What are your branch working hours?"
+      },
+      {
+        "role": "assistant",
+        "content": "AccessBank's service network page lists **40 branches**, **52 ATMs** and **1 department** across Baku, Absheron and many regions of Azerbaijan. Exact branch working hours can vary by branch, so the safest option is to check the branch page on accessbank.az or call *8880 before visiting.\n\nThe bank's official address is 3 Tbilisi Avenue, Yasamal district, Baku city."
+      }
     ]
   },
   {
     "id": "conv_009",
-    "description": "Card blocked — full issue flow",
+    "description": "Card blocked - full issue flow",
     "language": "en",
     "turns": [
-      { "role": "user", "content": "My card has been blocked" },
-      { "role": "assistant", "content": "I'm sorry to hear that! To help you better, could you tell me when you first noticed the card was blocked, and whether you received any notification about it?" },
-      { "role": "user", "content": "It happened this morning, no notification. Card ending 5521." },
-      { "role": "assistant", "content": "Thank you. I've created support case **CASE-A1B2C3D4** and escalated it to our **Card Operations** team. They will review your case and contact you within 1–2 business days. For immediate help, you can also call *8880 to speak with a specialist directly. Please save your case ID for reference." }
+      {
+        "role": "user",
+        "content": "My card has been blocked"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry to hear that! To help you better, could you tell me when you first noticed the card was blocked, and whether you received any notification about it?"
+      },
+      {
+        "role": "user",
+        "content": "It happened this morning, no notification. Card ending 5521."
+      },
+      {
+        "role": "assistant",
+        "content": "Thank you. I've created support case **CASE-A1B2C3D4** and escalated it to our **Card Operations** team. They will review your case and contact you within 1-2 business days. For immediate help, you can also call *8880 to speak with a specialist directly. Please save your case ID for reference."
+      }
     ]
   },
   {
     "id": "conv_010",
-    "description": "Failed transfer — issue flow",
+    "description": "Failed transfer - issue flow",
     "language": "en",
     "turns": [
-      { "role": "user", "content": "I sent a transfer yesterday but the money hasn't arrived yet" },
-      { "role": "assistant", "content": "I understand how worrying that can be. Could you confirm whether this was a transfer to another AccessBank account or to a different bank? And do you have the transaction reference number?" },
-      { "role": "user", "content": "It was to Kapital Bank, reference number TXN-88921, amount was 500 AZN." },
-      { "role": "assistant", "content": "Thank you for the details. I've created support case **CASE-D4E5F6G7** and escalated it to our **Transfers & Payments** team. Domestic transfers can take up to 1 business day, but since it's been over 24 hours I've flagged this for urgent review. They'll contact you within 1–2 business days. You can also call *8880 for immediate assistance." }
+      {
+        "role": "user",
+        "content": "I sent a transfer yesterday but the money hasn't arrived yet"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand how worrying that can be. Could you confirm whether this was a transfer to another AccessBank account or to a different bank? And do you have the transaction reference number?"
+      },
+      {
+        "role": "user",
+        "content": "It was to Kapital Bank, reference number TXN-88921, amount was 500 AZN."
+      },
+      {
+        "role": "assistant",
+        "content": "Thank you for the details. I've created support case **CASE-D4E5F6G7** and escalated it to our **Transfers & Payments** team. Domestic transfers can take up to 1 business day, but since it's been over 24 hours I've flagged this for urgent review. They'll contact you within 1-2 business days. You can also call *8880 for immediate assistance."
+      }
     ]
   },
   {
@@ -100,19 +178,37 @@
     "description": "Loan application status check",
     "language": "en",
     "turns": [
-      { "role": "user", "content": "How can I check my loan application status?" },
-      { "role": "assistant", "content": "You can check your loan application status in three ways:\n\n1. **Mobile app** — go to 'My Applications' in the menu\n2. **Internet banking** — log in at ibank.accessbank.az\n3. **Hotline** — call *8880 (free, 24/7)\n\nStatuses you might see: Under Review, Additional Documents Required, Approved, Rejected, or Disbursed. If additional documents are needed, you'll receive an SMS notification. Is there anything else I can help you with?" }
+      {
+        "role": "user",
+        "content": "How can I check my loan application status?"
+      },
+      {
+        "role": "assistant",
+        "content": "You can check your loan application status in three ways:\n\n1. **Mobile app** - go to 'My Applications' in the menu\n2. **Internet banking** - log in at ibank.accessbank.az\n3. **Hotline** - call *8880 (free, 24/7)\n\nStatuses you might see: Under Review, Additional Documents Required, Approved, Rejected, or Disbursed. If additional documents are needed, you'll receive an SMS notification. Is there anything else I can help you with?"
+      }
     ]
   },
   {
     "id": "conv_012",
-    "description": "OTP not received — digital banking issue",
+    "description": "OTP not received - digital banking issue",
     "language": "en",
     "turns": [
-      { "role": "user", "content": "I'm not receiving the OTP to log in to the app" },
-      { "role": "assistant", "content": "Sorry to hear that! A few things to check first: make sure the phone number receiving the SMS is the one registered with AccessBank, and that SMS isn't blocked on your device. OTPs expire after 3 minutes, so try requesting a new one.\n\nIf the issue continues, is it possible your registered phone number has changed?" },
-      { "role": "user", "content": "Yes I changed my number recently" },
-      { "role": "assistant", "content": "That's likely the cause. To update your registered phone number, you'll need to visit a branch in person with your Azerbaijani ID (Vin-kart) — this can't be done remotely for security reasons. I've created a support case **CASE-G7H8I9J0** with our **Digital Banking** team who can also guide you through the process. You can also call *8880 for immediate help." }
+      {
+        "role": "user",
+        "content": "I'm not receiving the OTP to log in to the app"
+      },
+      {
+        "role": "assistant",
+        "content": "Sorry to hear that! A few things to check first: make sure the phone number receiving the SMS is the one registered with AccessBank, and that SMS isn't blocked on your device. OTPs expire after 3 minutes, so try requesting a new one.\n\nIf the issue continues, is it possible your registered phone number has changed?"
+      },
+      {
+        "role": "user",
+        "content": "Yes I changed my number recently"
+      },
+      {
+        "role": "assistant",
+        "content": "That's likely the cause. To update your registered phone number, you'll need to visit a branch in person with your Azerbaijani ID (Vin-kart) - this can't be done remotely for security reasons. I've created a support case **CASE-G7H8I9J0** with our **Digital Banking** team who can also guide you through the process. You can also call *8880 for immediate help."
+      }
     ]
   },
   {
@@ -120,37 +216,67 @@
     "description": "Deposit rates inquiry",
     "language": "en",
     "turns": [
-      { "role": "user", "content": "What interest rates do you offer on deposits?" },
-      { "role": "assistant", "content": "AccessBank offers competitive deposit rates:\n\n**AZN deposits:**\n- 3 months: 9% annually\n- 6 months: 10% annually\n- 12 months: 11% annually\n\n**USD deposits:**\n- 12 months: 3% annually\n\nEUR deposits are also available. Minimum deposit is 100 AZN or 100 USD. Interest can be paid monthly or at maturity — your choice. All deposits up to 100,000 AZN are insured by the Azerbaijan Deposit Insurance Fund (ADIF). Would you like to know how to open a deposit?" }
+      {
+        "role": "user",
+        "content": "What interest rates do you offer on deposits?"
+      },
+      {
+        "role": "assistant",
+        "content": "AccessBank currently offers several deposit products:\n\n**Term Deposit**\n- From 50 AZN or USD\n- 6-24 months\n- Up to 10.75% in AZN or up to 3.5% in USD\n- Interest can be paid monthly or at maturity\n\n**myGoal Deposit** supports top-ups and terms up to 36 months.\n**Instant Deposit** and **Flexi Deposit** are designed for more flexible use, including top-ups and access to funds depending on product rules.\n\nRates can change, so please confirm the exact rate before opening."
+      }
     ]
   },
   {
     "id": "conv_014",
-    "description": "Exploratory — 'Transfers' then specific fee question",
+    "description": "Exploratory - 'Transfers' then specific fee question",
     "language": "en",
     "turns": [
-      { "role": "user", "content": "Transfers" },
-      { "role": "assistant", "content": "AccessBank makes sending money fast, simple, and affordable! 💸\n\n✅ **Internal transfers** (between AccessBank accounts): instant and always free\n✅ **Domestic transfers** to other Azerbaijani banks: 0.5% fee, delivered in 1 business day\n✅ **International SWIFT** transfers to 100+ countries: 1% fee, 2–5 business days\n✅ **Utility payments**: completely free via the app\n✅ Daily limit up to 20,000 AZN for premium accounts\n\nWhat would you like to know more about?" },
-      { "role": "user", "content": "How much is the fee for sending 1000 AZN to another bank?" },
-      { "role": "assistant", "content": "For a domestic interbank transfer of 1,000 AZN, the fee is **0.5%**, which equals **5 AZN**. The minimum fee is 0.50 AZN and the maximum is 10 AZN, so for 1,000 AZN you'd pay exactly 5 AZN. The transfer is processed within 1 business day." }
+      {
+        "role": "user",
+        "content": "Transfers"
+      },
+      {
+        "role": "assistant",
+        "content": "AccessBank makes sending money fast, simple, and affordable! 💸\n\n✅ **Internal transfers** (between AccessBank accounts): instant and always free\n✅ **Domestic transfers** to other Azerbaijani banks: 0.5% fee, delivered in 1 business day\n✅ **International SWIFT** transfers to 100+ countries: 1% fee, 2-5 business days\n✅ **Utility payments**: completely free via the app\n✅ Daily limit up to 20,000 AZN for premium accounts\n\nWhat would you like to know more about?"
+      },
+      {
+        "role": "user",
+        "content": "How much is the fee for sending 1000 AZN to another bank?"
+      },
+      {
+        "role": "assistant",
+        "content": "For a domestic interbank transfer of 1,000 AZN, the fee is **0.5%**, which equals **5 AZN**. The minimum fee is 0.50 AZN and the maximum is 10 AZN, so for 1,000 AZN you'd pay exactly 5 AZN. The transfer is processed within 1 business day."
+      }
     ]
   },
   {
     "id": "conv_015",
-    "description": "Lost card — urgent issue",
+    "description": "Lost card - urgent issue",
     "language": "en",
     "turns": [
-      { "role": "user", "content": "I lost my card! What should I do?" },
-      { "role": "assistant", "content": "Don't worry — act quickly and your money will be safe. Here's what to do right now:\n\n1. **Call *8880 immediately** (free, 24/7) to block the card — this is the fastest option\n2. OR open the AccessBank mobile app → Card Settings → Block Card\n\nOnce blocked, no transactions can be made. A replacement card costs 10 AZN and is issued within 3–5 business days. If you believe any fraudulent transactions occurred, please visit a branch with your ID to file a dispute. Is there anything else I can help you with?" }
+      {
+        "role": "user",
+        "content": "I lost my card! What should I do?"
+      },
+      {
+        "role": "assistant",
+        "content": "Don't worry - act quickly and your money will be safe. Here's what to do right now:\n\n1. **Call *8880 immediately** (free, 24/7) to block the card - this is the fastest option\n2. OR open the AccessBank mobile app → Card Settings → Block Card\n\nOnce blocked, no transactions can be made. A replacement card costs 10 AZN and is issued within 3-5 business days. If you believe any fraudulent transactions occurred, please visit a branch with your ID to file a dispute. Is there anything else I can help you with?"
+      }
     ]
   },
   {
     "id": "conv_016",
-    "description": "Mortgage inquiry — Azerbaijani",
+    "description": "Mortgage inquiry - Azerbaijani",
     "language": "az",
     "turns": [
-      { "role": "user", "content": "İpoteka krediti haqqında məlumat almaq istəyirəm" },
-      { "role": "assistant", "content": "AccessBank ipoteka kreditləri evinizin sahibi olmanızı asanlaşdırır! 🏠\n\n✅ **Kredit məbləği**: 10.000 – 200.000 AZN\n✅ **Müddət**: 20 ilə qədər\n✅ **İllik faiz**: 12%-dən başlayaraq\n✅ **İlkin ödəniş**: əmlakın dəyərinin minimum 20%-i\n✅ **MIDA** dövlət subsidiyalı ipoteka proqramı da mövcuddur\n\nLazımi sənədlər: Azərbaycan ID (Vin-kart), gəlir arayışı, əmlak sənədi və qiymətləndirmə hesabatı. Qərar 5–10 iş günü ərzində verilir. Daha ətraflı məlumat almaq istəyirsiniz?" }
+      {
+        "role": "user",
+        "content": "İpoteka krediti haqqında məlumat almaq istəyirəm"
+      },
+      {
+        "role": "assistant",
+        "content": "AccessBank ipoteka kreditləri evinizin sahibi olmanızı asanlaşdırır! 🏠\n\n✅ **Kredit məbləği**: 10.000 - 200.000 AZN\n✅ **Müddət**: 20 ilə qədər\n✅ **İllik faiz**: 12%-dən başlayaraq\n✅ **İlkin ödəniş**: əmlakın dəyərinin minimum 20%-i\n✅ **MIDA** dövlət subsidiyalı ipoteka proqramı da mövcuddur\n\nLazımi sənədlər: Azərbaycan ID (Vin-kart), gəlir arayışı, əmlak sənədi və qiymətləndirmə hesabatı. Qərar 5-10 iş günü ərzində verilir. Daha ətraflı məlumat almaq istəyirsiniz?"
+      }
     ]
   },
   {
@@ -158,21 +284,45 @@
     "description": "Complaint about branch service",
     "language": "en",
     "turns": [
-      { "role": "user", "content": "I had a very bad experience at the Nizami branch, the staff were rude" },
-      { "role": "assistant", "content": "I'm very sorry to hear about your experience — that's not the standard of service AccessBank aims to provide. To ensure this is properly investigated, could you tell me approximately when this occurred (date and time)?" },
-      { "role": "user", "content": "It was yesterday afternoon around 2pm" },
-      { "role": "assistant", "content": "Thank you for letting us know. I've created support case **CASE-K1L2M3N4** and escalated it to our **Customer Service** team. Your complaint about the Nizami branch on [yesterday's date] at approximately 14:00 has been logged and will be reviewed. The team will follow up with you within 1–2 business days. We take service quality very seriously and appreciate you bringing this to our attention." }
+      {
+        "role": "user",
+        "content": "I had a very bad experience at the Nizami branch, the staff were rude"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm very sorry to hear about your experience - that's not the standard of service AccessBank aims to provide. To ensure this is properly investigated, could you tell me approximately when this occurred (date and time)?"
+      },
+      {
+        "role": "user",
+        "content": "It was yesterday afternoon around 2pm"
+      },
+      {
+        "role": "assistant",
+        "content": "Thank you for letting us know. I've created support case **CASE-K1L2M3N4** and escalated it to our **Customer Service** team. Your complaint about the Nizami branch on [yesterday's date] at approximately 14:00 has been logged and will be reviewed. The team will follow up with you within 1-2 business days. We take service quality very seriously and appreciate you bringing this to our attention."
+      }
     ]
   },
   {
     "id": "conv_018",
-    "description": "Card payment failed — money deducted",
+    "description": "Card payment failed - money deducted",
     "language": "ru",
     "turns": [
-      { "role": "user", "content": "Я оплатил картой, деньги списались, но оплата не прошла" },
-      { "role": "assistant", "content": "Это может быть временное удержание средств — такое случается, когда транзакция не прошла, но банк уже зарезервировал сумму. Обычно деньги возвращаются автоматически в течение 3–5 рабочих дней.\n\nМожете сообщить сумму транзакции и примерную дату и время, когда это произошло?" },
-      { "role": "user", "content": "150 AZN, сегодня в 11:30 утром" },
-      { "role": "assistant", "content": "Спасибо за информацию. Я создал обращение **CASE-P5Q6R7S8** и передал его в отдел **Card Operations**. Если сумма не вернётся в течение 3–5 рабочих дней, команда свяжется с вами. Вы также можете позвонить на *8880 для срочной помощи. Сохраните номер обращения для отслеживания." }
+      {
+        "role": "user",
+        "content": "Я оплатил картой, деньги списались, но оплата не прошла"
+      },
+      {
+        "role": "assistant",
+        "content": "Это может быть временное удержание средств - такое случается, когда транзакция не прошла, но банк уже зарезервировал сумму. Обычно деньги возвращаются автоматически в течение 3-5 рабочих дней.\n\nМожете сообщить сумму транзакции и примерную дату и время, когда это произошло?"
+      },
+      {
+        "role": "user",
+        "content": "150 AZN, сегодня в 11:30 утром"
+      },
+      {
+        "role": "assistant",
+        "content": "Спасибо за информацию. Я создал обращение **CASE-P5Q6R7S8** и передал его в отдел **Card Operations**. Если сумма не вернётся в течение 3-5 рабочих дней, команда свяжется с вами. Вы также можете позвонить на *8880 для срочной помощи. Сохраните номер обращения для отслеживания."
+      }
     ]
   },
   {
@@ -180,8 +330,14 @@
     "description": "Account opening inquiry",
     "language": "en",
     "turns": [
-      { "role": "user", "content": "How do I open an account with AccessBank?" },
-      { "role": "assistant", "content": "Opening an AccessBank account is quick and straightforward! Here's what you need:\n\n**For Azerbaijani citizens:** Just bring your national ID (Vin-kart) to any branch.\n**For foreign nationals:** Passport + residence permit.\n\nAccount opening is **completely free** — no fees, no minimum balance. The whole process takes about 15–30 minutes. You'll get:\n- A free current account in AZN\n- A free debit card (ready in 3–5 business days)\n- Immediate access to internet banking and the mobile app\n- Option to add USD and EUR accounts\n\nFind your nearest branch on accessbank.az or call *8880 for more information. Is there anything specific you'd like to know?" }
+      {
+        "role": "user",
+        "content": "How do I open an account with AccessBank?"
+      },
+      {
+        "role": "assistant",
+        "content": "Opening an AccessBank account is quick and straightforward! Here's what you need:\n\n**For Azerbaijani citizens:** Just bring your national ID (Vin-kart) to any branch.\n**For foreign nationals:** Passport + residence permit.\n\nAccount opening is **completely free** - no fees, no minimum balance. The whole process takes about 15-30 minutes. You'll get:\n- A free current account in AZN\n- A free debit card (ready in 3-5 business days)\n- Immediate access to internet banking and the mobile app\n- Option to add USD and EUR accounts\n\nFind your nearest branch on accessbank.az or call *8880 for more information. Is there anything specific you'd like to know?"
+      }
     ]
   },
   {
@@ -189,10 +345,622 @@
     "description": "General 'what can you do?' opener → issue discovery",
     "language": "en",
     "turns": [
-      { "role": "user", "content": "What can you help me with?" },
-      { "role": "assistant", "content": "I can help you with a wide range of AccessBank services! Here are some things I can do:\n\n- 💳 **Cards**: answer questions about debit/credit cards, report a lost or blocked card\n- 💰 **Loans & Mortgages**: explain products, help check application status\n- 📲 **Mobile App & Internet Banking**: troubleshoot login issues, explain features\n- 💸 **Transfers**: explain fees, report failed or missing payments\n- 🏦 **Accounts & Deposits**: explain rates, help with account opening\n- 📋 **Complaints**: create a case and escalate to the right team\n\nWhat would you like help with today?" },
-      { "role": "user", "content": "Actually I have a problem with a transfer" },
-      { "role": "assistant", "content": "Of course — I'm here to help. Could you describe what happened with the transfer? For example: was it sent but not received, or did it fail immediately?" }
+      {
+        "role": "user",
+        "content": "What can you help me with?"
+      },
+      {
+        "role": "assistant",
+        "content": "I can help you with a wide range of AccessBank services! Here are some things I can do:\n\n- 💳 **Cards**: answer questions about debit/credit cards, report a lost or blocked card\n- 💰 **Loans & Mortgages**: explain products, help check application status\n- 📲 **Mobile App & Internet Banking**: troubleshoot login issues, explain features\n- 💸 **Transfers**: explain fees, report failed or missing payments\n- 🏦 **Accounts & Deposits**: explain rates, help with account opening\n- 📋 **Complaints**: create a case and escalate to the right team\n\nWhat would you like help with today?"
+      },
+      {
+        "role": "user",
+        "content": "Actually I have a problem with a transfer"
+      },
+      {
+        "role": "assistant",
+        "content": "Of course - I'm here to help. Could you describe what happened with the transfer? For example: was it sent but not received, or did it fail immediately?"
+      }
+    ]
+  },
+  {
+    "id": "conv_021",
+    "description": "Broad product menu with smart intent suggestions",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Card"
+      },
+      {
+        "role": "assistant",
+        "content": "Sure. I can help with several AccessBank card topics:\n\n1. New card order: myCard Junior, White, Black or OK card\n2. Credit / loan card: limit, grace period, eligibility\n3. Lost, stolen or blocked card\n4. Failed card payment or money deducted\n5. Card fees, limits or cashback\n\nWhich one do you need?"
+      }
+    ]
+  },
+  {
+    "id": "conv_022",
+    "description": "Azerbaijani ambiguous loan query",
+    "language": "az",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Kredit lazımdır"
+      },
+      {
+        "role": "assistant",
+        "content": "Əlbəttə. AccessBank-da ehtiyacınıza görə bir neçə kredit növü ola bilər:\n\n- Nağd kredit: 500-50,000 AZN, 6-48 ay\n- myCard kredit / kredit kartı: 10,000 AZN-dək, 50 günədək güzəşt müddəti\n- Lombard krediti: qızıl girovu ilə\n- Təminatlı kredit: daşınmaz əmlak girovu ilə\n\nSizə nağd kredit lazımdır, yoxsa girov əsasında kredit?"
+      }
+    ]
+  },
+  {
+    "id": "conv_023",
+    "description": "Russian ambiguous deposit query",
+    "language": "ru",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Вклад"
+      },
+      {
+        "role": "assistant",
+        "content": "Могу помочь с несколькими видами депозитов AccessBank:\n\n- **Term Deposit**: фиксированный срок 6-24 месяца, от 50 AZN/USD\n- **myGoal Deposit**: накопление на цель с пополнениями, срок до 36 месяцев\n- **Instant / Flexi Deposit**: более гибкий доступ к средствам\n\nВам важнее максимальная ставка или возможность снимать/пополнять деньги?"
+      }
+    ]
+  },
+  {
+    "id": "conv_024",
+    "description": "Current cash loan terms",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "What are the current cash loan conditions?"
+      },
+      {
+        "role": "assistant",
+        "content": "AccessBank's current cash loan terms are:\n\n- Amount: **500-50,000 AZN**\n- Term: **6-48 months**\n- Annual interest: **9.5%-24%**\n- Commission: **0%-3%**\n- Repayment: annuity, meaning equal monthly installments\n- EAPR: from **15%**\n\nFinal terms depend on income, workplace, seniority, credit history and bank review."
+      }
+    ]
+  },
+  {
+    "id": "conv_025",
+    "description": "Cash loan eligibility and documents",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Can I get a loan with just my ID?"
+      },
+      {
+        "role": "assistant",
+        "content": "It depends on the loan type. For a standard cash loan, AccessBank usually requires an ID plus proof of official employment or income. The current cash loan requirements include Azerbaijani citizenship, age 21-65, at least 6 months at the last workplace, ID and employment certificate.\n\nIf you have gold collateral or a deposit at AccessBank, a lombard or deposit-backed loan may require fewer income documents. The bank can still request additional documents after review."
+      }
+    ]
+  },
+  {
+    "id": "conv_026",
+    "description": "Loan calculator explanation",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "How much would I pay monthly for 3000 AZN?"
+      },
+      {
+        "role": "assistant",
+        "content": "The monthly payment depends on the term, interest rate and commission. AccessBank has a loan calculator where you can enter the amount, duration and interest rate to estimate the monthly payment.\n\nTell me the term you want, for example 12, 24 or 36 months, and I can show an approximate calculation. The final payment may differ after bank assessment and EAPR calculation."
+      }
+    ]
+  },
+  {
+    "id": "conv_027",
+    "description": "Credit card grace period correction",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Is the credit card grace period 55 days?"
+      },
+      {
+        "role": "assistant",
+        "content": "The current AccessBank page describes the myCard credit / loan card grace period as **up to 50 days**. Because grace periods depend on the statement cycle and repayment date, it is safest to check your contract in myAccess or confirm through *8880 before relying on the interest-free period."
+      }
+    ]
+  },
+  {
+    "id": "conv_028",
+    "description": "Credit card eligibility",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Who can apply for myCard credit card?"
+      },
+      {
+        "role": "assistant",
+        "content": "For the myCard credit / loan card, AccessBank lists these basic requirements:\n\n- Minimum age: **25**\n- Identity card\n- Official salary\n\nThe card limit can be up to 10,000 AZN, but final approval and limit depend on bank review, income and credit history."
+      }
+    ]
+  },
+  {
+    "id": "conv_029",
+    "description": "Lombard loan in Azerbaijani",
+    "language": "az",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Qızıl girovu ilə kredit verirsiniz?"
+      },
+      {
+        "role": "assistant",
+        "content": "Bəli, AccessBank-da qızıl zinət əşyalarının girovu ilə **lombard krediti** mövcuddur. Şərtlər belə göstərilir:\n\n- Məbləğ: 200 AZN-dən 100,000 AZN-dək\n- Müddət: 3-48 ay\n- İllik faiz: 18%-dən başlayaraq\n- Komissiya: 1%-5%, minimum 10 AZN\n- Girov: qızıl zinət əşyaları\n\nYekun məbləğ qızılın qiymətləndirilməsindən və bankın qərarından asılıdır."
+      }
+    ]
+  },
+  {
+    "id": "conv_030",
+    "description": "Lombard loan in Russian",
+    "language": "ru",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Мне нужен кредит под золото"
+      },
+      {
+        "role": "assistant",
+        "content": "В AccessBank есть ломбардный кредит под залог золотых изделий. Условия на сайте банка:\n\n- Сумма: от 200 AZN до 100,000 AZN\n- Срок: 3-48 месяцев\n- Годовая ставка: от 18%\n- Комиссия: 1%-5%, минимум 10 AZN\n- Залог: золотые украшения\n\nОкончательная сумма зависит от оценки золота и решения банка."
+      }
+    ]
+  },
+  {
+    "id": "conv_031",
+    "description": "Secured loan real estate",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Can I borrow against my apartment?"
+      },
+      {
+        "role": "assistant",
+        "content": "AccessBank has a secured loan option backed by real estate. Current terms shown include:\n\n- Amount: **10,000-70,000 AZN**\n- Term: **12-59 months**\n- Annual interest: from **18%**\n- Commission: **1%**\n- Collateral: real estate owned by you or a first-degree relative\n\nThe loan amount plus accrued interest should not exceed the bank's collateral ratio. The property will need assessment and legal review."
+      }
+    ]
+  },
+  {
+    "id": "conv_032",
+    "description": "Deposit comparison",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Which deposit is better if I want to add money every month?"
+      },
+      {
+        "role": "assistant",
+        "content": "If you plan to add money regularly, **myGoal Deposit** is usually the better fit because it is designed for growing savings toward a goal and supports increasing the amount. If you can lock funds for a fixed term, **Term Deposit** may offer clearer fixed-term income. If you need access to the money, compare **Instant Deposit** or **Flexi Deposit**.\n\nThe best option depends on whether you prefer higher fixed income or flexible access."
+      }
+    ]
+  },
+  {
+    "id": "conv_033",
+    "description": "Term deposit current terms",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "What is the minimum amount for a term deposit?"
+      },
+      {
+        "role": "assistant",
+        "content": "AccessBank's Term Deposit starts from **50 AZN or USD**. The term can be **6-24 months**, with rates shown up to **10.75% in AZN** or up to **3.5% in USD**. You can choose interest monthly or at the end of the term.\n\nRates can change, so confirm the exact rate before opening."
+      }
+    ]
+  },
+  {
+    "id": "conv_034",
+    "description": "Deposit monthly interest Russian",
+    "language": "ru",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Можно получать проценты каждый месяц?"
+      },
+      {
+        "role": "assistant",
+        "content": "Да, для срочного депозита AccessBank указывает возможность получать проценты **ежемесячно** или **в конце срока**. Ежемесячная выплата удобна, если вам нужен регулярный доход, а выплата в конце срока подходит, если вы хотите получить проценты после завершения депозита.\n\nПеред открытием проверьте актуальную ставку и условия договора."
+      }
+    ]
+  },
+  {
+    "id": "conv_035",
+    "description": "Deposit early withdrawal Azerbaijani",
+    "language": "az",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Əmanəti vaxtından əvvəl bağlasam faiz qalır?"
+      },
+      {
+        "role": "assistant",
+        "content": "Bu, seçdiyiniz əmanət məhsulunun müqavilə şərtlərindən asılıdır. Müddətli əmanətdə vaxtından əvvəl bağlanma zamanı faiz azala və ya itirilə bilər. Daha çevik istifadə istəyirsinizsə, Instant və ya Flexi kimi məhsulları müqayisə etmək daha uyğun ola bilər.\n\nDəqiq şərti müqavilənizdə, myAccess-də və ya *8880 vasitəsilə yoxlamağınız yaxşıdır."
+      }
+    ]
+  },
+  {
+    "id": "conv_036",
+    "description": "myAccess capabilities",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "What can I do in myAccess?"
+      },
+      {
+        "role": "assistant",
+        "content": "myAccess lets you manage banking outside the branch, 24/7. You can manage accounts, cards, savings, loans, remittances and other transactions. It is useful for checking balances, tracking expenses, making payments, repaying loans and managing daily banking tasks.\n\nSome identity-sensitive changes may still require *8880 or a branch."
+      }
+    ]
+  },
+  {
+    "id": "conv_037",
+    "description": "App OTP issue Russian",
+    "language": "ru",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Не приходит код для входа в myAccess"
+      },
+      {
+        "role": "assistant",
+        "content": "Проверьте, пожалуйста, несколько моментов:\n\n1. Номер телефона совпадает с номером, зарегистрированным в банке\n2. SMS не заблокированы на телефоне\n3. Есть связь с мобильной сетью, особенно если вы в роуминге\n4. Код не истёк, так как OTP действует ограниченное время\n\nНикому не сообщайте OTP. Если номер телефона изменился, обратитесь в *8880 или в филиал для безопасного обновления данных."
+      }
+    ]
+  },
+  {
+    "id": "conv_038",
+    "description": "Forgot password safe handling",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "I forgot my internet banking password"
+      },
+      {
+        "role": "assistant",
+        "content": "Use the official **Forgot Password** recovery flow in myAccess or contact *8880. For security, do not share your old password, OTP, PIN or card CVV with anyone, including in chat.\n\nIf your registered phone number is no longer active, the bank may need to verify your identity through an official channel before resetting access."
+      }
+    ]
+  },
+  {
+    "id": "conv_039",
+    "description": "myAccess in Azerbaijani",
+    "language": "az",
+    "turns": [
+      {
+        "role": "user",
+        "content": "myAccess nə üçündür?"
+      },
+      {
+        "role": "assistant",
+        "content": "myAccess AccessBank-ın internet bankçılıq xidmətidir. Onunla 24/7 rejimində hesablarınızı, kartlarınızı, əmanətlərinizi, kreditlərinizi, pul köçürmələrini və digər əməliyyatları idarə edə bilərsiniz.\n\nBəzi təhlükəsizlik və şəxsiyyət təsdiqi tələb edən əməliyyatlar üçün filial və ya *8880 lazım ola bilər."
+      }
+    ]
+  },
+  {
+    "id": "conv_040",
+    "description": "Online loan payment",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Can I pay my loan online?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes. AccessBank provides online loan payment options. You can check the official online loan payment service, myAccess or the mobile app. Other payment channels may include hesab.az, payment terminals, post offices and bank branches.\n\nKeep the payment confirmation until the loan balance updates."
+      }
+    ]
+  },
+  {
+    "id": "conv_041",
+    "description": "Money transfer broad menu",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Money transfer"
+      },
+      {
+        "role": "assistant",
+        "content": "AccessBank can help with several money transfer types:\n\n- **AccessTransfer** through the bank's branch network\n- **Western Union** for international remittances\n- **Zolotaya Korona** for selected country corridors\n- **SWIFT** for bank-to-bank international transfers\n- Domestic transfers and utility payments through digital channels\n\nAre you sending inside Azerbaijan, abroad, or trying to track a missing transfer?"
+      }
+    ]
+  },
+  {
+    "id": "conv_042",
+    "description": "Western Union question",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Do you have Western Union?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes. AccessBank lists **Western Union** among its money transfer systems. It is used for international remittances, with fees, limits, currency and payout availability depending on the destination country and current Western Union rules.\n\nWhich country are you sending to or receiving from?"
+      }
+    ]
+  },
+  {
+    "id": "conv_043",
+    "description": "Zolotaya Korona Russian",
+    "language": "ru",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Можно отправить Золотая Корона в Турцию?"
+      },
+      {
+        "role": "assistant",
+        "content": "AccessBank указывает **Zolotaya Korona** среди систем денежных переводов, в том числе для переводов в Турцию и другие страны. Но доступность направлений может меняться из-за правил системы и требований регуляторов.\n\nПеред отправкой лучше уточнить актуальную возможность и комиссию в филиале или по *8880."
+      }
+    ]
+  },
+  {
+    "id": "conv_044",
+    "description": "SWIFT details",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "What is AccessBank SWIFT code?"
+      },
+      {
+        "role": "assistant",
+        "content": "AccessBank's SWIFT code is **ACABAZ22**. The bank code is **505000** and TIN is **1400057421**.\n\nFor correspondent bank accounts, please copy details only from the official AccessBank requisites page, because the correct route depends on the currency and can change."
+      }
+    ]
+  },
+  {
+    "id": "conv_045",
+    "description": "Missing transfer detailed flow",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "I transferred money and it did not arrive"
+      },
+      {
+        "role": "assistant",
+        "content": "I understand. To identify the right path, please check these safe details:\n\n1. Was it domestic, SWIFT, Western Union, Zolotaya Korona or AccessTransfer?\n2. What status do you see: pending, completed, failed or reversed?\n3. What was the date, amount and reference number?\n\nDo not share card PIN, CVV, OTP or internet banking password. If the transfer is urgent, call *8880 with the reference number."
+      }
+    ]
+  },
+  {
+    "id": "conv_046",
+    "description": "Utility payment issue",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "I paid my gas bill but it still shows unpaid"
+      },
+      {
+        "role": "assistant",
+        "content": "That can happen if the provider has not updated the bill yet or if the payment is pending. Please check the payment status and receipt in myAccess or the mobile app.\n\nUseful safe details for support are: payment date, amount, provider, subscriber code and transaction reference. If it does not update, contact *8880 or the utility provider with the receipt."
+      }
+    ]
+  },
+  {
+    "id": "conv_047",
+    "description": "Deposit box question",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Can I rent a safe box?"
+      },
+      {
+        "role": "assistant",
+        "content": "Yes. AccessBank offers deposit boxes for residents of Azerbaijan, including individuals and legal entities. They are intended for safe storage of money, jewelry and important documents. The boxes use a modern protection system, two-key locking and confidential contents.\n\nAvailability can differ by branch, so please confirm the branch, box size and tariff through *8880 before visiting."
+      }
+    ]
+  },
+  {
+    "id": "conv_048",
+    "description": "Deposit box prices",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "How much are deposit boxes?"
+      },
+      {
+        "role": "assistant",
+        "content": "AccessBank's deposit box tariff table shows monthly prices from **30 AZN to 90 AZN**, 6-month prices from **150 AZN to 450 AZN**, and 12-month prices from **300 AZN to 900 AZN**, depending on box size.\n\nPlease confirm availability and the latest tariff with the branch or *8880 before renting."
+      }
+    ]
+  },
+  {
+    "id": "conv_049",
+    "description": "Branch network current",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "How many branches do you have?"
+      },
+      {
+        "role": "assistant",
+        "content": "AccessBank's current service network page shows **40 branches**, **52 ATMs** and **1 department**. The network covers Baku, Absheron and many regions of Azerbaijan.\n\nFor the exact address, working hours and available services, use the official branch locator or call *8880."
+      }
+    ]
+  },
+  {
+    "id": "conv_050",
+    "description": "Find branch Azerbaijani",
+    "language": "az",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Ən yaxın filialı necə tapa bilərəm?"
+      },
+      {
+        "role": "assistant",
+        "content": "Ən yaxın AccessBank filialını və ya ATM-i rəsmi accessbank.az saytındakı xidmət şəbəkəsi bölməsindən tapa bilərsiniz. Orada filialların ünvanları, regionlar və ATM-lər göstərilir.\n\nDəqiq iş saatı və xidmət mövcudluğunu getməzdən əvvəl *8880 vasitəsilə dəqiqləşdirməyiniz yaxşıdır."
+      }
+    ]
+  },
+  {
+    "id": "conv_051",
+    "description": "Complaint appeal",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "I disagree with the bank's response to my complaint"
+      },
+      {
+        "role": "assistant",
+        "content": "You can resubmit your appeal to AccessBank through the official complaint channels. If you still disagree with the response, you may apply to the Central Bank of Azerbaijan.\n\nKeep your complaint reference number, dates, copies of documents and any written response from the bank."
+      }
+    ]
+  },
+  {
+    "id": "conv_052",
+    "description": "Bad branch service flow",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "The staff at a branch treated me badly"
+      },
+      {
+        "role": "assistant",
+        "content": "I'm sorry that happened. AccessBank complaints can be submitted through a branch/head office, hotline, written mail, email/contact form, or official appeal channel.\n\nFor a useful complaint, include safe details: branch name, date, approximate time, what happened, and any reference number. Do not include PIN, CVV, OTP or passwords."
+      }
+    ]
+  },
+  {
+    "id": "conv_053",
+    "description": "Fraud / phishing Russian",
+    "language": "ru",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Мне позвонили и попросили код из SMS от имени банка"
+      },
+      {
+        "role": "assistant",
+        "content": "Не сообщайте SMS-код. OTP, PIN, CVV и пароль от интернет-банка нельзя передавать никому, даже если человек представляется сотрудником банка.\n\nЕсли вы уже сообщили код или видите подозрительную операцию, сразу заблокируйте карту в приложении, если это возможно, и позвоните на *8880."
+      }
+    ]
+  },
+  {
+    "id": "conv_054",
+    "description": "Unauthorized transaction",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "There is a transaction I did not make"
+      },
+      {
+        "role": "assistant",
+        "content": "Please act quickly:\n\n1. Block the card in the app if available, or call *8880 immediately\n2. Do not share OTP, PIN, CVV or password\n3. Save the transaction details, merchant name, date, time and amount\n4. File a dispute through the bank's official channel\n\nIs the card still with you, or do you think it was lost or stolen?"
+      }
+    ]
+  },
+  {
+    "id": "conv_055",
+    "description": "Business loan discovery",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "I need financing for my small business"
+      },
+      {
+        "role": "assistant",
+        "content": "AccessBank has a strong focus on micro and small business clients. To route you correctly, the bank would usually need to understand:\n\n- Business activity and region\n- How long the business has operated\n- Approximate monthly turnover\n- Requested amount and purpose\n- Whether collateral is available\n\nFor exact SME loan terms, it is best to consult a branch or business banking specialist."
+      }
+    ]
+  },
+  {
+    "id": "conv_056",
+    "description": "Business account documents",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "What do I need to open a company account?"
+      },
+      {
+        "role": "assistant",
+        "content": "For a business account, requirements depend on whether you are an individual entrepreneur or legal entity. Usually, the bank will need identification and business registration documents, and may request ownership, tax and compliance information.\n\nBecause business requirements vary, check the official business banking documents or visit a branch with your company papers."
+      }
+    ]
+  },
+  {
+    "id": "conv_057",
+    "description": "POS terminal",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Can I get a POS terminal for my shop?"
+      },
+      {
+        "role": "assistant",
+        "content": "AccessBank can route merchant service questions through business banking. To prepare, have these details ready: business type, shop location, expected monthly turnover, whether you need physical POS or online payment acceptance, and company registration details.\n\nExact POS tariffs and setup conditions should be confirmed with the bank's business team."
+      }
+    ]
+  },
+  {
+    "id": "conv_058",
+    "description": "Azerbaijani scam",
+    "language": "az",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Mənə zəng edib OTP kod istədilər"
+      },
+      {
+        "role": "assistant",
+        "content": "OTP kodu heç kimə deməyin. Bank əməkdaşı belə sizdən OTP, PIN, CVV və internet bank parolunu istəməməlidir.\n\nƏgər kodu artıq paylaşmısınızsa və ya şübhəli əməliyyat görürsünüzsə, kartı dərhal tətbiqdən bloklayın və *8880 ilə əlaqə saxlayın."
+      }
+    ]
+  },
+  {
+    "id": "conv_059",
+    "description": "Russian branch network",
+    "language": "ru",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Сколько у вас отделений и банкоматов?"
+      },
+      {
+        "role": "assistant",
+        "content": "На странице сервисной сети AccessBank указано **40 филиалов**, **52 банкомата** и **1 отдел**. Сеть охватывает Баку, Абшерон и регионы Азербайджана.\n\nДля точного адреса, графика и доступных услуг проверьте официальный сайт или позвоните на *8880."
+      }
+    ]
+  },
+  {
+    "id": "conv_060",
+    "description": "Tariff document question",
+    "language": "en",
+    "turns": [
+      {
+        "role": "user",
+        "content": "Where can I find all official fees?"
+      },
+      {
+        "role": "assistant",
+        "content": "Use AccessBank's **Tariffs and documents** page. It contains official terms and conditions for individual and business services, plus payment services information forms.\n\nFor fees, rates, EAPR/FIFD and contract terms, always use the latest document version or confirm through *8880."
+      }
     ]
   }
 ]
