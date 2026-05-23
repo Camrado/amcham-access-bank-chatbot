@@ -36,7 +36,7 @@ from typing import Optional
 
 from openai import OpenAI
 
-from prompts import (
+from chatbot.prompts import (
     ANSWER_PROMPT,
     COLLECTOR_PROMPT,
     INTENT_PROMPT,
@@ -44,6 +44,9 @@ from prompts import (
     SUMMARY_PROMPT,
 )
 from chatbot.rag_loader import retrieve
+from chatbot.anomaly import check_anomaly, init_anomaly_table
+from chatbot.case_similarity import index_case, find_similar_cases, format_similarity_hint
+from chatbot.prompts import SENTIMENT_PROMPT
 
 # ─── Logging ──────────────────────────────────────────────────────────────────
 logging.basicConfig(
@@ -81,6 +84,7 @@ class IntentResult:
     missing_info: list[str]
     flag_for_human: bool
     reasoning: str
+    language: str = "en"              # detected: az | ru | en | other
 
 
 @dataclass
@@ -92,6 +96,12 @@ class AgentResponse:
     flagged: bool = False              # True → route to admin queue
     flag_reason: Optional[str] = None  # why it was flagged
     rag_top_score: Optional[float] = None
+    language: Optional[str] = None     # detected language: az | ru | en | other
+    sentiment: Optional[str] = None    # positive | neutral | frustrated | angry | distressed
+    urgency: Optional[str] = None      # low | medium | high | critical
+    priority_boost: bool = False       # True → surface at top of admin queue
+    similar_cases: Optional[list] = None  # similar past cases from similarity index
+    anomaly: Optional[dict] = None     # set if a department spike was detected
 
 
 # ─── Database ─────────────────────────────────────────────────────────────────
@@ -125,6 +135,7 @@ def init_db(db_path: str = DB_PATH) -> None:
             )
         """)
         conn.commit()
+    init_anomaly_table(db_path)
     logger.info("Database initialised at %s", db_path)
 
 
@@ -273,6 +284,7 @@ def classify_intent(message: str, history: list[dict]) -> IntentResult:
         missing_info=data.get("missing_info", []),
         flag_for_human=bool(data.get("flag_for_human", True)),
         reasoning=data.get("reasoning", ""),
+        language=data.get("language") or "en",
     )
     logger.info(
         "Intent=%s | confidence=%.2f | dept=%s | flag=%s",
@@ -340,6 +352,21 @@ def summarise_case(history: list[dict]) -> str:
     return summary
 
 
+def _generate_sorry_message(language: str) -> str:
+    """Generate a polite specialist-redirect message in the detected language."""
+    lang_name = {"ru": "Russian", "az": "Azerbaijani", "en": "English"}.get(language, "English")
+    return _chat(
+        system=(
+            f"You are a customer support assistant for AccessBank. "
+            f"Write a short, polite message (2–3 sentences) telling the customer you want to connect "
+            f"them with a specialist for accurate information, and that they can call *8880 for immediate "
+            f"assistance. Write ONLY in {lang_name}."
+        ),
+        messages=[{"role": "user", "content": "Generate the message."}],
+        model=FAST_MODEL,
+    )
+
+
 def run_safety_check(draft: str) -> str:
     """Step 4: Safety guardrail — blocks any sensitive credential requests."""
     raw = _chat(
@@ -356,6 +383,30 @@ def run_safety_check(draft: str) -> str:
     except json.JSONDecodeError:
         logger.error("Safety check JSON parse failed, returning original draft")
         return draft
+
+
+# ─── Sentiment & urgency detection ───────────────────────────────────────────
+
+def detect_sentiment(message: str, history: list[dict]) -> dict:
+    """Detect sentiment, urgency, and whether a financial loss is mentioned."""
+    trimmed = _trim_history(history)
+    raw = _chat(
+        system=SENTIMENT_PROMPT,
+        messages=trimmed + [{"role": "user", "content": message}],
+        model=FAST_MODEL,
+        json_mode=True,
+    )
+    try:
+        data = json.loads(raw)
+        logger.info(
+            "Sentiment=%s | urgency=%s | priority_boost=%s",
+            data.get("sentiment"), data.get("urgency"), data.get("priority_boost"),
+        )
+        return data
+    except json.JSONDecodeError:
+        logger.error("Sentiment JSON parse failed")
+        return {"sentiment": "neutral", "urgency": "low", "priority_boost": False,
+                "financial_loss_mentioned": False, "reason": ""}
 
 
 # ─── Case-readiness check ─────────────────────────────────────────────────────
@@ -409,8 +460,12 @@ class Agent:
         # Append current message to history for context building
         full_history = history + [{"role": "user", "content": message}]
 
-        # ── Step 1: Classify intent ────────────────────────────────────────────
+        # ── Step 1: Classify intent + detect language ────────────────────────────
         intent_result = classify_intent(message, history)
+        detected_language = getattr(intent_result, "language", "en")
+
+        # ── Step 1b: Sentiment & urgency (runs in parallel conceptually) ─────────
+        sentiment_data = detect_sentiment(message, history)
 
         # ── Step 2: Route based on intent ─────────────────────────────────────
 
@@ -432,6 +487,10 @@ class Agent:
                 flagged=True,
                 flag_reason=flag_reason,
                 department=intent_result.department,
+                language=detected_language,
+                sentiment=sentiment_data.get("sentiment"),
+                urgency=sentiment_data.get("urgency"),
+                priority_boost=bool(sentiment_data.get("priority_boost", False)),
             )
 
         # ── 2B: Question → RAG answer ──────────────────────────────────────────
@@ -442,11 +501,7 @@ class Agent:
                 # RAG score too low even for a question → flag
                 flag_reason = f"RAG score too low ({top_score:.2f}) for question"
                 save_flagged(user_id, full_history, flag_reason, self.db_path)
-                text = (
-                    "I want to make sure you get the most accurate information. "
-                    "Let me connect you with a specialist. "
-                    "You can also reach us at *8880 for immediate assistance."
-                )
+                text = _generate_sorry_message(detected_language)
                 safe_text = run_safety_check(text)
                 return AgentResponse(
                     text=safe_text,
@@ -454,6 +509,10 @@ class Agent:
                     flagged=True,
                     flag_reason=flag_reason,
                     rag_top_score=top_score,
+                    language=detected_language,
+                    sentiment=sentiment_data.get("sentiment"),
+                    urgency=sentiment_data.get("urgency"),
+                    priority_boost=bool(sentiment_data.get("priority_boost", False)),
                 )
 
             safe_text = run_safety_check(answer)
@@ -461,6 +520,10 @@ class Agent:
                 text=safe_text,
                 intent="question",
                 rag_top_score=top_score,
+                language=detected_language,
+                sentiment=sentiment_data.get("sentiment"),
+                urgency=sentiment_data.get("urgency"),
+                priority_boost=bool(sentiment_data.get("priority_boost", False)),
             )
 
         # ── 2C: Issue → collect info then create case ──────────────────────────
@@ -493,6 +556,15 @@ class Agent:
             # Check if we have enough info to create the case
             if _is_case_ready(full_history, missing_info):
                 summary = summarise_case(full_history)
+
+                # Find similar past cases BEFORE creating the new one
+                similar = find_similar_cases(
+                    summary=summary,
+                    db_path=self.db_path,
+                    top_k=3,
+                    min_score=0.55,
+                )
+
                 case_id = create_case(
                     user_id=user_id,
                     department=department,
@@ -500,6 +572,15 @@ class Agent:
                     history=full_history,
                     db_path=self.db_path,
                 )
+
+                # Index the new case for future similarity searches
+                index_case(case_id=case_id, summary=summary, department=department, db_path=self.db_path)
+
+                # Check for anomaly (department volume spike)
+                anomaly = check_anomaly(department=department, db_path=self.db_path)
+                if anomaly:
+                    logger.warning("Anomaly detected after case %s: %s", case_id, anomaly["message"])
+
                 text = (
                     f"I've created support case **{case_id}** and escalated it to our "
                     f"**{department}** team. They will review your case and contact you "
@@ -512,6 +593,12 @@ class Agent:
                     intent="issue",
                     case_id=case_id,
                     department=department,
+                    language=detected_language,
+                    sentiment=sentiment_data.get("sentiment"),
+                    urgency=sentiment_data.get("urgency"),
+                    priority_boost=bool(sentiment_data.get("priority_boost", False)),
+                    similar_cases=similar,
+                    anomaly=anomaly,
                 )
 
             # Still need more info — ask for the next missing field
@@ -521,6 +608,10 @@ class Agent:
                 text=safe_reply,
                 intent="issue",
                 department=department,
+                language=detected_language,
+                sentiment=sentiment_data.get("sentiment"),
+                urgency=sentiment_data.get("urgency"),
+                priority_boost=bool(sentiment_data.get("priority_boost", False)),
                 # case_id is None — not yet created
             )
 
