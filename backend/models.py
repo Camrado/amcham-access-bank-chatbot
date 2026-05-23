@@ -30,3 +30,16 @@ class Message(Base):
     role = Column(String, nullable=False)  # "user" | "assistant"
     content = Column(Text, nullable=False)
     created_at = Column(DateTime(timezone=True), server_default=func.now())
+
+
+class Case(Base):
+    __tablename__ = "cases"
+
+    id = Column(Integer, primary_key=True, index=True)
+    user_name = Column(String, nullable=False)
+    user_contact = Column(String, nullable=False)
+    issue_summary = Column(Text, nullable=False)
+    department = Column(String, nullable=False)
+    status = Column(String, nullable=False, default="open")  # open | resolved
+    email_ref = Column(String, nullable=True)  # Gmail message ID
+    created_at = Column(DateTime(timezone=True), server_default=func.now())
