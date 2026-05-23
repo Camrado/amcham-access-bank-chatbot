@@ -36,13 +36,9 @@ import sqlite3
 import uuid
 from dataclasses import dataclass, field
 from datetime import datetime
-from pathlib import Path
 from typing import Optional
 
-from dotenv import load_dotenv
 from openai import OpenAI
-
-load_dotenv(Path(__file__).parent / ".env")
 
 from chatbot.prompts import (
     ANSWER_PROMPT,
@@ -64,7 +60,7 @@ from chatbot.case_similarity import index_case, find_similar_cases, format_simil
 # Imported lazily so the agent starts up even if Gmail credentials are not
 # yet configured — any send failure is caught and logged non-fatally.
 try:
-    from backend.email_service import send_email, DEPARTMENT_EMAILS
+    from email_service import send_email, DEPARTMENT_EMAILS
     _EMAIL_AVAILABLE = True
 except Exception:
     _EMAIL_AVAILABLE = False
@@ -81,7 +77,7 @@ logging.basicConfig(
 logger = logging.getLogger("agent")
 
 # ─── Config ───────────────────────────────────────────────────────────────────
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+OPENAI_API_KEY = os.environ["OPENAI_API_KEY"]
 DB_PATH = os.environ.get("DB_PATH", "cases.db")
 
 FAST_MODEL = "gpt-4o-mini"   # intent, safety, collector, sentiment
