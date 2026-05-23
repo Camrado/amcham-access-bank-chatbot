@@ -43,6 +43,7 @@ from openai import OpenAI
 from chatbot.prompts import (
     ANSWER_PROMPT,
     COLLECTOR_PROMPT,
+    GREETING_PROMPT,
     INTENT_PROMPT,
     INTENT_SCHEMA,
     SAFETY_PROMPT,
@@ -98,13 +99,14 @@ DEPARTMENTS = {
 
 @dataclass
 class IntentResult:
-    intent: str                        # "question" | "issue" | "unclear"
+    intent: str                        # "greeting" | "question" | "issue" | "unclear"
     confidence: float
     department: Optional[str]
     missing_info: list[str]
     flag_for_human: bool
     reasoning: str
     language: str = "en"              # az | ru | en | other
+    is_exploratory: bool = False      # True when message just names a product/topic
 
 
 @dataclass
@@ -320,6 +322,7 @@ def classify_intent(message: str, history: list[dict]) -> IntentResult:
         flag_for_human=bool(data.get("flag_for_human", True)),
         reasoning=data.get("reasoning", ""),
         language=data.get("language") or "en",
+        is_exploratory=bool(data.get("is_exploratory", False)),
     )
     logger.info(
         "Intent=%s | confidence=%.2f | dept=%s | flag=%s",
@@ -396,6 +399,16 @@ def _generate_sorry_message(language: str) -> str:
             f"Write ONLY in {lang_name}."
         ),
         messages=[{"role": "user", "content": "Generate the message."}],
+        model=FAST_MODEL,
+    )
+
+
+def generate_greeting(message: str, history: list[dict], language: str) -> str:
+    """Generate a warm welcome response for greetings and conversation openers."""
+    trimmed = _trim_history(history)
+    return _chat(
+        system=GREETING_PROMPT,
+        messages=trimmed + [{"role": "user", "content": message}],
         model=FAST_MODEL,
     )
 
@@ -662,7 +675,20 @@ class Agent:
 
         # ── Step 2: Route based on intent ────────────────────────────────────
 
-        # ── 2A: Flagged → admin queue ─────────────────────────────────────────
+        # ── 2A: Greeting → warm welcome, no RAG, no flagging ─────────────────
+        if intent_result.intent == "greeting":
+            text = generate_greeting(message, history, detected_language)
+            safe_text = run_safety_check(text)
+            return AgentResponse(
+                text=safe_text,
+                intent="greeting",
+                language=detected_language,
+                sentiment=sentiment_data.get("sentiment"),
+                urgency=sentiment_data.get("urgency"),
+                priority_boost=False,
+            )
+
+        # ── 2B: Flagged → admin queue ─────────────────────────────────────────
         if intent_result.flag_for_human:
             flag_reason = (
                 f"Low confidence ({intent_result.confidence:.0%}): {intent_result.reasoning}"
@@ -700,7 +726,7 @@ class Agent:
                 email_routed=email_routed,
             )
 
-        # ── 2B: Question → RAG answer ─────────────────────────────────────────
+        # ── 2C: Question → RAG answer ─────────────────────────────────────────
         if intent_result.intent == "question":
             answer, top_score = answer_question(message, history)
 
@@ -751,7 +777,7 @@ class Agent:
                 priority_boost=bool(sentiment_data.get("priority_boost", False)),
             )
 
-        # ── 2C: Issue → collect info then create case ─────────────────────────
+        # ── 2D: Issue → collect info then create case ─────────────────────────
         if intent_result.intent == "issue":
             department = pending_department or intent_result.department
             missing_info = (
