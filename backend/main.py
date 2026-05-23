@@ -14,9 +14,9 @@ from conversations.router import router as conversations_router
 from admin.router import router as admin_router
 
 # ─── Agent imports ────────────────────────────────────────────────────────────
-from agent import Agent, get_case, update_case_status
-from anomaly import get_active_anomalies, resolve_anomaly, get_department_volume
-from case_similarity import find_similar_cases, format_similarity_hint
+from chatbot.agent import Agent, get_case, update_case_status
+from chatbot.anomaly import get_active_anomalies, resolve_anomaly, get_department_volume
+from chatbot.case_similarity import find_similar_cases, format_similarity_hint
 import sqlite3, json, os, logging
 from datetime import datetime
 

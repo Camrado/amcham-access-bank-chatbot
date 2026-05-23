@@ -16,11 +16,16 @@ Usage:
 import json
 import os
 import math
+from pathlib import Path
+
+from dotenv import load_dotenv
 from openai import OpenAI
+
+load_dotenv(Path(__file__).parent / ".env")
 
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
-KNOWLEDGE_BASE_PATH = "chatbot/knowledge_base.json"
+KNOWLEDGE_BASE_PATH = Path(__file__).parent / "knowledge_base.json"
 SIMILARITY_THRESHOLD = 0.40  # below this → flag for human review (calibrated for text-embedding-3-small)
 
 # Model candidates in preference order — first one that works is used
