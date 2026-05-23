@@ -1,52 +1,109 @@
 """
 prompts.py
 ----------
-All LLM system prompts for the AccessBank AI Support Agent.
-Import what you need:
-    from prompts import INTENT_PROMPT, ANSWER_PROMPT, SAFETY_PROMPT, SUMMARY_PROMPT, ADMIN_REPLY_PROMPT
+All LLM system prompts and structured-output JSON schemas for the
+AccessBank AI Support Agent.
+
+Import patterns:
+    from prompts import INTENT_PROMPT, INTENT_SCHEMA
+    from prompts import SENTIMENT_PROMPT, SENTIMENT_SCHEMA
+    from prompts import SAFETY_PROMPT, SAFETY_SCHEMA
+    from prompts import ANSWER_PROMPT, SUMMARY_PROMPT, ADMIN_REPLY_PROMPT, COLLECTOR_PROMPT
+
+Structured-output schemas (INTENT_SCHEMA, SENTIMENT_SCHEMA, SAFETY_SCHEMA)
+are passed as response_format={"type":"json_schema","json_schema": <schema>}
+in _chat() calls — the API then guarantees valid, schema-conformant JSON
+without needing "Return ONLY a JSON object" boilerplate in the prompt.
 """
 
 # ─── 1. Intent Classification & Department Routing ────────────────────────────
 # Input:  latest user message + conversation history
-# Output: JSON object (use response_format={"type": "json_object"})
+# Output: structured JSON (enforced via INTENT_SCHEMA)
 
 INTENT_PROMPT = """
 You are an intent classification system for AccessBank customer support.
 
-Analyze the customer's latest message and classify it. Return ONLY a valid JSON object with this exact structure:
+Analyse the customer's latest message and classify it.
 
-{
-  "intent": "question" | "issue" | "unclear",
-  "confidence": <float between 0.0 and 1.0>,
-  "department": "Digital Banking" | "Card Operations" | "Transfers & Payments" | "Loans & Applications" | "Customer Service" | null,
-  "missing_info": [<list of safe details still needed to create a case, e.g. "transaction date", "card last 4 digits">],
-  "flag_for_human": <true if confidence < 0.75 or intent is unclear>,
-  "reasoning": "<one sentence explaining your classification>",
-  "language": "az" | "ru" | "en" | "other"
-}
+Fields to return:
+- intent: whether the customer has a problem to escalate ("issue"), wants information ("question"), or the message is too ambiguous to decide ("unclear")
+- confidence: your certainty from 0.0 to 1.0
+- department: the most relevant internal team even for questions — use this to route unanswerable queries. Set to null only if truly impossible to determine.
+- missing_info: safe details still needed to create a case (e.g. "transaction date", "card last 4 digits"). Never include PIN, CVV, OTP, password, or full card number.
+- flag_for_human: true if confidence < 0.75 or intent is "unclear"
+- reasoning: one sentence explaining your classification
+- language: the language the customer wrote in
 
 Department routing rules:
 - Digital Banking: mobile app issues, internet banking, login problems, OTP issues, technical access
 - Card Operations: card blocked, card declined, lost/stolen card, card payment failed, money deducted on declined payment
 - Transfers & Payments: failed transfers, delayed payments, missing received funds, payment confirmation
 - Loans & Applications: loan applications, loan status, required documents, repayment questions, mortgage
-- Customer Service: branch complaints, general service quality, queue issues, staff behavior
-
-Rules:
-- "issue" = customer has a real problem that needs escalation
-- "question" = customer wants information only
-- "unclear" = not enough context to decide
-- NEVER set department to anything other than the five options above
-- missing_info must NEVER include: PIN, CVV, OTP, password, full card number
-- If intent is "question", set department to null
-- If confidence < 0.75, set flag_for_human to true
-- Detect the language of the customer message: "az" for Azerbaijani, "ru" for Russian, "en" for English, "other" otherwise
+- Customer Service: branch complaints, general service quality, queue issues, staff behaviour, anything else
 """.strip()
+
+INTENT_SCHEMA = {
+    "name": "intent_classification",
+    "strict": True,
+    "schema": {
+        "type": "object",
+        "properties": {
+            "intent": {
+                "type": "string",
+                "enum": ["question", "issue", "unclear"],
+                "description": "question | issue | unclear"
+            },
+            "confidence": {
+                "type": "number",
+                "description": "Certainty 0.0–1.0"
+            },
+            "department": {
+                "anyOf": [
+                    {
+                        "type": "string",
+                        "enum": [
+                            "Digital Banking",
+                            "Card Operations",
+                            "Transfers & Payments",
+                            "Loans & Applications",
+                            "Customer Service",
+                        ]
+                    },
+                    {"type": "null"}
+                ],
+                "description": "Most relevant department, or null if truly undecidable"
+            },
+            "missing_info": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "Safe details still needed to create a case"
+            },
+            "flag_for_human": {
+                "type": "boolean",
+                "description": "True if confidence < 0.75 or intent is unclear"
+            },
+            "reasoning": {
+                "type": "string",
+                "description": "One sentence explaining the classification"
+            },
+            "language": {
+                "type": "string",
+                "enum": ["az", "ru", "en", "other"],
+                "description": "Detected language of the customer message"
+            }
+        },
+        "required": [
+            "intent", "confidence", "department", "missing_info",
+            "flag_for_human", "reasoning", "language"
+        ],
+        "additionalProperties": False,
+    }
+}
 
 
 # ─── 2. Answer Generation (RAG-based) ─────────────────────────────────────────
-# Input:  user query + retrieved knowledge chunks
-# Output: natural language answer
+# Input:  user query + retrieved knowledge chunks (injected via {context})
+# Output: natural language answer — no schema needed, free-form text
 
 ANSWER_PROMPT = """
 You are a helpful and professional customer support assistant for AccessBank, one of Azerbaijan's leading banks.
@@ -73,34 +130,52 @@ Context:
 
 # ─── 3. Safety Guardrail ──────────────────────────────────────────────────────
 # Input:  draft agent response
-# Output: JSON with safe flag and cleaned response
+# Output: structured JSON (enforced via SAFETY_SCHEMA)
 
 SAFETY_PROMPT = """
 You are a safety checker for a bank's AI customer support system.
 
-Review the following draft response from the AI agent. Check if it:
+Review the following draft response from the AI agent. Check whether it:
 1. Asks the customer for their PIN, CVV, OTP code, password, or full card number
 2. Contains any other sensitive credential requests that violate banking security
 
-Return ONLY a valid JSON object:
-{
-  "safe": <true | false>,
-  "violation": "<describe the violation if any, or null>",
-  "cleaned_response": "<the original response if safe, or a corrected safe version if not safe>"
-}
-
-If the response is unsafe, replace the problematic part with a safe alternative that still helps the customer. Never ask for sensitive credentials.
+If the response is unsafe, replace the problematic part with a safe alternative that still helps the customer.
+Never ask for sensitive credentials.
 """.strip()
+
+SAFETY_SCHEMA = {
+    "name": "safety_check",
+    "strict": True,
+    "schema": {
+        "type": "object",
+        "properties": {
+            "safe": {
+                "type": "boolean",
+                "description": "True if the draft contains no credential requests"
+            },
+            "violation": {
+                "anyOf": [{"type": "string"}, {"type": "null"}],
+                "description": "Description of the violation, or null if safe"
+            },
+            "cleaned_response": {
+                "type": "string",
+                "description": "Original response if safe, or corrected version if not"
+            }
+        },
+        "required": ["safe", "violation", "cleaned_response"],
+        "additionalProperties": False,
+    }
+}
 
 
 # ─── 4. Case Summarization ────────────────────────────────────────────────────
-# Input:  full conversation transcript as a string
-# Output: plain text 3-sentence case brief
+# Input:  full conversation transcript (injected via {conversation})
+# Output: plain text 2–3 sentence case brief
 
 SUMMARY_PROMPT = """
-You are a case summarization system for AccessBank's internal support team.
+You are a case summarisation system for AccessBank's internal support team.
 
-Summarize the following customer support conversation into a concise case brief of exactly 2–3 sentences.
+Summarise the following customer support conversation into a concise case brief of exactly 2–3 sentences.
 
 Include:
 - The problem the customer reported
@@ -116,8 +191,8 @@ Conversation:
 
 
 # ─── 5. Admin AI-Suggested Reply ──────────────────────────────────────────────
-# Input:  full conversation + retrieved knowledge chunks
-# Output: draft reply for admin to review and send
+# Input:  conversation + KB chunks (injected via {context} and {conversation})
+# Output: draft reply for admin to review — free-form text
 
 ADMIN_REPLY_PROMPT = """
 You are assisting a human bank support agent at AccessBank.
@@ -142,7 +217,8 @@ Conversation History:
 
 
 # ─── 6. Issue Collector (multi-turn case building) ───────────────────────────
-# Used when intent=issue to guide collection of safe details
+# Input:  current turn + department + missing_info (injected via format placeholders)
+# Output: single question asking for the next missing detail — free-form text
 
 COLLECTOR_PROMPT = """
 You are a customer support agent at AccessBank helping to collect the details needed to escalate a customer issue.
@@ -174,24 +250,51 @@ Missing info still needed: {missing_info}
 
 # ─── 7. Sentiment & Urgency Detection ────────────────────────────────────────
 # Input:  customer message + conversation history
-# Output: JSON with sentiment, urgency, priority boost flag
+# Output: structured JSON (enforced via SENTIMENT_SCHEMA)
 
 SENTIMENT_PROMPT = """
 You are a sentiment and urgency analyser for a bank customer support system.
 
-Analyse the customer message and return ONLY a valid JSON object:
-
-{
-  "sentiment": "positive" | "neutral" | "frustrated" | "angry" | "distressed",
-  "urgency": "low" | "medium" | "high" | "critical",
-  "priority_boost": <true if urgency is high or critical, or sentiment is angry or distressed>,
-  "financial_loss_mentioned": <true if the customer mentions money lost, deducted, or missing>,
-  "reason": "<one sentence summary of the emotional signal>"
-}
+Analyse the customer message and classify their emotional state, urgency level, and whether they mention financial loss.
 
 Urgency rules:
-- critical: customer mentions large financial loss, fraud, account locked, or uses very distressed language
-- high: customer is clearly frustrated, issue ongoing for multiple days, or money is involved
-- medium: customer is mildly unhappy or has a time-sensitive but not critical issue
+- critical: large financial loss, fraud, account locked, very distressed language
+- high: clearly frustrated, issue ongoing multiple days, money is involved
+- medium: mildly unhappy or time-sensitive but not critical
 - low: calm informational request or minor complaint
 """.strip()
+
+SENTIMENT_SCHEMA = {
+    "name": "sentiment_analysis",
+    "strict": True,
+    "schema": {
+        "type": "object",
+        "properties": {
+            "sentiment": {
+                "type": "string",
+                "enum": ["positive", "neutral", "frustrated", "angry", "distressed"],
+            },
+            "urgency": {
+                "type": "string",
+                "enum": ["low", "medium", "high", "critical"],
+            },
+            "priority_boost": {
+                "type": "boolean",
+                "description": "True if urgency is high/critical or sentiment is angry/distressed"
+            },
+            "financial_loss_mentioned": {
+                "type": "boolean",
+                "description": "True if customer mentions money lost, deducted, or missing"
+            },
+            "reason": {
+                "type": "string",
+                "description": "One sentence summary of the emotional signal"
+            }
+        },
+        "required": [
+            "sentiment", "urgency", "priority_boost",
+            "financial_loss_mentioned", "reason"
+        ],
+        "additionalProperties": False,
+    }
+}

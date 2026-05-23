@@ -11,7 +11,6 @@ from models import Conversation, Message
 from auth.router import router as auth_router
 from auth.service import TokenClaims, get_claims
 from conversations.router import router as conversations_router
-from admin.router import router as admin_router
 
 # ─── Agent imports ────────────────────────────────────────────────────────────
 from chatbot.agent import Agent, get_case, update_case_status
@@ -22,10 +21,8 @@ from datetime import datetime
 
 logger = logging.getLogger("main")
 
-# ─── DB path for agent's SQLite (cases, flagged, anomalies) ──────────────────
 AGENT_DB = os.environ.get("DB_PATH", "cases.db")
 
-# ─── Initialise agent once at startup ─────────────────────────────────────────
 _agent = Agent(db_path=AGENT_DB)
 
 models.Base.metadata.create_all(bind=engine)
@@ -42,7 +39,6 @@ app.add_middleware(
 
 app.include_router(auth_router)
 app.include_router(conversations_router)
-app.include_router(admin_router)
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -66,6 +62,8 @@ class ChatResponse(BaseModel):
     priority_boost: bool = False
     similar_cases: Optional[list] = None
     anomaly: Optional[dict] = None
+    # Indicates an escalation email was dispatched to the relevant department
+    email_routed: bool = False
 
 
 class CaseStatusUpdate(BaseModel):
@@ -85,11 +83,6 @@ class AnomalyResolveRequest(BaseModel):
 # ═════════════════════════════════════════════════════════════════════════════
 
 def _load_history(conversation_id: int, db: Session) -> list[dict]:
-    """
-    Load all messages for a conversation from the SQLAlchemy messages table
-    and convert to the {role, content} format expected by agent.handle().
-    Only the last 20 messages are loaded to control token usage.
-    """
     messages = (
         db.query(Message)
         .filter(Message.conversation_id == conversation_id)
@@ -101,11 +94,6 @@ def _load_history(conversation_id: int, db: Session) -> list[dict]:
 
 
 def _load_pending_state(conversation_id: int, db: Session) -> tuple[Optional[str], Optional[list]]:
-    """
-    Check if the conversation has a pending issue collection in progress.
-    We store pending state as a special system message with JSON payload.
-    Returns (pending_department, pending_missing_info) or (None, None).
-    """
     last_system = (
         db.query(Message)
         .filter(
@@ -131,11 +119,6 @@ def _save_pending_state(
     missing_info: Optional[list],
     db: Session,
 ) -> None:
-    """
-    Persist pending issue-collection state as a system message so it survives
-    between HTTP requests. Overwrites the previous pending state.
-    """
-    # Remove old pending state messages for this conversation
     db.query(Message).filter(
         Message.conversation_id == conversation_id,
         Message.role == "system",
@@ -164,11 +147,6 @@ async def chat(
     claims: TokenClaims = Depends(get_claims),
     db: Session = Depends(get_db),
 ) -> ChatResponse:
-    """
-    Receive a customer message, run it through the AI agent,
-    persist both messages, and return the agent response.
-    """
-    # ── Verify conversation belongs to this user ───────────────────────────
     conv = db.query(Conversation).filter(
         Conversation.id == body.conversation_id,
         Conversation.user_id == claims.user_id,
@@ -176,7 +154,6 @@ async def chat(
     if not conv:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="Conversation not found")
 
-    # ── Auto-title conversation from first message ─────────────────────────
     is_first = not db.query(Message).filter(
         Message.conversation_id == conv.id,
         Message.role == "user",
@@ -185,15 +162,14 @@ async def chat(
         conv.title = body.message[:50] + ("..." if len(body.message) > 50 else "")
         db.add(conv)
 
-    # ── Load history and pending state ────────────────────────────────────
     history = _load_history(body.conversation_id, db)
     pending_department, pending_missing_info = _load_pending_state(body.conversation_id, db)
 
-    # ── Run agent ─────────────────────────────────────────────────────────
     logger.info(
         "Chat request: conv=%s user=%s pending_dept=%s",
         body.conversation_id, claims.user_id, pending_department,
     )
+
     response = _agent.handle(
         user_id=str(claims.user_id),
         message=body.message,
@@ -202,34 +178,28 @@ async def chat(
         pending_missing_info=pending_missing_info,
     )
 
-    # ── Persist user message ───────────────────────────────────────────────
     db.add(Message(
         conversation_id=conv.id,
         role="user",
         content=body.message,
     ))
-
-    # ── Persist agent reply ────────────────────────────────────────────────
     db.add(Message(
         conversation_id=conv.id,
         role="assistant",
         content=response.text,
     ))
 
-    # ── Update pending state for next turn ────────────────────────────────
     if response.intent == "issue" and response.case_id is None and not response.flagged:
-        # Still collecting info — save department so next turn knows
         _save_pending_state(conv.id, response.department, [], db)
     else:
-        # Issue resolved (case created or flagged) — clear pending state
         _save_pending_state(conv.id, None, None, db)
 
     db.commit()
 
     logger.info(
-        "Chat response: conv=%s intent=%s case=%s flagged=%s lang=%s sentiment=%s",
+        "Chat response: conv=%s intent=%s case=%s flagged=%s lang=%s sentiment=%s email_routed=%s",
         body.conversation_id, response.intent, response.case_id,
-        response.flagged, response.language, response.sentiment,
+        response.flagged, response.language, response.sentiment, response.email_routed,
     )
 
     return ChatResponse(
@@ -244,6 +214,7 @@ async def chat(
         priority_boost=response.priority_boost,
         similar_cases=response.similar_cases,
         anomaly=response.anomaly,
+        email_routed=response.email_routed,
     )
 
 
@@ -257,7 +228,6 @@ async def get_messages(
     claims: TokenClaims = Depends(get_claims),
     db: Session = Depends(get_db),
 ):
-    """Return full message history for a conversation (excludes system messages)."""
     conv = db.query(Conversation).filter(
         Conversation.id == conversation_id,
         Conversation.user_id == claims.user_id,
@@ -269,7 +239,7 @@ async def get_messages(
         db.query(Message)
         .filter(
             Message.conversation_id == conversation_id,
-            Message.role != "system",        # hide internal pending state messages
+            Message.role != "system",
         )
         .order_by(Message.created_at.asc())
         .all()
@@ -286,7 +256,7 @@ async def get_messages(
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# Cases — admin endpoints (no user auth check, add admin middleware if needed)
+# Cases — admin endpoints
 # ═════════════════════════════════════════════════════════════════════════════
 
 @app.get("/cases")
@@ -295,7 +265,6 @@ async def list_cases(
     department: Optional[str] = None,
     limit: int = 50,
 ):
-    """List all cases. Optionally filter by status and/or department."""
     with sqlite3.connect(AGENT_DB) as conn:
         conn.row_factory = sqlite3.Row
         query = "SELECT id, user_id, department, summary, status, created_at, updated_at FROM cases"
@@ -316,12 +285,10 @@ async def list_cases(
 
 @app.get("/cases/{case_id}")
 async def get_case_detail(case_id: str):
-    """Get full case detail including history and similar past cases."""
     case = get_case(case_id, AGENT_DB)
     if not case:
         raise HTTPException(status_code=404, detail="Case not found")
 
-    # Find similar cases for admin context
     similar = find_similar_cases(
         summary=case["summary"],
         db_path=AGENT_DB,
@@ -336,7 +303,6 @@ async def get_case_detail(case_id: str):
 
 @app.patch("/cases/{case_id}/status")
 async def update_status(case_id: str, body: CaseStatusUpdate):
-    """Update case status: open | pending | resolved | closed."""
     case = get_case(case_id, AGENT_DB)
     if not case:
         raise HTTPException(status_code=404, detail="Case not found")
@@ -350,7 +316,6 @@ async def update_status(case_id: str, body: CaseStatusUpdate):
 
 @app.get("/flagged")
 async def list_flagged(resolved: bool = False, limit: int = 50):
-    """List flagged conversations pending admin review."""
     with sqlite3.connect(AGENT_DB) as conn:
         conn.row_factory = sqlite3.Row
         rows = conn.execute(
@@ -368,7 +333,6 @@ async def list_flagged(resolved: bool = False, limit: int = 50):
 
 @app.get("/flagged/{flag_id}")
 async def get_flagged_detail(flag_id: str):
-    """Get a flagged conversation with full history."""
     with sqlite3.connect(AGENT_DB) as conn:
         conn.row_factory = sqlite3.Row
         row = conn.execute(
@@ -383,12 +347,6 @@ async def get_flagged_detail(flag_id: str):
 
 @app.post("/flagged/{flag_id}/reply")
 async def admin_reply_to_flagged(flag_id: str, body: AdminReplyRequest):
-    """
-    Admin sends a reply to a flagged conversation.
-    Marks it as resolved and stores the reply.
-    In a full implementation, this would also push the reply back to the
-    customer via Telegram or websocket.
-    """
     with sqlite3.connect(AGENT_DB) as conn:
         row = conn.execute(
             "SELECT id FROM flagged_conversations WHERE id = ?", (flag_id,)
@@ -415,13 +373,11 @@ async def admin_reply_to_flagged(flag_id: str, body: AdminReplyRequest):
 
 @app.get("/anomalies")
 async def list_anomalies():
-    """Return all active (unresolved) anomaly alerts for admin dashboard."""
     return get_active_anomalies(AGENT_DB)
 
 
 @app.post("/anomalies/{anomaly_id}/resolve")
 async def resolve_anomaly_endpoint(anomaly_id: str):
-    """Admin dismisses an anomaly alert."""
     resolve_anomaly(anomaly_id, AGENT_DB)
     return {"anomaly_id": anomaly_id, "resolved": True}
 
@@ -432,40 +388,26 @@ async def resolve_anomaly_endpoint(anomaly_id: str):
 
 @app.get("/dashboard/stats")
 async def dashboard_stats():
-    """
-    Aggregate stats for the admin dashboard:
-    - Case counts by status
-    - Case counts by department (last 60 min)
-    - Sentiment breakdown
-    - Active anomalies count
-    """
     with sqlite3.connect(AGENT_DB) as conn:
         conn.row_factory = sqlite3.Row
 
-        # Total counts by status
         status_rows = conn.execute(
             "SELECT status, COUNT(*) as count FROM cases GROUP BY status"
         ).fetchall()
         by_status = {r["status"]: r["count"] for r in status_rows}
 
-        # Total cases
         total = conn.execute("SELECT COUNT(*) as c FROM cases").fetchone()["c"]
 
-        # Cases today
         today = datetime.utcnow().date().isoformat()
         today_count = conn.execute(
             "SELECT COUNT(*) as c FROM cases WHERE created_at >= ?", (today,)
         ).fetchone()["c"]
 
-        # Flagged pending
         flagged_pending = conn.execute(
             "SELECT COUNT(*) as c FROM flagged_conversations WHERE resolved = 0"
         ).fetchone()["c"]
 
-    # Department volume last 60 minutes
     dept_volume = get_department_volume(AGENT_DB, window_minutes=60)
-
-    # Active anomalies
     anomalies = get_active_anomalies(AGENT_DB)
 
     return {
@@ -480,7 +422,7 @@ async def dashboard_stats():
 
 
 # ═════════════════════════════════════════════════════════════════════════════
-# Static frontend (keep last — catch-all must be mounted after all routes)
+# Static frontend
 # ═════════════════════════════════════════════════════════════════════════════
 
 _frontend = Path(__file__).parent.parent / "frontend"
