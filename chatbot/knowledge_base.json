@@ -3,12 +3,15 @@
     "id": "kb_001",
     "category": "general",
     "title": "Working Hours & Branches",
-    "content": "AccessBank branches are open Monday to Friday from 09:00 to 18:00, and on Saturdays from 10:00 to 15:00. Branches are closed on Sundays and public holidays. AccessBank operates over 40 branches across Azerbaijan, including multiple locations in Baku, Ganja, Sumgayit, Mingachevir, and other major cities. The head office is located in Baku. Customers can find the nearest branch and its exact working hours on the official website accessbank.az or by calling the 24/7 hotline.",
+    "content": "AccessBank's service network page shows 40 branches, 52 ATMs, and 1 department, updated 02.03.2026. The network covers Baku and Absheron as well as regions such as Ganja, Sumgayit, Sheki, Shamkir, Lankaran, Khachmaz, Goranboy, Gabala, Nakhchivan, Balakan, Tovuz and other areas. For exact branch working hours, addresses and service availability, users should check accessbank.az or call the hotline. The bank's official legal address is 3 Tbilisi Avenue, Yasamal district, Baku city.",
     "tags": [
       "hours",
       "branch",
       "location",
-      "working hours"
+      "working hours",
+      "service network",
+      "ATM",
+      "department"
     ]
   },
   {
@@ -27,36 +30,39 @@
   {
     "id": "kb_003",
     "category": "cards",
-    "title": "Debit Card Types & Features",
-    "content": "AccessBank offers several types of debit cards including Visa Electron, Visa Classic, and Mastercard Standard. Debit cards are linked directly to the customer's current account. Cards can be used for ATM withdrawals, POS payments, and online purchases. The standard daily ATM withdrawal limit is 1000 AZN. Cards are issued within 3–5 business days. Annual card maintenance fee is 10 AZN for standard cards. Contactless payment (NFC) is supported on all new cards issued after 2022.",
+    "title": "Debit Card Types & myCard Features",
+    "content": "AccessBank card products include myCard Junior, myCard White, myCard Black and other card options shown on the official website. Debit cards are linked to current accounts and can be used for ATM withdrawals, POS payments, online purchases and contactless payments where supported. myCard Junior is positioned for children and families, while myCard White and myCard Black are designed for daily personal, family and business spending. Customers can order cards online or at branches. For exact tariffs, delivery, limits and service fees, use the current plastic card tariffs or call *8880.",
     "tags": [
       "debit card",
-      "visa",
-      "mastercard",
+      "myCard",
+      "myCard Junior",
+      "myCard White",
+      "myCard Black",
+      "card order",
       "ATM",
-      "withdrawal",
-      "limit"
+      "contactless"
     ]
   },
   {
     "id": "kb_004",
     "category": "cards",
-    "title": "Credit Card Types & Limits",
-    "content": "AccessBank offers Visa Classic Credit and Visa Gold Credit cards. Credit limits range from 500 AZN to 10,000 AZN depending on income and credit history. The grace period (interest-free period) is up to 55 days. Monthly interest rate is 2.5% on the outstanding balance after the grace period. Minimum monthly payment is 5% of the outstanding balance. Credit cards include cashback on select categories. Annual fee is 30 AZN for Classic and 60 AZN for Gold. Applications can be submitted online or at any branch.",
+    "title": "Credit Card and Loan Card Current Terms",
+    "content": "AccessBank's official loan page lists a myCard credit card / loan card offer up to 10,000 AZN with a term of 36 months, annual interest rate 24%-26%, EAPR 24%-26%, 0% commission costs and a grace period of up to 50 days. Cashback may be available through the AccessQazanc program. Eligibility generally requires an identity card, official salary and minimum age from 25 years, but the bank may request additional documents after analysis.",
     "tags": [
       "credit card",
-      "limit",
+      "loan card",
       "grace period",
       "interest",
       "cashback",
-      "gold"
+      "AccessQazanc",
+      "myCard"
     ]
   },
   {
     "id": "kb_005",
     "category": "cards",
     "title": "Lost, Stolen, or Blocked Card",
-    "content": "If a card is lost or stolen, the customer must immediately call the 24/7 hotline at *8880 to block it. The card can also be temporarily blocked through the AccessBank mobile app under Card Settings. A replacement card is issued within 3–5 business days and costs 10 AZN. Emergency cash withdrawal may be available at branches with passport identification. If the card was used fraudulently after loss, the customer should file a dispute claim at any branch with a written statement.",
+    "content": "If a card is lost or stolen, the customer must immediately call the 24/7 hotline at *8880 to block it. The card can also be temporarily blocked through the AccessBank mobile app under Card Settings. A replacement card is issued within 3-5 business days and costs 10 AZN. Emergency cash withdrawal may be available at branches with passport identification. If the card was used fraudulently after loss, the customer should file a dispute claim at any branch with a written statement.",
     "tags": [
       "lost card",
       "stolen card",
@@ -69,7 +75,7 @@
     "id": "kb_006",
     "category": "cards",
     "title": "Card Payment Failed or Declined",
-    "content": "A card payment may fail due to: insufficient balance, exceeded daily limit, card not activated, merchant not supporting the card type, or a temporary technical issue. Customers should check their balance via the mobile app or ATM. If the balance is sufficient and the card is active but payment still fails, the customer should contact support at *8880. If money was deducted but the transaction shows as failed, this is likely a pending reversal that takes 3–5 business days. If it does not reverse, the customer should file a dispute at a branch.",
+    "content": "A card payment may fail due to: insufficient balance, exceeded daily limit, card not activated, merchant not supporting the card type, or a temporary technical issue. Customers should check their balance via the mobile app or ATM. If the balance is sufficient and the card is active but payment still fails, the customer should contact support at *8880. If money was deducted but the transaction shows as failed, this is likely a pending reversal that takes 3-5 business days. If it does not reverse, the customer should file a dispute at a branch.",
     "tags": [
       "card declined",
       "payment failed",
@@ -124,7 +130,7 @@
     "id": "kb_010",
     "category": "transfers",
     "title": "International Transfers (SWIFT)",
-    "content": "AccessBank supports international SWIFT transfers to over 100 countries. The fee is 1% of the transfer amount (minimum 5 AZN, maximum 50 AZN) plus correspondent bank fees which vary by country. Processing time is 2–5 business days. Required details: recipient full name, IBAN or account number, bank name, SWIFT/BIC code, country, and purpose of transfer. Transfers over 10,000 USD equivalent may require supporting documents for compliance. SWIFT transfers can be initiated at branches or via internet banking.",
+    "content": "AccessBank supports international SWIFT transfers to over 100 countries. The fee is 1% of the transfer amount (minimum 5 AZN, maximum 50 AZN) plus correspondent bank fees which vary by country. Processing time is 2-5 business days. Required details: recipient full name, IBAN or account number, bank name, SWIFT/BIC code, country, and purpose of transfer. Transfers over 10,000 USD equivalent may require supporting documents for compliance. SWIFT transfers can be initiated at branches or via internet banking.",
     "tags": [
       "SWIFT",
       "international transfer",
@@ -137,7 +143,7 @@
     "id": "kb_011",
     "category": "transfers",
     "title": "Failed Transfer or Missing Payment",
-    "content": "If a transfer was sent but not received by the beneficiary, first check the transaction status in the mobile app or internet banking. Domestic transfers may take up to 1 business day. If the status shows 'completed' but funds not received after 2 business days, the customer should contact support at *8880 with the transaction reference number. If money was deducted but the transfer shows as failed, a reversal is processed automatically within 3–5 business days. For urgent cases, visit a branch with transaction details.",
+    "content": "If a transfer was sent but not received by the beneficiary, first check the transaction status in the mobile app or internet banking. Domestic transfers may take up to 1 business day. If the status shows 'completed' but funds not received after 2 business days, the customer should contact support at *8880 with the transaction reference number. If money was deducted but the transfer shows as failed, a reversal is processed automatically within 3-5 business days. For urgent cases, visit a branch with transaction details.",
     "tags": [
       "failed transfer",
       "missing payment",
@@ -150,28 +156,29 @@
   {
     "id": "kb_012",
     "category": "loans",
-    "title": "Consumer Loan Products",
-    "content": "AccessBank offers consumer loans from 500 AZN to 50,000 AZN with terms from 6 to 60 months. Annual interest rates start from 18% depending on credit score and income. No collateral is required for loans up to 20,000 AZN. Required documents: Azerbaijani ID (Vin-kart), ASAN imza or notarized income certificate, and employment confirmation. Loan decisions are made within 1–2 business days. Early repayment is allowed without penalty after the 3rd month.",
+    "title": "Cash Loan Current Terms",
+    "content": "AccessBank's current cash loan terms show loan amount from 500 AZN to 50,000 AZN, term from 6 to 48 months, annual interest rate from 9.5% to 24%, EAPR from 15%, commission from 0% to 3%, and annuity repayment. Requirements include Azerbaijani citizenship, age from 21 to 65 years, at least 6 months at the last workplace, identification and employment certificate. Final terms depend on workplace, seniority, credit history and internal bank procedures.",
     "tags": [
+      "cash loan",
       "consumer loan",
       "personal loan",
       "interest rate",
+      "EAPR",
       "documents",
-      "application",
-      "approval"
+      "application"
     ]
   },
   {
     "id": "kb_013",
     "category": "loans",
-    "title": "Mortgage Loans",
-    "content": "AccessBank offers mortgage loans for property purchase in Azerbaijan. Loan amounts range from 10,000 AZN to 200,000 AZN. Loan term up to 20 years. Down payment minimum 20% of property value. Annual interest rate from 12% for standard mortgages. The property must be located in Azerbaijan and free of legal encumbrances. Required documents include property deed, income proof, ID, and a property valuation report. Processing time is 5–10 business days. MIDA (state mortgage agency) subsidized mortgages are also available through AccessBank.",
+    "title": "Secured, Mortgage-Backed and Lombard Loans",
+    "content": "AccessBank's official loan page includes secured loans backed by real estate and lombard loans backed by gold jewelry. Secured loans are shown from 10,000 AZN to 70,000 AZN, from 12 to 59 months, with annual interest starting from 18%, 1% commission and collateral in real estate owned by the client or a first-degree relative. Lombard loans are shown from 200 AZN to 100,000 AZN, from 3 to 48 months, with annual interest starting from 18%, commission 1%-5% with minimum 10 AZN, and collateral as gold jewelry.",
     "tags": [
-      "mortgage",
-      "home loan",
-      "property",
-      "MIDA",
-      "down payment",
+      "secured loan",
+      "mortgage-backed loan",
+      "lombard loan",
+      "gold loan",
+      "collateral",
       "real estate"
     ]
   },
@@ -206,7 +213,7 @@
     "id": "kb_016",
     "category": "accounts",
     "title": "Account Opening",
-    "content": "Azerbaijani citizens can open an AccessBank account at any branch with their national ID (Vin-kart). Foreign nationals require a passport and residence permit. Account opening is free. A basic current account (AZN) includes a free debit card. Accounts can also be opened in USD and EUR. The initial deposit requirement is 0 AZN for current accounts. Savings accounts require a minimum deposit of 100 AZN. Account opening typically takes 15–30 minutes at a branch.",
+    "content": "Azerbaijani citizens can open an AccessBank account at any branch with their national ID (Vin-kart). Foreign nationals require a passport and residence permit. Account opening is free. A basic current account (AZN) includes a free debit card. Accounts can also be opened in USD and EUR. The initial deposit requirement is 0 AZN for current accounts. Savings accounts require a minimum deposit of 100 AZN. Account opening typically takes 15-30 minutes at a branch.",
     "tags": [
       "account opening",
       "current account",
@@ -218,15 +225,16 @@
   {
     "id": "kb_017",
     "category": "accounts",
-    "title": "Deposit & Savings Products",
-    "content": "AccessBank offers term deposits in AZN, USD, and EUR. AZN deposit rates: 3 months at 9% annually, 6 months at 10% annually, 12 months at 11% annually. USD deposit rates: 12 months at 3% annually. Minimum deposit amount is 100 AZN or 100 USD. Interest can be paid monthly or at maturity. Early withdrawal is allowed but forfeits accrued interest. Deposits up to 100,000 AZN are insured by the Azerbaijan Deposit Insurance Fund (ADIF).",
+    "title": "Deposit Products Current Overview",
+    "content": "AccessBank's official deposit page lists Term Deposit, myGoal Deposit, Instant Deposit and Flexi Deposit. Term Deposit starts from 50 AZN or USD, can run from 6 to 24 months and can earn up to 10.75% in AZN or up to 3.5% in USD, with interest paid monthly or at maturity. myGoal Deposit supports increasing deposits and terms up to 36 months. Instant and Flexi deposits are designed for flexible use, top-ups, withdrawals and capitalization depending on product rules. Exact rates can change, so customers should verify current rates before opening.",
     "tags": [
       "deposit",
       "savings",
-      "interest rate",
       "term deposit",
-      "ADIF",
-      "insurance"
+      "myGoal",
+      "instant deposit",
+      "flexi deposit",
+      "interest rate"
     ]
   },
   {
@@ -289,20 +297,21 @@
     "id": "kb_022",
     "category": "general",
     "title": "What Can AccessBank Help You With?",
-    "content": "AccessBank's AI support assistant can help you with: checking account and card information, understanding transfer fees and limits, applying for loans or mortgages, troubleshooting the mobile app or internet banking, reporting lost or stolen cards, tracking failed transactions, paying utility bills, understanding deposit interest rates, and filing complaints. For actions that require identity verification, you may be directed to a branch or the hotline *8880. You can also reach support 24/7 by calling *8880 (free from mobile) or +994 12 310 88 80.",
+    "content": "AccessBank's AI support assistant should help with AccessBank services including cards, cash loans, credit cards, secured loans, lombard loans, deposits, myAccess internet banking, mobile app use, online queue, online loan payment, money transfers, utility payments, deposit boxes, branch and ATM locations, tariffs and complaint channels. For identity-sensitive actions, card blocking, disputes, OTP reset, phone number updates and account changes, the assistant should guide the customer to *8880, a branch or the official website instead of collecting secret credentials.",
     "tags": [
       "help",
       "what can you do",
       "capabilities",
       "services",
-      "support"
+      "support",
+      "rag guidance"
     ]
   },
   {
     "id": "kb_023",
     "category": "cards",
-    "title": "Debit Cards — Benefits & Highlights",
-    "content": "AccessBank's debit cards are the smart way to manage your money every day. Key benefits: (1) Instant access to your funds at over 2,000 ATMs across Azerbaijan. (2) Contactless NFC payments — just tap and go at any enabled terminal. (3) Free internal transfers between AccessBank accounts. (4) Real-time transaction notifications via the mobile app so you always know where your money goes. (5) Daily ATM withdrawal limit of 1,000 AZN — adjustable on request. (6) Available in Visa Electron, Visa Classic, and Mastercard Standard. Annual fee is just 10 AZN. Cards are issued within 3–5 business days at any branch or by applying online.",
+    "title": "Debit Cards - Benefits & Highlights",
+    "content": "AccessBank's debit cards are the smart way to manage your money every day. Key benefits: (1) Instant access to your funds at over 2,000 ATMs across Azerbaijan. (2) Contactless NFC payments - just tap and go at any enabled terminal. (3) Free internal transfers between AccessBank accounts. (4) Real-time transaction notifications via the mobile app so you always know where your money goes. (5) Daily ATM withdrawal limit of 1,000 AZN - adjustable on request. (6) Available in Visa Electron, Visa Classic, and Mastercard Standard. Annual fee is just 10 AZN. Cards are issued within 3-5 business days at any branch or by applying online.",
     "tags": [
       "debit card",
       "visa",
@@ -316,8 +325,8 @@
   {
     "id": "kb_024",
     "category": "cards",
-    "title": "Credit Cards — Benefits & Highlights",
-    "content": "AccessBank credit cards give you buying power today with the flexibility to pay later. Key benefits: (1) Up to 55 days interest-free — use your card and pay zero interest if you settle your balance within the grace period. (2) Credit limits from 500 AZN to 10,000 AZN based on income. (3) Cashback on select spending categories — earn back on every purchase. (4) Worldwide acceptance — Visa Classic Credit and Visa Gold Credit accepted globally. (5) Easy minimum payments: just 5% of outstanding balance monthly. (6) Apply online or at any branch; approval within 1–2 business days. Annual fee: 30 AZN (Classic), 60 AZN (Gold).",
+    "title": "Credit Cards - Benefits & Highlights",
+    "content": "AccessBank credit cards give you buying power today with the flexibility to pay later. Key benefits: (1) Up to 55 days interest-free - use your card and pay zero interest if you settle your balance within the grace period. (2) Credit limits from 500 AZN to 10,000 AZN based on income. (3) Cashback on select spending categories - earn back on every purchase. (4) Worldwide acceptance - Visa Classic Credit and Visa Gold Credit accepted globally. (5) Easy minimum payments: just 5% of outstanding balance monthly. (6) Apply online or at any branch; approval within 1-2 business days. Annual fee: 30 AZN (Classic), 60 AZN (Gold).",
     "tags": [
       "credit card",
       "cashback",
@@ -330,8 +339,8 @@
   {
     "id": "kb_025",
     "category": "digital_banking",
-    "title": "AccessBank Mobile App — Features & Benefits",
-    "content": "The AccessBank mobile app is your bank in your pocket, rated among the top banking apps in Azerbaijan. Available free on iOS (App Store) and Android (Google Play). Key features: (1) Check balances and full transaction history instantly. (2) Transfer money to any bank in Azerbaijan or internationally. (3) Pay all utility bills (electricity, gas, water, internet, mobile top-up) in seconds. (4) Manage your cards — block/unblock, set limits, view PIN. (5) Apply for loans and track application status. (6) Biometric login — fingerprint and Face ID supported. (7) Real-time push notifications for every transaction. (8) 24/7 availability — no branch visit needed for most services.",
+    "title": "AccessBank Mobile App - Features & Benefits",
+    "content": "The AccessBank mobile app is your bank in your pocket, rated among the top banking apps in Azerbaijan. Available free on iOS (App Store) and Android (Google Play). Key features: (1) Check balances and full transaction history instantly. (2) Transfer money to any bank in Azerbaijan or internationally. (3) Pay all utility bills (electricity, gas, water, internet, mobile top-up) in seconds. (4) Manage your cards - block/unblock, set limits, view PIN. (5) Apply for loans and track application status. (6) Biometric login - fingerprint and Face ID supported. (7) Real-time push notifications for every transaction. (8) 24/7 availability - no branch visit needed for most services.",
     "tags": [
       "mobile app",
       "iOS",
@@ -345,8 +354,8 @@
   {
     "id": "kb_026",
     "category": "loans",
-    "title": "Loans — Product Overview & Why Choose AccessBank",
-    "content": "AccessBank offers flexible loan products designed for real life. Consumer loans: 500–50,000 AZN, 6–60 months, rates from 18% annually. Mortgage loans: 10,000–200,000 AZN, up to 20 years, from 12% annually. Key advantages: (1) Fast decisions — consumer loan approved within 1–2 business days. (2) No collateral needed for amounts up to 20,000 AZN. (3) Early repayment allowed without penalty after the 3rd month. (4) MIDA state-subsidised mortgages available. (5) Simple documentation — just your Azerbaijani ID (Vin-kart) and income confirmation. (6) Apply at any branch or via the mobile app. Loan status can be tracked 24/7 in the app.",
+    "title": "Loans - Product Overview & Why Choose AccessBank",
+    "content": "AccessBank offers flexible loan products designed for real life. Consumer loans: 500-50,000 AZN, 6-60 months, rates from 18% annually. Mortgage loans: 10,000-200,000 AZN, up to 20 years, from 12% annually. Key advantages: (1) Fast decisions - consumer loan approved within 1-2 business days. (2) No collateral needed for amounts up to 20,000 AZN. (3) Early repayment allowed without penalty after the 3rd month. (4) MIDA state-subsidised mortgages available. (5) Simple documentation - just your Azerbaijani ID (Vin-kart) and income confirmation. (6) Apply at any branch or via the mobile app. Loan status can be tracked 24/7 in the app.",
     "tags": [
       "loans",
       "consumer loan",
@@ -360,8 +369,8 @@
   {
     "id": "kb_027",
     "category": "accounts",
-    "title": "Savings & Deposits — Overview",
-    "content": "AccessBank offers competitive term deposits to help your money grow. AZN deposits: 9% for 3 months, 10% for 6 months, 11% for 12 months annually. USD deposits: 3% for 12 months. EUR deposits also available. Minimum deposit: 100 AZN or 100 USD. Interest can be paid monthly (great for regular income) or at maturity (higher effective return). Deposits up to 100,000 AZN are fully insured by the Azerbaijan Deposit Insurance Fund (ADIF). Early withdrawal is allowed — you keep your principal but forfeit accrued interest. Open a deposit at any branch or through internet banking.",
+    "title": "Savings & Deposits - Overview",
+    "content": "AccessBank offers competitive term deposits to help your money grow. AZN deposits: 9% for 3 months, 10% for 6 months, 11% for 12 months annually. USD deposits: 3% for 12 months. EUR deposits also available. Minimum deposit: 100 AZN or 100 USD. Interest can be paid monthly (great for regular income) or at maturity (higher effective return). Deposits up to 100,000 AZN are fully insured by the Azerbaijan Deposit Insurance Fund (ADIF). Early withdrawal is allowed - you keep your principal but forfeit accrued interest. Open a deposit at any branch or through internet banking.",
     "tags": [
       "savings",
       "deposit",
@@ -376,8 +385,8 @@
   {
     "id": "kb_028",
     "category": "transfers",
-    "title": "Transfers & Payments — Overview",
-    "content": "AccessBank makes moving money fast, easy, and affordable. Internal transfers between AccessBank accounts are instant and always free. Domestic transfers to other Azerbaijani banks: 0.5% fee (min 0.50 AZN, max 10 AZN), processed within 1 business day. International SWIFT transfers to 100+ countries: 1% fee (min 5 AZN, max 50 AZN), processed in 2–5 business days. Daily transfer limit: 5,000 AZN for standard accounts, 20,000 AZN for premium. Utility payments (electricity, gas, water, internet, mobile top-up) are free and instant via the app. Set up auto-payment for recurring bills so you never miss a due date.",
+    "title": "Transfers & Payments - Overview",
+    "content": "AccessBank makes moving money fast, easy, and affordable. Internal transfers between AccessBank accounts are instant and always free. Domestic transfers to other Azerbaijani banks: 0.5% fee (min 0.50 AZN, max 10 AZN), processed within 1 business day. International SWIFT transfers to 100+ countries: 1% fee (min 5 AZN, max 50 AZN), processed in 2-5 business days. Daily transfer limit: 5,000 AZN for standard accounts, 20,000 AZN for premium. Utility payments (electricity, gas, water, internet, mobile top-up) are free and instant via the app. Set up auto-payment for recurring bills so you never miss a due date.",
     "tags": [
       "transfers",
       "payments",
@@ -392,8 +401,8 @@
   {
     "id": "kb_029",
     "category": "accounts",
-    "title": "Account Opening — Overview & Requirements",
-    "content": "Opening an AccessBank account takes just 15–30 minutes at any branch. Azerbaijani citizens need only their national ID (Vin-kart). Foreign nationals need a passport and residence permit. Account opening is free — no fees, no minimum balance for current accounts. What you get: free basic current account in AZN, free debit card issued within 3–5 business days, instant access to internet banking and the mobile app, option to add USD and EUR currency accounts. Savings accounts require a minimum deposit of 100 AZN. You can also open accounts for children and minors at any branch with the parent or guardian present.",
+    "title": "Account Opening - Overview & Requirements",
+    "content": "Opening an AccessBank account takes just 15-30 minutes at any branch. Azerbaijani citizens need only their national ID (Vin-kart). Foreign nationals need a passport and residence permit. Account opening is free - no fees, no minimum balance for current accounts. What you get: free basic current account in AZN, free debit card issued within 3-5 business days, instant access to internet banking and the mobile app, option to add USD and EUR currency accounts. Savings accounts require a minimum deposit of 100 AZN. You can also open accounts for children and minors at any branch with the parent or guardian present.",
     "tags": [
       "account opening",
       "requirements",
@@ -406,7 +415,7 @@
   {
     "id": "kb_030",
     "category": "digital_banking",
-    "title": "Internet Banking — Features & Access",
+    "title": "Internet Banking - Features & Access",
     "content": "AccessBank internet banking at ibank.accessbank.az gives you full control of your finances from any computer or browser. Features: view all account balances and statement history, make domestic and SWIFT international transfers, pay utility bills and mobile top-ups, manage term deposits and loan repayments, download official account statements, order new cards or services. To register, you need your AccessBank card number and the mobile phone number linked to your account. If you forget your password, use the 'Forgot Password' reset flow or call *8880. Internet banking is available 24/7 and supports Azerbaijani, Russian, and English.",
     "tags": [
       "internet banking",
@@ -421,7 +430,7 @@
     "id": "kb_031",
     "category": "cards",
     "title": "Card Security & Contactless Payments",
-    "content": "AccessBank cards include multiple security layers to protect your money. 3D Secure (Verified by Visa) adds an extra verification step for online purchases. Real-time SMS and push notifications alert you to every transaction. You can instantly block your card in the mobile app under Card Settings if you suspect fraud. Contactless NFC payments are supported on all cards issued after 2022 — simply tap your card or phone at any NFC-enabled terminal for purchases up to 50 AZN without entering a PIN. For larger amounts, PIN entry is required. Apple Pay and Google Pay are supported for even faster contactless payments via your smartphone.",
+    "content": "AccessBank cards include multiple security layers to protect your money. 3D Secure (Verified by Visa) adds an extra verification step for online purchases. Real-time SMS and push notifications alert you to every transaction. You can instantly block your card in the mobile app under Card Settings if you suspect fraud. Contactless NFC payments are supported on all cards issued after 2022 - simply tap your card or phone at any NFC-enabled terminal for purchases up to 50 AZN without entering a PIN. For larger amounts, PIN entry is required. Apple Pay and Google Pay are supported for even faster contactless payments via your smartphone.",
     "tags": [
       "card security",
       "NFC",
@@ -436,7 +445,7 @@
     "id": "kb_032",
     "category": "general",
     "title": "Currency Exchange & Foreign Currency Services",
-    "content": "AccessBank offers competitive currency exchange rates for AZN, USD, EUR, RUB, GBP, and other major currencies. Exchange rates are updated throughout the business day and displayed live in the mobile app and on the website. Currency exchange can be performed at any branch, via the mobile app (for supported pairs), or through internet banking. Foreign currency (USD, EUR) current accounts are available to all customers — no extra requirements. International SWIFT transfers support all major currencies. For large foreign currency transactions, it is recommended to contact your branch in advance as availability may vary.",
+    "content": "AccessBank offers competitive currency exchange rates for AZN, USD, EUR, RUB, GBP, and other major currencies. Exchange rates are updated throughout the business day and displayed live in the mobile app and on the website. Currency exchange can be performed at any branch, via the mobile app (for supported pairs), or through internet banking. Foreign currency (USD, EUR) current accounts are available to all customers - no extra requirements. International SWIFT transfers support all major currencies. For large foreign currency transactions, it is recommended to contact your branch in advance as availability may vary.",
     "tags": [
       "currency",
       "exchange rate",
@@ -445,6 +454,1688 @@
       "foreign currency",
       "AZN",
       "exchange"
+    ]
+  },
+  {
+    "id": "kb_033",
+    "category": "general",
+    "title": "AccessBank Current Official Product Map",
+    "content": "AccessBank's official site groups private banking services into loans, deposits, cards, online services and other services. Key services include loan order, cash loan, OK credit card, lombard loan, credit calculator, loan card, term deposit, myGoal deposit, instant deposit, flexi deposit, myCard Junior, myCard White, myCard Black, card ordering, money transfer, deposit boxes, utility payments, online queue and online loan payment. For RAG answers, use this as the product navigation map when users type broad terms such as cards, loans, deposits, online services or other services.",
+    "tags": [
+      "product map",
+      "navigation",
+      "loans",
+      "deposits",
+      "cards",
+      "online services",
+      "other services"
+    ]
+  },
+  {
+    "id": "kb_034",
+    "category": "general",
+    "title": "Legal Name, License and Address",
+    "content": "The bank's official footer identifies the institution as AccessBank CJSC. It operates based on license No. 245 issued by the Central Bank of the Republic of Azerbaijan on 25 October 2002. The legal address shown by the bank is 3 Tbilisi Avenue, Yasamal district, Baku city. If a user asks for official requisites, legal identity, headquarters or license information, answer with these details and recommend checking the official requisites page for payment instructions.",
+    "tags": [
+      "legal",
+      "license",
+      "address",
+      "head office",
+      "requisites",
+      "CJSC"
+    ]
+  },
+  {
+    "id": "kb_035",
+    "category": "general",
+    "title": "Bank Requisites and SWIFT",
+    "content": "AccessBank's requisites page lists AccessBank CJSC, SWIFT code ACABAZ22, bank code 505000, TIN 1400057421 and an AZN correspondent account with the Central Bank of Azerbaijan. For cross-border or corporate payment instructions, customers should copy details only from the official requisites page because correspondent bank accounts can change. Never ask users to send sensitive payment credentials in chat.",
+    "tags": [
+      "SWIFT",
+      "ACABAZ22",
+      "bank code",
+      "TIN",
+      "correspondent account",
+      "requisites"
+    ]
+  },
+  {
+    "id": "kb_036",
+    "category": "general",
+    "title": "Mission and Vision",
+    "content": "AccessBank's vision is to be a leading bank in Azerbaijan supporting small business development and financial inclusion. Its mission is to contribute to sustainable development by offering financial services and solutions to households, micro, small and medium-sized enterprises while using internationally accepted banking practices. The bank emphasizes transparency, openness, professionalism, customer loyalty, teamwork and responsibility toward society and the environment.",
+    "tags": [
+      "mission",
+      "vision",
+      "financial inclusion",
+      "SME",
+      "MSME",
+      "values"
+    ]
+  },
+  {
+    "id": "kb_037",
+    "category": "general",
+    "title": "Strategic Goals",
+    "content": "AccessBank's stated strategic goals include maintaining a leading position for micro and small business clients, increasing customer satisfaction by optimizing processes, expanding digitization, tailoring services to customer needs, maintaining strong risk management, keeping high underwriting standards, preserving compliance and internal control, investing in employee development, and ensuring sustainable financial performance for investors.",
+    "tags": [
+      "strategy",
+      "goals",
+      "digitalization",
+      "risk management",
+      "customer satisfaction",
+      "compliance"
+    ]
+  },
+  {
+    "id": "kb_038",
+    "category": "general",
+    "title": "Bank History Summary",
+    "content": "AccessBank CJSC began operations in Baku on 29 October 2002. In its early years it was known as Azerbaijan Microfinance Bank, often abbreviated AMMB. From 8 September 2008 it has operated under the name AccessBank. Its historical positioning is focused on financial services for micro and small entrepreneurs as well as low and middle-income families.",
+    "tags": [
+      "history",
+      "founded",
+      "AMMB",
+      "microfinance",
+      "2002",
+      "2008"
+    ]
+  },
+  {
+    "id": "kb_039",
+    "category": "general",
+    "title": "Branch and ATM Network Current Snapshot",
+    "content": "The service network page shows a current snapshot of 40 branches, 52 ATMs and 1 department. Branches and ATMs are listed across Baku, Absheron and regions. Use this answer when the user asks how many branches, where branches are located, whether AccessBank has regional coverage or where to find an ATM.",
+    "tags": [
+      "branch count",
+      "ATM count",
+      "service network",
+      "regions",
+      "Baku",
+      "Absheron"
+    ]
+  },
+  {
+    "id": "kb_040",
+    "category": "general",
+    "title": "Regional Branch Examples",
+    "content": "Examples of AccessBank service locations shown on the service network page include Kapaz, Sevinc Mall, Crescent Mall, Ganjlik Mall, Tovuz, Gabala, Nakhchivan, Absheron, Central office, Babek, 20 January, Balakan, Azadlig, Sabail, Bakikhanov, Mardakan, Sumgayit, Khirdalan, Badamdar, Hazi Aslanov, Binagadi, Lokbatan, Narimanov, Khagani / 28 May, Ganja, Sheki, Shamkir, Lankaran, Khachmaz and Goranboy. Always send the user to the official service network page for exact address and hours.",
+    "tags": [
+      "branches",
+      "regions",
+      "Baku branches",
+      "regional branches",
+      "ATM",
+      "service locations"
+    ]
+  },
+  {
+    "id": "kb_041",
+    "category": "general",
+    "title": "Online Queue Service",
+    "content": "AccessBank offers an online queue service from the official website menu. If a customer wants to visit a branch but avoid waiting, guide them to use the online queue option on accessbank.az where available. Ask which branch or service they need only if it helps them choose the right queue; do not request personal credentials.",
+    "tags": [
+      "online queue",
+      "branch visit",
+      "appointment",
+      "service booking",
+      "wait time"
+    ]
+  },
+  {
+    "id": "kb_042",
+    "category": "general",
+    "title": "Contact and Appeal Channels",
+    "content": "Customers can contact AccessBank orally at the head office or through the information center hotline, in writing by mail to the head office, or electronically through the official email or contact form. If a customer disagrees with the bank's response, they may resubmit the appeal to the bank or apply to the Central Bank of Azerbaijan. Use this for complaint, appeal and escalation questions.",
+    "tags": [
+      "contact",
+      "appeal",
+      "complaint",
+      "Central Bank",
+      "email",
+      "hotline"
+    ]
+  },
+  {
+    "id": "kb_043",
+    "category": "general",
+    "title": "Customer Support Safety Boundary",
+    "content": "For RAG support, the assistant can explain products and procedures but must not collect full card numbers, PIN, CVV, OTP, internet banking password, full FIN unless required by an authenticated official channel, or any online banking credentials. For urgent security matters, direct the customer to *8880, the official app, or a branch.",
+    "tags": [
+      "security",
+      "privacy",
+      "OTP",
+      "PIN",
+      "CVV",
+      "safe support"
+    ]
+  },
+  {
+    "id": "kb_044",
+    "category": "general",
+    "title": "When Information Can Change",
+    "content": "Rates, fees, product limits, branch hours, campaign terms, cashback categories and correspondent bank details can change. When answering with numeric terms, state the available value and add a short verification note such as 'Please confirm the final terms in myAccess, the official tariff page or by calling *8880 before applying.' This prevents stale RAG answers.",
+    "tags": [
+      "freshness",
+      "tariffs",
+      "rates",
+      "limits",
+      "verification",
+      "RAG policy"
+    ]
+  },
+  {
+    "id": "kb_045",
+    "category": "digital_banking",
+    "title": "myAccess Overview",
+    "content": "myAccess is AccessBank's internet banking service. It is positioned as a convenient tool to manage expenses and track costs without needing to visit branches. It is available 24 hours a day, 7 days a week, and supports managing bank accounts, cards, savings, loans, remittances and other transactions.",
+    "tags": [
+      "myAccess",
+      "internet banking",
+      "online banking",
+      "24/7",
+      "accounts",
+      "cards",
+      "loans"
+    ]
+  },
+  {
+    "id": "kb_046",
+    "category": "digital_banking",
+    "title": "myAccess for New and Existing Customers",
+    "content": "AccessBank states that myAccess is for both new and current customers. If a user asks whether they can use myAccess without being an old customer, explain that the service is intended for everyone, then guide them to registration through the official myAccess channel or bank support if registration fails.",
+    "tags": [
+      "myAccess",
+      "registration",
+      "new customer",
+      "existing customer",
+      "digital banking"
+    ]
+  },
+  {
+    "id": "kb_047",
+    "category": "digital_banking",
+    "title": "Digital Banking Capabilities",
+    "content": "Digital banking responses should group features by task: view balances and statements, manage cards, move money, pay utilities, repay loans, manage savings and deposits, track applications, and access services outside branch hours. Mention that some identity-sensitive updates still require hotline or branch verification.",
+    "tags": [
+      "mobile app",
+      "internet banking",
+      "features",
+      "payments",
+      "loan repayment",
+      "statement"
+    ]
+  },
+  {
+    "id": "kb_048",
+    "category": "digital_banking",
+    "title": "Online Loan Payment",
+    "content": "AccessBank's website includes an online loan payment service. If a user wants to pay a loan without visiting a branch, guide them to online loan payment, myAccess, the mobile app, payment terminals, hesab.az, post offices or branches as available payment channels. Remind them to keep a payment confirmation receipt or screenshot.",
+    "tags": [
+      "online loan payment",
+      "loan repayment",
+      "payment methods",
+      "myAccess",
+      "receipt"
+    ]
+  },
+  {
+    "id": "kb_049",
+    "category": "digital_banking",
+    "title": "Loan Calculator Guidance",
+    "content": "AccessBank provides a loan calculator. For users asking 'how much will I pay' or 'can I afford this loan', explain that the calculator can estimate monthly payments by amount, term and interest rate. Clarify that calculator results are approximate and final terms depend on bank assessment, income, seniority, credit history and internal procedures.",
+    "tags": [
+      "loan calculator",
+      "monthly payment",
+      "estimate",
+      "affordability",
+      "EAPR",
+      "annuity"
+    ]
+  },
+  {
+    "id": "kb_050",
+    "category": "digital_banking",
+    "title": "Forgot Password Flow",
+    "content": "For forgotten myAccess or mobile banking passwords, tell users to use the official 'Forgot Password' recovery flow or contact *8880. Do not ask for their current password, OTP, PIN or card CVV. If the phone number linked to the account is no longer active, guide them to update the registered phone number through official bank channels.",
+    "tags": [
+      "forgot password",
+      "password reset",
+      "myAccess",
+      "OTP",
+      "security"
+    ]
+  },
+  {
+    "id": "kb_051",
+    "category": "digital_banking",
+    "title": "OTP Troubleshooting With Safety",
+    "content": "If the user does not receive OTP, ask them to check registered phone number, mobile network coverage, SMS blocking, roaming restrictions and whether the OTP expired. OTPs are time-sensitive and must never be shared. If the registered phone number changed, direct the customer to *8880 or branch verification rather than trying to fix it in chat.",
+    "tags": [
+      "OTP",
+      "SMS",
+      "verification",
+      "registered phone",
+      "security",
+      "login issue"
+    ]
+  },
+  {
+    "id": "kb_052",
+    "category": "digital_banking",
+    "title": "Device or App Not Working",
+    "content": "If the mobile app or myAccess does not work, first ask what error appears and whether it happens on login, transfer, payment or card management. Suggest updating the app, checking internet connection, restarting the phone, verifying date and time settings, and trying again later. For repeated failures, escalate to *8880 with device type, app version and approximate time of error.",
+    "tags": [
+      "app error",
+      "myAccess error",
+      "login issue",
+      "technical issue",
+      "device"
+    ]
+  },
+  {
+    "id": "kb_053",
+    "category": "digital_banking",
+    "title": "Transaction History and Statements",
+    "content": "Customers can use myAccess or digital banking channels to view transaction history and download or review account statements where available. If a statement is needed for official use, guide the user to the app, internet banking or a branch and remind them that branch-issued copies may have a tariff.",
+    "tags": [
+      "statement",
+      "transaction history",
+      "account history",
+      "download statement",
+      "branch statement"
+    ]
+  },
+  {
+    "id": "kb_054",
+    "category": "digital_banking",
+    "title": "Card Controls in App",
+    "content": "For card management, the assistant should mention common digital controls such as viewing card information, checking transactions, managing limits, blocking or unblocking where available, and receiving notifications. For permanent replacement, fraud dispute or identity updates, refer to official channels.",
+    "tags": [
+      "card settings",
+      "block card",
+      "card limits",
+      "notifications",
+      "mobile app"
+    ]
+  },
+  {
+    "id": "kb_055",
+    "category": "digital_banking",
+    "title": "Notifications and Alerts",
+    "content": "If a user asks about SMS or push notifications, explain that transaction alerts help monitor card and account activity. If alerts are not arriving, check notification permissions, app settings, mobile number and network. For suspicious transactions, advise immediate card blocking and hotline contact.",
+    "tags": [
+      "notifications",
+      "push alerts",
+      "SMS banking",
+      "transaction alert",
+      "fraud"
+    ]
+  },
+  {
+    "id": "kb_056",
+    "category": "digital_banking",
+    "title": "Digital Banking Language Support",
+    "content": "When a user writes in Azerbaijani, Russian or English, answer in the same language whenever possible. AccessBank support and digital channels are commonly presented in Azerbaijani, Russian and English. For RAG retrieval, include multilingual synonyms such as mobil bank, mobil tətbiq, интернет банкинг, мобильное приложение and myAccess.",
+    "tags": [
+      "language",
+      "Azerbaijani",
+      "Russian",
+      "English",
+      "multilingual",
+      "myAccess"
+    ]
+  },
+  {
+    "id": "kb_057",
+    "category": "cards",
+    "title": "myCard Product Family",
+    "content": "AccessBank's official card section presents myCard Junior, myCard White and myCard Black. Use this when users ask 'which cards do you have' or 'what is myCard'. Give a short comparison: Junior is for children and family control, White is a daily card for personal, family and business spending, and Black is a higher-comfort card. Direct the user to current card tariffs for exact fees and privileges.",
+    "tags": [
+      "myCard",
+      "myCard Junior",
+      "myCard White",
+      "myCard Black",
+      "card comparison"
+    ]
+  },
+  {
+    "id": "kb_058",
+    "category": "cards",
+    "title": "myCard Junior",
+    "content": "myCard Junior is positioned as a trusted card for younger customers and families. It is suitable for questions about cards for children, pocket money, teen spending, family financial education and safe cashless payments. Mention that parent or guardian involvement and current bank rules apply when opening a product for a minor.",
+    "tags": [
+      "myCard Junior",
+      "children card",
+      "teen card",
+      "family",
+      "minor"
+    ]
+  },
+  {
+    "id": "kb_059",
+    "category": "cards",
+    "title": "myCard White",
+    "content": "myCard White is presented as a card choice for the user, family and business, with everyday spending convenience. If users ask for a simple card for salary, shopping, online payments or family use, include myCard White as a relevant option and recommend checking current tariffs and limits.",
+    "tags": [
+      "myCard White",
+      "daily card",
+      "salary card",
+      "shopping",
+      "family card"
+    ]
+  },
+  {
+    "id": "kb_060",
+    "category": "cards",
+    "title": "myCard Black",
+    "content": "myCard Black is presented as a card that guarantees comfort. For users asking about premium or higher-comfort card options, explain that myCard Black may be relevant and that privileges, annual fees, limits and conditions should be checked in the current tariffs before ordering.",
+    "tags": [
+      "myCard Black",
+      "premium card",
+      "comfort",
+      "privileges",
+      "tariffs"
+    ]
+  },
+  {
+    "id": "kb_061",
+    "category": "cards",
+    "title": "OK Card and OK Credit Card",
+    "content": "AccessBank's website menu lists OK kart and OK credit card. If a user writes 'OK kart', 'OK card' or asks for a card for all purposes, retrieve OK card information and explain that exact credit limit, grace period, commission and cashback conditions depend on the product contract and current tariff page.",
+    "tags": [
+      "OK kart",
+      "OK card",
+      "OK credit card",
+      "credit card",
+      "all-purpose card"
+    ]
+  },
+  {
+    "id": "kb_062",
+    "category": "cards",
+    "title": "Card Order Online",
+    "content": "AccessBank provides an online card ordering option. If a user wants a new card, ask whether they need debit, credit, Junior, White, Black or OK card. Give next steps: use the online card order page or visit a branch, keep an ID ready, and verify delivery, issuance time and tariff before confirming.",
+    "tags": [
+      "order card online",
+      "card application",
+      "new card",
+      "card delivery",
+      "ID"
+    ]
+  },
+  {
+    "id": "kb_063",
+    "category": "cards",
+    "title": "Credit Card Grace Period Current",
+    "content": "The current official loan page describes the myCard credit / loan card as having a grace period of up to 50 days for card payments. Use 'up to' because the actual interest-free period depends on statement cycle, purchase date, repayment date and product rules. Do not claim 55 days unless confirmed from the active tariff.",
+    "tags": [
+      "grace period",
+      "credit card",
+      "loan card",
+      "interest-free",
+      "50 days"
+    ]
+  },
+  {
+    "id": "kb_064",
+    "category": "cards",
+    "title": "Credit Card Eligibility",
+    "content": "For AccessBank myCard credit / loan card eligibility, the official loan page states a minimum age of 25, identity card and official salary. The bank may request additional documents and amend terms after analyzing customer data. Good RAG answer: 'You may be eligible if you have official income, but final approval depends on bank review.'",
+    "tags": [
+      "credit card eligibility",
+      "official salary",
+      "age 25",
+      "documents",
+      "approval"
+    ]
+  },
+  {
+    "id": "kb_065",
+    "category": "cards",
+    "title": "Credit Card Cash Withdrawal Commission",
+    "content": "The official loan page lists cash withdrawal commission for the myCard credit product as minimum 2 AZN/USD/EUR and maximum 2% at AccessBank ATMs, resident bank ATMs and branches, and minimum 3 AZN/USD/EUR and maximum 3% at non-resident bank ATMs or branches. Ask users to verify current tariffs before cash withdrawal.",
+    "tags": [
+      "cash withdrawal",
+      "credit card fee",
+      "ATM commission",
+      "resident bank",
+      "non-resident bank"
+    ]
+  },
+  {
+    "id": "kb_066",
+    "category": "cards",
+    "title": "AccessQazanc Cashback",
+    "content": "AccessBank's credit card page mentions a refund of part of the spent amount through the AccessQazanc cash-back program when paying by card. If a user asks about cashback, explain that eligible categories and percentages can change and should be checked in the current campaign or tariff terms.",
+    "tags": [
+      "cashback",
+      "AccessQazanc",
+      "card rewards",
+      "card payment",
+      "campaign"
+    ]
+  },
+  {
+    "id": "kb_067",
+    "category": "cards",
+    "title": "Card Declined Smart Diagnostic",
+    "content": "When a card is declined, ask one or two targeted questions: Was the card used online, at POS or ATM? Did the app show insufficient balance, limit exceeded, blocked card, wrong PIN, 3D Secure or technical error? Then answer with likely causes and a next step. For money deducted but merchant says failed, explain pending reversal and dispute path.",
+    "tags": [
+      "card declined",
+      "payment failed",
+      "POS",
+      "ATM",
+      "3D Secure",
+      "pending reversal"
+    ]
+  },
+  {
+    "id": "kb_068",
+    "category": "cards",
+    "title": "Lost Card Urgent Script",
+    "content": "If the user lost a card or suspects theft, answer with urgency: block immediately through the app if available or call *8880. Do not ask for card number, PIN, CVV or OTP. After blocking, explain replacement card, dispute for unauthorized transactions and branch/hotline follow-up.",
+    "tags": [
+      "lost card",
+      "stolen card",
+      "block card",
+      "urgent",
+      "fraud"
+    ]
+  },
+  {
+    "id": "kb_069",
+    "category": "cards",
+    "title": "Blocked Card Clarification",
+    "content": "If a card is blocked, determine whether the user blocked it voluntarily, it was blocked by the bank for security, PIN was entered incorrectly, expiry occurred or suspected fraud was detected. Provide safe steps: check app status, call *8880, visit branch with ID if identity verification is needed.",
+    "tags": [
+      "blocked card",
+      "PIN attempts",
+      "security block",
+      "card status",
+      "unblock"
+    ]
+  },
+  {
+    "id": "kb_070",
+    "category": "cards",
+    "title": "3D Secure and Online Payments",
+    "content": "For online card payment issues, mention 3D Secure verification, OTP delivery, merchant restrictions, internet payment permission, daily limits and suspicious-activity controls. Never ask for OTP. If the merchant debited funds but the order failed, guide toward transaction reference, merchant confirmation and dispute if not reversed.",
+    "tags": [
+      "3D Secure",
+      "online payment",
+      "OTP",
+      "merchant",
+      "e-commerce"
+    ]
+  },
+  {
+    "id": "kb_071",
+    "category": "cards",
+    "title": "Contactless Payments",
+    "content": "For contactless card questions, explain that NFC payments depend on card capability, terminal support, wallet setup and transaction limits. If contactless stops working, try chip and PIN, check card damage, app or wallet settings, and contact the bank if multiple terminals fail.",
+    "tags": [
+      "contactless",
+      "NFC",
+      "tap to pay",
+      "wallet",
+      "terminal"
+    ]
+  },
+  {
+    "id": "kb_072",
+    "category": "cards",
+    "title": "Card Delivery and Branch Pickup",
+    "content": "For card issuance, avoid promising a universal delivery time unless confirmed by current tariffs. A safe answer is: 'You can order online or at a branch; issuance and delivery time depend on card type and branch process. You can confirm status through the official channel or *8880.'",
+    "tags": [
+      "card delivery",
+      "card pickup",
+      "issuance time",
+      "branch",
+      "online order"
+    ]
+  },
+  {
+    "id": "kb_073",
+    "category": "loans",
+    "title": "Cash Loan Exact Current Terms",
+    "content": "Cash loan current terms: amount 500-50,000 AZN, term 6-48 months, annual interest 9.5%-24%, EAPR starting from 15%, commission 0%-3%, annuity repayment. This is the most relevant entry for 'cash loan', 'consumer loan', 'personal loan', 'need money fast', 'urgent loan' and 'loan for salary customer' questions.",
+    "tags": [
+      "cash loan",
+      "consumer loan",
+      "personal loan",
+      "50000 AZN",
+      "9.5%",
+      "annuity"
+    ]
+  },
+  {
+    "id": "kb_074",
+    "category": "loans",
+    "title": "Cash Loan Requirements",
+    "content": "Cash loan requirements shown on the official page include Azerbaijani citizenship, age 21-65, at least 6 months of work experience at the last workplace, identification and employment certificate. The bank may require additional documents and terms may be amended after analysis.",
+    "tags": [
+      "cash loan documents",
+      "requirements",
+      "age",
+      "employment certificate",
+      "citizenship"
+    ]
+  },
+  {
+    "id": "kb_075",
+    "category": "loans",
+    "title": "Special Employee Loan Segment",
+    "content": "The official loan page states that for individuals working in Tax, Customs, Education, Healthcare, Prosecutor's Office and Oil and Gas fields, loan terms can include annual interest min 10% and max 17.5%, EAPR min 14.64%, commission 1%-4%, term min 6 and max 48 months. Present this only as a segment shown by the bank and advise confirmation during application.",
+    "tags": [
+      "special loan",
+      "tax",
+      "customs",
+      "education",
+      "healthcare",
+      "oil and gas"
+    ]
+  },
+  {
+    "id": "kb_076",
+    "category": "loans",
+    "title": "Loan Card Terms",
+    "content": "myCard credit / loan card terms shown on the official page: amount up to 10,000 AZN, term 36 months, annual interest 24%-26%, EAPR 24%-26%, grace period up to 50 days, commission costs 0%. It also mentions cashback via AccessQazanc and online tracking and payments through myAccess.",
+    "tags": [
+      "loan card",
+      "myCard credit",
+      "10000 AZN",
+      "50 days",
+      "AccessQazanc",
+      "myAccess"
+    ]
+  },
+  {
+    "id": "kb_077",
+    "category": "loans",
+    "title": "Secured Loan Current Terms",
+    "content": "Secured loan terms shown by AccessBank: amount 10,000-70,000 AZN, term 12-59 months, annual interest starting from 18%, commission 1%, collateral as real estate owned by the client or a first-degree relative, annuity repayment and EAPR from 19.9%. The loan amount plus accrued interest should not exceed 65% of the market value of the real estate collateral.",
+    "tags": [
+      "secured loan",
+      "real estate collateral",
+      "70000 AZN",
+      "65%",
+      "annuity"
+    ]
+  },
+  {
+    "id": "kb_078",
+    "category": "loans",
+    "title": "Loan Based on Deposit",
+    "content": "For loans issued based on a deposit, the official page lists minimum deposit amount 300 AZN/USD. The total amount of commission and interest to be calculated on the loan should not exceed 90% of the pledged deposit amount. For AZN loans, an additional 6% is added to the annual deposit interest rate; for USD loans, an additional 3% is added. Minimum loan term is 3 months and maximum 36 months.",
+    "tags": [
+      "deposit secured loan",
+      "loan against deposit",
+      "300 AZN",
+      "90%",
+      "deposit collateral"
+    ]
+  },
+  {
+    "id": "kb_079",
+    "category": "loans",
+    "title": "Lombard Loan Current Terms",
+    "content": "Lombard loan terms shown by AccessBank: amount 200 AZN to 100,000 AZN, term 3-48 months, annual interest starting from 18%, EAPR minimum 18.85%, commission 1%-5% with minimum 10 AZN, collateral as gold jewelry, and repayment by annuity or flexible schedule with monthly interest payments. Requirements include Azerbaijani citizenship, age 21-70 and identity card.",
+    "tags": [
+      "lombard loan",
+      "gold loan",
+      "gold jewelry",
+      "100000 AZN",
+      "collateral"
+    ]
+  },
+  {
+    "id": "kb_080",
+    "category": "loans",
+    "title": "Loan Calculator Use Case",
+    "content": "When users ask for a monthly loan payment, explain that they can estimate it with the AccessBank credit calculator. If the amount, term and rate are provided, calculate an approximate annuity payment, then say the final payment can differ because EAPR, commission, insurance, scoring and bank assessment may apply.",
+    "tags": [
+      "loan calculator",
+      "monthly payment",
+      "annuity",
+      "estimate",
+      "credit calculator"
+    ]
+  },
+  {
+    "id": "kb_081",
+    "category": "loans",
+    "title": "Loan Application Online",
+    "content": "AccessBank offers online loan order from the website. If a user wants to apply, guide them to provide details only through the official application form, not through chat. Typical application fields include name, phone, official salary status, FIN code, workplace, work length, official salary and requested amount. Do not collect these in an unsecured chat.",
+    "tags": [
+      "loan order",
+      "online application",
+      "FIN code",
+      "salary",
+      "workplace",
+      "privacy"
+    ]
+  },
+  {
+    "id": "kb_082",
+    "category": "loans",
+    "title": "Loan Approval Dependencies",
+    "content": "Loan approval and terms depend on workplace, seniority, credit history, internal procedures, minimum salary level, customer work experience and bank assessment. A clever answer avoids guaranteeing approval and instead says what the user can prepare: ID, employment proof, salary information and accurate contact details.",
+    "tags": [
+      "loan approval",
+      "credit history",
+      "seniority",
+      "salary",
+      "scoring"
+    ]
+  },
+  {
+    "id": "kb_083",
+    "category": "loans",
+    "title": "Loan Repayment Channels",
+    "content": "Loan repayment can be explained through online payment on the site, mobile app or myAccess, hesab.az, payment terminals, post offices and bank branches where available. Recommend paying before the due date, saving confirmation and checking that the loan account balance updates.",
+    "tags": [
+      "loan repayment",
+      "online payment",
+      "payment terminals",
+      "hesab.az",
+      "post offices"
+    ]
+  },
+  {
+    "id": "kb_084",
+    "category": "loans",
+    "title": "Missed Loan Payment",
+    "content": "If a user missed a loan payment, advise them to pay as soon as possible through official channels and contact *8880 if they cannot pay or need restructuring information. Do not promise waiver of penalties. Ask for no sensitive details. Suggest checking repayment schedule and account balance in myAccess.",
+    "tags": [
+      "missed payment",
+      "late loan",
+      "overdue",
+      "restructuring",
+      "repayment schedule"
+    ]
+  },
+  {
+    "id": "kb_085",
+    "category": "loans",
+    "title": "Early Loan Repayment",
+    "content": "For early repayment, guide the user to check their loan agreement and request current early repayment conditions through myAccess, branch or *8880. Explain that partial repayment may reduce monthly payment or term depending on bank rules and customer choice, but exact recalculation must be confirmed by the bank.",
+    "tags": [
+      "early repayment",
+      "partial repayment",
+      "loan term",
+      "monthly payment",
+      "recalculation"
+    ]
+  },
+  {
+    "id": "kb_086",
+    "category": "loans",
+    "title": "Loan Rejection Answer",
+    "content": "If a loan application is rejected, answer empathetically and explain possible reasons without guessing: credit history, income level, work experience, existing debt burden, document mismatch or internal bank policy. Recommend checking official feedback, correcting documents, reducing amount or reapplying after eligibility improves.",
+    "tags": [
+      "loan rejected",
+      "application declined",
+      "credit score",
+      "income",
+      "debt burden"
+    ]
+  },
+  {
+    "id": "kb_087",
+    "category": "loans",
+    "title": "Urgent Cash Need Flow",
+    "content": "If the user says they urgently need money, first classify the likely product: cash loan for official income, lombard loan for gold collateral, deposit-backed loan if they hold a deposit, or credit / loan card for revolving card needs. Then summarize fastest official application channel and remind them not to share credentials in chat.",
+    "tags": [
+      "urgent loan",
+      "fast cash",
+      "cash loan",
+      "lombard",
+      "loan card"
+    ]
+  },
+  {
+    "id": "kb_088",
+    "category": "loans",
+    "title": "Loan Documents with ID Card",
+    "content": "If the user asks whether only an ID card is enough, explain that some secured products such as deposit-backed loans or lombard loans may be simpler, but cash loans usually require official employment or income documentation. The bank can request additional documents after analysis.",
+    "tags": [
+      "ID card loan",
+      "documents",
+      "income proof",
+      "deposit loan",
+      "lombard loan"
+    ]
+  },
+  {
+    "id": "kb_089",
+    "category": "loans",
+    "title": "Loan With Real Estate Collateral FAQ",
+    "content": "If the user asks how to get a loan with mortgage on property, explain that AccessBank secured loan can use real estate collateral owned by the client or first-degree relative. The collateral's market value and legal status are assessed, and the loan amount plus interest should stay within the bank's collateral ratio.",
+    "tags": [
+      "real estate loan",
+      "mortgage collateral",
+      "property",
+      "secured loan",
+      "valuation"
+    ]
+  },
+  {
+    "id": "kb_090",
+    "category": "loans",
+    "title": "Gold Collateral FAQ",
+    "content": "For gold-backed borrowing, explain that a lombard loan uses gold jewelry as collateral, may be suitable when the user needs quick funds and has no official income, and requires ID and eligible gold appraisal. Final amount depends on gold value and bank rules.",
+    "tags": [
+      "gold collateral",
+      "pawn loan",
+      "lombard",
+      "gold jewelry",
+      "appraisal"
+    ]
+  },
+  {
+    "id": "kb_091",
+    "category": "accounts",
+    "title": "Term Deposit Current Terms",
+    "content": "AccessBank Term Deposit starts from 50 AZN or USD, runs from 6 to 24 months, and can earn up to 10.75% in AZN or up to 3.5% in USD. The customer can choose interest paid monthly or at the end of the term. Use this entry for 'term deposit', 'fixed deposit', 'save money with interest' and 'deposit rate' questions.",
+    "tags": [
+      "term deposit",
+      "fixed deposit",
+      "50 AZN",
+      "10.75%",
+      "3.5%",
+      "monthly interest"
+    ]
+  },
+  {
+    "id": "kb_092",
+    "category": "accounts",
+    "title": "myGoal Deposit",
+    "content": "myGoal Deposit is for customers who want to build savings toward a goal. It supports increasing the deposit amount and has a term up to 36 months. Good answer framing: 'This is useful if you want to add money regularly and grow the balance over time.' Verify exact rates at opening.",
+    "tags": [
+      "myGoal",
+      "goal savings",
+      "top-up deposit",
+      "36 months",
+      "savings goal"
+    ]
+  },
+  {
+    "id": "kb_093",
+    "category": "accounts",
+    "title": "Instant Deposit",
+    "content": "Instant Deposit is described as allowing customers to increase and decrease the deposit amount, with interest capitalization and indefinite use. It is suitable for users who want flexibility rather than locking all funds for a fixed term. Explain that the exact rate and withdrawal rules depend on the active product conditions.",
+    "tags": [
+      "instant deposit",
+      "flexible deposit",
+      "capitalization",
+      "withdrawal",
+      "top-up"
+    ]
+  },
+  {
+    "id": "kb_094",
+    "category": "accounts",
+    "title": "Flexi Deposit",
+    "content": "Flexi Deposit is described as an open-ended product with flexible use of the deposit amount and earning interest on interest. It is suitable when the user wants to keep access to savings while still earning income. Tell the customer to check exact tariff and withdrawal conditions before opening.",
+    "tags": [
+      "flexi deposit",
+      "open-ended deposit",
+      "flexible savings",
+      "interest on interest"
+    ]
+  },
+  {
+    "id": "kb_095",
+    "category": "accounts",
+    "title": "Online Deposit Order",
+    "content": "AccessBank offers online deposit order through the official site. If a user wants to open a deposit from home, guide them to the official deposit order option or myAccess where available. Ask currency, expected term, need for withdrawals and interest payout preference to recommend a product category.",
+    "tags": [
+      "online deposit",
+      "deposit order",
+      "open deposit",
+      "myAccess",
+      "savings"
+    ]
+  },
+  {
+    "id": "kb_096",
+    "category": "accounts",
+    "title": "Deposit Product Selection Logic",
+    "content": "For deposit advice: choose Term Deposit when the user wants a fixed rate and can lock funds; myGoal when they plan regular top-ups toward a target; Instant or Flexi when they need access to money and flexible top-ups or withdrawals. Always verify exact rates and withdrawal rules.",
+    "tags": [
+      "deposit comparison",
+      "term vs flexi",
+      "myGoal",
+      "savings advice",
+      "RAG logic"
+    ]
+  },
+  {
+    "id": "kb_097",
+    "category": "accounts",
+    "title": "Deposit Interest Payout",
+    "content": "For term deposits, AccessBank states customers can choose interest monthly or at the end of the term. Monthly payout suits users wanting regular income; maturity payout suits users who prefer collecting interest at the end. Exact effective yield depends on product and capitalization rules.",
+    "tags": [
+      "deposit interest",
+      "monthly payout",
+      "maturity payout",
+      "yield",
+      "capitalization"
+    ]
+  },
+  {
+    "id": "kb_098",
+    "category": "accounts",
+    "title": "Deposit Currency Choices",
+    "content": "AccessBank deposit products are shown for AZN and USD, with current term deposit examples up to 10.75% in AZN and up to 3.5% in USD. EUR and other options may depend on active tariffs. Ask the customer which currency they hold and whether they need access before suggesting a product.",
+    "tags": [
+      "AZN deposit",
+      "USD deposit",
+      "EUR deposit",
+      "currency",
+      "rate"
+    ]
+  },
+  {
+    "id": "kb_099",
+    "category": "accounts",
+    "title": "Early Deposit Withdrawal",
+    "content": "For early withdrawal questions, do not assume the customer keeps interest. Explain that early withdrawal rules depend on the specific deposit contract; flexible products may allow easier access, while fixed term deposits may reduce or forfeit interest if closed early. Recommend checking contract or *8880.",
+    "tags": [
+      "early withdrawal",
+      "deposit closure",
+      "forfeit interest",
+      "contract",
+      "savings"
+    ]
+  },
+  {
+    "id": "kb_100",
+    "category": "accounts",
+    "title": "Account Opening for Individuals",
+    "content": "For account opening, answer with a concise checklist: Azerbaijani citizens usually need national ID; foreign nationals may need passport and residence permit. Current accounts, cards, myAccess and currency accounts may be available depending on eligibility. Exact requirements can vary by residency, age and compliance checks.",
+    "tags": [
+      "account opening",
+      "ID",
+      "foreign national",
+      "passport",
+      "residence permit"
+    ]
+  },
+  {
+    "id": "kb_101",
+    "category": "accounts",
+    "title": "Minor Account or Card",
+    "content": "For children or minors, mention myCard Junior and explain that parent or guardian involvement is normally required. Do not provide legal promises for minors; direct the customer to branch or hotline for current age rules, documents and guardian consent requirements.",
+    "tags": [
+      "minor account",
+      "child account",
+      "myCard Junior",
+      "guardian",
+      "parent"
+    ]
+  },
+  {
+    "id": "kb_102",
+    "category": "accounts",
+    "title": "Currency Exchange Services",
+    "content": "AccessBank's website shows live currency rates on the main page and provides foreign currency services. Exchange rates can change during the business day. For users asking 'what is USD today' or 'exchange rate', answer that live rates must be checked in the app, website or branch at the moment of transaction.",
+    "tags": [
+      "currency exchange",
+      "USD",
+      "EUR",
+      "exchange rate",
+      "live rates"
+    ]
+  },
+  {
+    "id": "kb_103",
+    "category": "accounts",
+    "title": "Official Statements and Certificates",
+    "content": "For official bank statements, account balance certificates or documents for embassy, tax, employer or audit use, guide the user to myAccess or a branch. Ask what document type and period they need, but do not request full account numbers in chat.",
+    "tags": [
+      "account statement",
+      "certificate",
+      "embassy statement",
+      "balance letter",
+      "official document"
+    ]
+  },
+  {
+    "id": "kb_104",
+    "category": "accounts",
+    "title": "Deposit Insurance Caution",
+    "content": "If mentioning deposit insurance, avoid outdated limits unless verified from the current regulator or AccessBank terms. Safer answer: 'Deposits may be protected under Azerbaijan's deposit insurance rules where eligible; check current ADIF coverage and product eligibility before opening.'",
+    "tags": [
+      "deposit insurance",
+      "ADIF",
+      "coverage",
+      "eligible deposits",
+      "regulator"
+    ]
+  },
+  {
+    "id": "kb_105",
+    "category": "transfers",
+    "title": "Money Transfer Systems",
+    "content": "AccessBank's money transfer page lists AccessTransfer, Western Union and Zolotaya Korona. AccessTransfer is described as using the bank's branch network and sending or receiving within 1 minute. Western Union is described as having more than 510,000 service points in 200 countries and transfers within 5 minutes. Zolotaya Korona is described for transfers to Russia, Georgia, Kazakhstan, Turkey and other countries within 5 minutes. Availability and corridors can change.",
+    "tags": [
+      "money transfer",
+      "AccessTransfer",
+      "Western Union",
+      "Zolotaya Korona",
+      "remittance"
+    ]
+  },
+  {
+    "id": "kb_106",
+    "category": "transfers",
+    "title": "AccessTransfer",
+    "content": "AccessTransfer is AccessBank's transfer system using a wide branch network across Azerbaijan. It is suitable for customers who want quick send or receive service through branches. Ask sender country, receiver country, currency and amount only in general terms, then direct to branch or official tariff for exact fee.",
+    "tags": [
+      "AccessTransfer",
+      "branch transfer",
+      "send money",
+      "receive money",
+      "Azerbaijan"
+    ]
+  },
+  {
+    "id": "kb_107",
+    "category": "transfers",
+    "title": "Western Union at AccessBank",
+    "content": "For Western Union questions, explain that AccessBank lists Western Union as a money transfer option with global service points and fast transfer. Fees, payout country, currency, limits and compliance rules depend on the active Western Union tariff and regulations, so verify before sending.",
+    "tags": [
+      "Western Union",
+      "international remittance",
+      "send abroad",
+      "receive transfer",
+      "fee"
+    ]
+  },
+  {
+    "id": "kb_108",
+    "category": "transfers",
+    "title": "Zolotaya Korona at AccessBank",
+    "content": "For Zolotaya Korona questions, say AccessBank lists it for transfers to countries such as Russia, Georgia, Kazakhstan, Turkey and others. Since availability can change due to regulations and corridor rules, ask the destination country and advise checking current availability before sending.",
+    "tags": [
+      "Zolotaya Korona",
+      "Russia",
+      "Georgia",
+      "Kazakhstan",
+      "Turkey",
+      "money transfer"
+    ]
+  },
+  {
+    "id": "kb_109",
+    "category": "transfers",
+    "title": "SWIFT Transfer Details Needed",
+    "content": "For SWIFT transfers, users generally need recipient full name, account number or IBAN, beneficiary bank name, SWIFT/BIC code, country, currency, amount and purpose of payment. For large or unusual transfers, supporting documents may be required due to compliance. Tell users to verify fees and correspondent charges.",
+    "tags": [
+      "SWIFT",
+      "IBAN",
+      "BIC",
+      "international transfer",
+      "purpose of payment",
+      "compliance"
+    ]
+  },
+  {
+    "id": "kb_110",
+    "category": "transfers",
+    "title": "SWIFT Requisites Safety",
+    "content": "When users ask for AccessBank SWIFT details, provide the bank's SWIFT ACABAZ22 and bank code 505000, but advise using the official requisites page for correspondent bank accounts because payment routes can depend on currency and may change. Do not infer correspondent accounts from memory.",
+    "tags": [
+      "SWIFT",
+      "ACABAZ22",
+      "correspondent bank",
+      "payment route",
+      "requisites"
+    ]
+  },
+  {
+    "id": "kb_111",
+    "category": "transfers",
+    "title": "Domestic Transfer Troubleshooting",
+    "content": "If a domestic transfer is not received, ask if status is pending, completed, failed or reversed; which channel was used; transfer date; recipient bank; amount; and whether the user has a transaction reference. Do not ask for full account credentials. Explain that business-day cutoffs and recipient bank processing can affect timing.",
+    "tags": [
+      "domestic transfer",
+      "missing transfer",
+      "pending",
+      "completed",
+      "reference number"
+    ]
+  },
+  {
+    "id": "kb_112",
+    "category": "transfers",
+    "title": "Money Deducted But Transfer Failed",
+    "content": "If money was deducted but transfer failed, explain it may be a pending reversal or technical hold. Ask for transaction reference, date, time, amount and destination bank in general support-case terms. Guide them to monitor the account and call *8880 or visit a branch if not reversed in the expected timeframe.",
+    "tags": [
+      "failed transfer",
+      "money deducted",
+      "reversal",
+      "technical hold",
+      "support case"
+    ]
+  },
+  {
+    "id": "kb_113",
+    "category": "transfers",
+    "title": "Utility Payments via AccessBank",
+    "content": "AccessBank lists utility payments among other services. If a user wants to pay utilities, guide them to the mobile app, myAccess or official payments section. Ask the bill category such as electricity, gas, water, internet, mobile or TV, and remind them to save the payment receipt.",
+    "tags": [
+      "utility payment",
+      "bill payment",
+      "electricity",
+      "gas",
+      "water",
+      "internet"
+    ]
+  },
+  {
+    "id": "kb_114",
+    "category": "transfers",
+    "title": "Payment Receipt Help",
+    "content": "For questions like 'where is my receipt' or 'I paid a bill but need proof', guide the user to transaction history in app or myAccess. If the payment was made at terminal or branch, ask them to keep the receipt and contact the provider or bank with date, amount and reference.",
+    "tags": [
+      "receipt",
+      "payment proof",
+      "bill payment",
+      "transaction history",
+      "reference"
+    ]
+  },
+  {
+    "id": "kb_115",
+    "category": "transfers",
+    "title": "Transfer Fee Calculation Style",
+    "content": "When calculating fees, show formula and cap logic clearly. Example: if domestic fee is 0.5% with min 0.50 AZN and max 10 AZN, fee equals amount x 0.005, then apply min and max. Tell user that tariff may change and final fee appears before confirmation.",
+    "tags": [
+      "fee calculation",
+      "domestic transfer",
+      "minimum fee",
+      "maximum fee",
+      "formula"
+    ]
+  },
+  {
+    "id": "kb_116",
+    "category": "transfers",
+    "title": "Weekend and Holiday Transfers",
+    "content": "For transfers initiated on weekends or public holidays, explain that some transfers may be queued or processed on the next business day depending on transfer type, cutoff time and receiving bank. For urgent transfers, recommend confirming the fastest channel through *8880.",
+    "tags": [
+      "weekend transfer",
+      "holiday transfer",
+      "business day",
+      "cutoff",
+      "processing"
+    ]
+  },
+  {
+    "id": "kb_117",
+    "category": "fees",
+    "title": "Tariffs and Documents Page",
+    "content": "AccessBank's tariff page hosts general terms and conditions for services to individuals and business customers, including offer-style documents and payment services information forms. Use this when users ask where to find official fees, contract terms, FIFD/EAPR, deposit conditions or payment service terms. Recommend downloading the latest version from the official tariff page.",
+    "tags": [
+      "tariffs",
+      "documents",
+      "terms",
+      "conditions",
+      "FIFD",
+      "EAPR"
+    ]
+  },
+  {
+    "id": "kb_118",
+    "category": "fees",
+    "title": "Tariff Freshness Response",
+    "content": "If a user asks for a fee that may change, answer with the known tariff only if retrieved from current KB; otherwise say that fees are governed by the current tariff documents. Provide the path: accessbank.az -> Our Bank -> Tariffs and documents, or call *8880.",
+    "tags": [
+      "current tariff",
+      "fee changes",
+      "official documents",
+      "verification"
+    ]
+  },
+  {
+    "id": "kb_119",
+    "category": "fees",
+    "title": "Deposit Box Service",
+    "content": "AccessBank offers deposit boxes for residents of Azerbaijan, legal entities and individuals. Deposit boxes are intended for storing money, jewelry and important documents, especially while traveling. They use modern protection systems, two-key locking and confidentiality of contents.",
+    "tags": [
+      "deposit box",
+      "safe box",
+      "jewelry",
+      "documents",
+      "confidentiality"
+    ]
+  },
+  {
+    "id": "kb_120",
+    "category": "fees",
+    "title": "Deposit Box Sizes and Prices",
+    "content": "Deposit box tariffs shown include sizes such as 100 x 290 x 450, 150 x 290 x 492, 150 x 320 x 492, 200 x 290 x 450, 240 x 290 x 450, 300 x 320 x 492 and 450 x 320 x 492. Monthly prices range from 30 AZN to 90 AZN, 6-month prices from 150 AZN to 450 AZN and 12-month prices from 300 AZN to 900 AZN. Verify branch availability before visiting.",
+    "tags": [
+      "deposit box price",
+      "safe box tariff",
+      "storage",
+      "monthly fee",
+      "12 months"
+    ]
+  },
+  {
+    "id": "kb_121",
+    "category": "fees",
+    "title": "Deposit Box Availability",
+    "content": "When asked where to rent a deposit box, do not assume every branch has boxes. Explain the service and recommend contacting *8880 or a chosen branch to confirm availability, required documents, size and reservation process.",
+    "tags": [
+      "deposit box availability",
+      "branch",
+      "reservation",
+      "safe box"
+    ]
+  },
+  {
+    "id": "kb_122",
+    "category": "fees",
+    "title": "Property Sale Page",
+    "content": "AccessBank's website includes a property sale section for real estate listed for sale by the bank. If a user asks about buying bank-owned property, guide them to the official property sale page and recommend reviewing property details, legal status, price and contact process directly with the bank.",
+    "tags": [
+      "property sale",
+      "real estate",
+      "bank-owned property",
+      "collateral property"
+    ]
+  },
+  {
+    "id": "kb_123",
+    "category": "fees",
+    "title": "Cash Deposit and Withdrawal Clarification",
+    "content": "For cash deposit or withdrawal fees, avoid guessing. Ask whether the operation is at AccessBank branch, AccessBank ATM, another bank ATM, resident bank, non-resident bank or via card credit cash withdrawal. Then retrieve the relevant tariff entry or advise checking current tariffs.",
+    "tags": [
+      "cash withdrawal",
+      "cash deposit",
+      "ATM fee",
+      "branch fee",
+      "tariff"
+    ]
+  },
+  {
+    "id": "kb_124",
+    "category": "fees",
+    "title": "SMS Notification Fee Caution",
+    "content": "If the uploaded KB contains a historical SMS notification fee, treat it as potentially changeable. Answer that SMS or push notification pricing depends on the current tariff package and can be checked in myAccess, the tariff page or through *8880.",
+    "tags": [
+      "SMS fee",
+      "notification fee",
+      "tariff",
+      "push notification"
+    ]
+  },
+  {
+    "id": "kb_125",
+    "category": "fees",
+    "title": "Fee Dispute Handling",
+    "content": "If a user says a fee was charged incorrectly, ask for transaction date, amount, fee description and channel, but not full card or account credentials. Suggest checking tariff documents and opening a support case through *8880, branch or official appeal channel.",
+    "tags": [
+      "fee dispute",
+      "incorrect fee",
+      "charge",
+      "support case",
+      "tariff"
+    ]
+  },
+  {
+    "id": "kb_126",
+    "category": "fees",
+    "title": "Cashless and Card Campaigns",
+    "content": "For campaigns, cashback, bonuses or promotions, explain that campaign terms are time-limited and can change. Provide a helpful summary only when current campaign details are available; otherwise direct the user to the official news, cards or campaign page.",
+    "tags": [
+      "campaign",
+      "cashback",
+      "bonus",
+      "promotion",
+      "card campaign"
+    ]
+  },
+  {
+    "id": "kb_127",
+    "category": "business",
+    "title": "Business Client Focus",
+    "content": "AccessBank's mission and history emphasize service to micro, small and medium-sized enterprises as well as households. For business users, ask whether they are an individual entrepreneur, legal entity, farmer, micro business or SME, then route to business loans, accounts, payment services or branch consultation.",
+    "tags": [
+      "business",
+      "SME",
+      "MSME",
+      "entrepreneur",
+      "individual entrepreneur"
+    ]
+  },
+  {
+    "id": "kb_128",
+    "category": "business",
+    "title": "Business Banking Documents",
+    "content": "For business accounts or services, explain that legal entities and individual entrepreneurs usually need business registration and identification documents. Exact requirements depend on business type, ownership structure, tax status and compliance checks. Direct users to branch or official business tariff documents.",
+    "tags": [
+      "business account",
+      "legal entity",
+      "entrepreneur",
+      "documents",
+      "compliance"
+    ]
+  },
+  {
+    "id": "kb_129",
+    "category": "business",
+    "title": "Business Tariff Documents",
+    "content": "AccessBank's tariff page includes terms of banking services for business customers. Business users should download the latest document from the official site because service fees, payment commissions and contract conditions may change.",
+    "tags": [
+      "business tariffs",
+      "business customer",
+      "terms",
+      "payment services",
+      "legal entity"
+    ]
+  },
+  {
+    "id": "kb_130",
+    "category": "business",
+    "title": "SME Loan Discovery",
+    "content": "For SME or entrepreneur financing questions, ask the business activity, years operating, monthly turnover, desired amount, collateral availability and purpose of financing. Then suggest a branch or official application path. Do not promise approval or quote terms unless current product terms are retrieved.",
+    "tags": [
+      "SME loan",
+      "business loan",
+      "turnover",
+      "collateral",
+      "entrepreneur"
+    ]
+  },
+  {
+    "id": "kb_131",
+    "category": "business",
+    "title": "Agricultural and Micro Business Users",
+    "content": "For farmers or micro entrepreneurs, use AccessBank's strategic focus on micro and small businesses. Ask for region, activity type, seasonality, amount and purpose. Recommend official consultation because agriculture and microloan conditions can depend on product, subsidy and collateral.",
+    "tags": [
+      "agriculture",
+      "micro business",
+      "farmer",
+      "regional business",
+      "loan"
+    ]
+  },
+  {
+    "id": "kb_132",
+    "category": "business",
+    "title": "Business Digitalization",
+    "content": "For business clients asking about online access, explain that myAccess and digital channels can help manage accounts, cards, payments, savings, loans and remittances. For roles, authorization rights, corporate limits and multi-user access, refer to official business banking setup.",
+    "tags": [
+      "business digital banking",
+      "myAccess business",
+      "corporate access",
+      "authorization"
+    ]
+  },
+  {
+    "id": "kb_133",
+    "category": "business",
+    "title": "POS and Merchant Services Routing",
+    "content": "If a merchant asks about accepting card payments, POS terminals or e-commerce payments, collect general business context such as business type and location, then route to business services or branch. Do not invent POS tariffs without current tariff evidence.",
+    "tags": [
+      "POS terminal",
+      "merchant",
+      "e-commerce",
+      "card acceptance",
+      "business service"
+    ]
+  },
+  {
+    "id": "kb_134",
+    "category": "business",
+    "title": "Salary Project Questions",
+    "content": "For salary project questions, explain that businesses can ask AccessBank about payroll card arrangements, salary transfer process, card ordering and employee onboarding. Exact pricing and setup steps depend on current business agreement and should be handled through business banking.",
+    "tags": [
+      "salary project",
+      "payroll",
+      "employee cards",
+      "business banking"
+    ]
+  },
+  {
+    "id": "kb_135",
+    "category": "business",
+    "title": "Corporate SWIFT and Requisites",
+    "content": "For corporate international payments, provide the same safe guidance as retail SWIFT: verify AccessBank SWIFT ACABAZ22 and relevant correspondent account on the official requisites page, and prepare purpose of payment and supporting documents where required.",
+    "tags": [
+      "corporate SWIFT",
+      "business transfer",
+      "requisites",
+      "correspondent bank"
+    ]
+  },
+  {
+    "id": "kb_136",
+    "category": "business",
+    "title": "Business Complaint Flow",
+    "content": "Business customers can submit complaints or appeals through the same official channels: branch, head office, hotline, email/contact form or Central Bank escalation if dissatisfied. For corporate issues, request company name only if the user is already on an authenticated bank channel; otherwise guide to official support.",
+    "tags": [
+      "business complaint",
+      "appeal",
+      "corporate support",
+      "Central Bank"
+    ]
+  },
+  {
+    "id": "kb_137",
+    "category": "security",
+    "title": "Anti-Phishing Answer",
+    "content": "If a user says they received a suspicious link, call, SMS or request for OTP, answer clearly: AccessBank staff will never need the customer's OTP, PIN, CVV or password. Tell them not to click links, not to share codes, block card if needed and contact *8880 using the official number.",
+    "tags": [
+      "phishing",
+      "scam",
+      "OTP",
+      "CVV",
+      "PIN",
+      "suspicious link"
+    ]
+  },
+  {
+    "id": "kb_138",
+    "category": "security",
+    "title": "Unauthorized Transaction Flow",
+    "content": "For unauthorized transactions, tell the user to block the card immediately, save evidence, check recent transactions, and report through *8880 or a branch. Ask only for safe details: transaction date, amount, merchant name and whether the card is still with them. Do not ask for full card number, CVV, PIN or OTP.",
+    "tags": [
+      "unauthorized transaction",
+      "fraud",
+      "card dispute",
+      "block card",
+      "merchant"
+    ]
+  },
+  {
+    "id": "kb_139",
+    "category": "security",
+    "title": "Card Dispute Evidence",
+    "content": "For disputes, useful safe evidence includes transaction date/time, amount, merchant name, screenshot or receipt, order confirmation, cancellation proof and any merchant correspondence. Explain that the bank or card scheme may need review time.",
+    "tags": [
+      "dispute evidence",
+      "chargeback",
+      "merchant proof",
+      "receipt",
+      "screenshot"
+    ]
+  },
+  {
+    "id": "kb_140",
+    "category": "security",
+    "title": "Complaint Case Creation Style",
+    "content": "When creating a simulated support case in sample conversations, include a case ID, issue category, next step, expected follow-up channel and reassurance. Do not imply real case creation unless integrated with an actual case management system.",
+    "tags": [
+      "case creation",
+      "support case",
+      "complaint",
+      "handoff",
+      "simulation"
+    ]
+  },
+  {
+    "id": "kb_141",
+    "category": "security",
+    "title": "Formal Complaint Channels",
+    "content": "Formal complaints can be filed in person at a branch/head office, by hotline, in writing by mail, electronically through official email/contact form, or escalated to the Central Bank if the customer disagrees with the response. Provide this structure for complaint questions.",
+    "tags": [
+      "formal complaint",
+      "appeal",
+      "Central Bank",
+      "hotline",
+      "branch"
+    ]
+  },
+  {
+    "id": "kb_142",
+    "category": "rag_guidance",
+    "title": "Answer in the User's Language",
+    "content": "RAG assistant policy: answer in the language used by the customer if confident. English query gets English answer, Azerbaijani gets Azerbaijani answer, Russian gets Russian answer. If a mixed-language query appears, mirror the dominant language and keep product names unchanged.",
+    "tags": [
+      "RAG",
+      "language policy",
+      "Azerbaijani",
+      "Russian",
+      "English"
+    ]
+  },
+  {
+    "id": "kb_143",
+    "category": "rag_guidance",
+    "title": "Clever Clarifying Questions",
+    "content": "RAG assistant policy: ask the smallest useful clarifying question. For broad product interest, give a brief overview first, then ask one question. For urgent security issues, give immediate action first, then ask details. For fee calculations, ask amount, channel and destination only if missing.",
+    "tags": [
+      "RAG",
+      "clarification",
+      "smart answer",
+      "conversation design"
+    ]
+  },
+  {
+    "id": "kb_144",
+    "category": "rag_guidance",
+    "title": "Numerical Answer Format",
+    "content": "RAG assistant policy: when giving rates, fees, limits or terms, show amount, term, rate, commission and caveat. Example pattern: 'Cash loan: 500-50,000 AZN, 6-48 months, 9.5%-24% annual interest, 0%-3% commission. Final terms depend on bank review.'",
+    "tags": [
+      "RAG",
+      "numbers",
+      "rates",
+      "fees",
+      "format"
+    ]
+  },
+  {
+    "id": "kb_145",
+    "category": "rag_guidance",
+    "title": "Do Not Hallucinate Product Terms",
+    "content": "RAG assistant policy: if current product terms are not found in retrieved chunks, do not invent them. Say that the exact tariff or condition should be checked through accessbank.az, myAccess or *8880. This is especially important for rates, campaigns, cashback, branch hours and correspondent banks.",
+    "tags": [
+      "RAG",
+      "hallucination",
+      "tariffs",
+      "rates",
+      "safe answer"
+    ]
+  },
+  {
+    "id": "kb_146",
+    "category": "rag_guidance",
+    "title": "Issue Routing Matrix",
+    "content": "RAG assistant policy: route card loss, fraud, OTP and blocked card to Card Operations or Digital Banking; failed transfers to Transfers and Payments; loan application issues to Loans; branch service complaints to Customer Service; tariff disputes to Support or Complaints; business account issues to Business Banking.",
+    "tags": [
+      "RAG",
+      "routing",
+      "support teams",
+      "case classification"
+    ]
+  },
+  {
+    "id": "kb_147",
+    "category": "rag_guidance",
+    "title": "Financial Advice Boundary",
+    "content": "RAG assistant policy: explain bank products but do not provide personalized financial advice such as 'you should borrow' or 'this deposit is best for you' without knowing full circumstances. Use neutral comparisons and recommend checking affordability, contract terms and official bank consultation.",
+    "tags": [
+      "RAG",
+      "financial advice",
+      "neutral",
+      "affordability",
+      "compliance"
+    ]
+  },
+  {
+    "id": "kb_148",
+    "category": "rag_guidance",
+    "title": "Identity Verification Boundary",
+    "content": "RAG assistant policy: if an action requires identity verification, explain why it cannot be completed in chat and direct to secure channels. Examples: phone number change, card replacement, account closure, dispute filing, loan contract signing, full statement release and updating personal data.",
+    "tags": [
+      "RAG",
+      "identity verification",
+      "secure channel",
+      "branch",
+      "hotline"
+    ]
+  },
+  {
+    "id": "kb_149",
+    "category": "rag_guidance",
+    "title": "Escalation When User Is Upset",
+    "content": "RAG assistant policy: for angry or distressed users, acknowledge the issue, avoid blaming, give the next practical step, and offer a complaint or case flow. Use calm wording, no defensiveness, and no promises beyond official processing.",
+    "tags": [
+      "RAG",
+      "angry customer",
+      "complaint",
+      "empathy",
+      "escalation"
+    ]
+  },
+  {
+    "id": "kb_150",
+    "category": "rag_guidance",
+    "title": "Question Permutations for Retrieval",
+    "content": "Permutation examples for retrieval: 'I need money fast', 'urgent cash loan', 'nağd kredit lazımdır', 'мне срочно нужен кредит', 'can I get loan with ID', 'qızıl girovu ilə kredit', 'кредит под золото', 'loan against deposit', 'salary loan', 'consumer loan'. Map these to cash loan, lombard loan or deposit-backed loan depending on context.",
+    "tags": [
+      "permutations",
+      "loan synonyms",
+      "Azerbaijani",
+      "Russian",
+      "retrieval"
+    ]
+  },
+  {
+    "id": "kb_151",
+    "category": "rag_guidance",
+    "title": "Card Query Permutations",
+    "content": "Permutation examples for card retrieval: 'card blocked', 'kartım bloklanıb', 'карта заблокирована', 'lost card', 'kartımı itirmişəm', 'потерял карту', 'payment declined', 'ödəniş keçmədi', 'оплата не прошла', 'money deducted but order failed'. Map to lost card, blocked card, declined payment or dispute flow.",
+    "tags": [
+      "permutations",
+      "card synonyms",
+      "blocked card",
+      "lost card",
+      "declined payment"
+    ]
+  },
+  {
+    "id": "kb_152",
+    "category": "rag_guidance",
+    "title": "Deposit Query Permutations",
+    "content": "Permutation examples for deposit retrieval: 'deposit rates', 'əmanət faizi', 'ставки по вкладам', 'fixed deposit', 'term deposit', 'pulumu artırmaq istəyirəm', 'накопительный вклад', 'flexible savings', 'can I withdraw early', 'interest monthly'. Map to term, myGoal, instant or flexi deposit.",
+    "tags": [
+      "permutations",
+      "deposit synonyms",
+      "term deposit",
+      "myGoal",
+      "flexi"
+    ]
+  },
+  {
+    "id": "kb_153",
+    "category": "rag_guidance",
+    "title": "Transfer Query Permutations",
+    "content": "Permutation examples for transfer retrieval: 'money not arrived', 'köçürmə çatmayıb', 'деньги не дошли', 'SWIFT details', 'IBAN lazımdır', 'Western Union', 'Zolotaya Korona', 'transfer fee', 'sent to another bank', 'reference number'. Map to domestic transfer, SWIFT, remittance or failed transfer.",
+    "tags": [
+      "permutations",
+      "transfer synonyms",
+      "SWIFT",
+      "Western Union",
+      "failed transfer"
+    ]
+  },
+  {
+    "id": "kb_154",
+    "category": "rag_guidance",
+    "title": "Digital Banking Query Permutations",
+    "content": "Permutation examples for digital retrieval: 'app does not open', 'myAccess login', 'OTP gəlmir', 'не приходит смс код', 'forgot password', 'mobil tətbiq işləmir', 'internet banking', 'biometric login', 'loan payment online'. Map to myAccess, OTP troubleshooting, password reset or online loan payment.",
+    "tags": [
+      "permutations",
+      "digital banking",
+      "OTP",
+      "myAccess",
+      "forgot password"
+    ]
+  },
+  {
+    "id": "kb_155",
+    "category": "rag_guidance",
+    "title": "Branch Query Permutations",
+    "content": "Permutation examples for branch retrieval: 'nearest branch', 'filial hardadır', 'ближайшее отделение', 'working hours', 'iş saatları', 'график работы', 'ATM near me', 'online queue', 'Baku branch', 'regional branch'. Map to service network and advise checking official location page.",
+    "tags": [
+      "permutations",
+      "branch",
+      "ATM",
+      "working hours",
+      "online queue"
+    ]
+  },
+  {
+    "id": "kb_156",
+    "category": "rag_guidance",
+    "title": "Complaint Query Permutations",
+    "content": "Permutation examples for complaint retrieval: 'bad service', 'şikayət etmək istəyirəm', 'хочу пожаловаться', 'wrong fee charged', 'unauthorized transaction', 'branch rude staff', 'Central Bank complaint', 'appeal bank response'. Map to formal complaint and appeal channels.",
+    "tags": [
+      "permutations",
+      "complaint",
+      "appeal",
+      "bad service",
+      "Central Bank"
+    ]
+  },
+  {
+    "id": "kb_157",
+    "category": "rag_guidance",
+    "title": "Business Query Permutations",
+    "content": "Permutation examples for business retrieval: 'business loan', 'SME financing', 'sahibkar krediti', 'бизнес кредит', 'POS terminal', 'salary project', 'corporate account', 'individual entrepreneur', 'tax ID', 'company transfer'. Map to business banking discovery and branch consultation.",
+    "tags": [
+      "permutations",
+      "business",
+      "SME",
+      "POS",
+      "salary project"
+    ]
+  },
+  {
+    "id": "kb_158",
+    "category": "rag_guidance",
+    "title": "Ambiguous Product Names",
+    "content": "RAG assistant policy: when a user writes a short ambiguous phrase such as 'card', 'credit', 'deposit', 'loan', 'transfer' or 'myAccess', return a compact menu of likely intents and ask what they need. Do not ask only a question. Example: 'For cards, I can help with new card order, blocked/lost card, credit card, myCard Junior/White/Black, fees or failed payments. Which one?'",
+    "tags": [
+      "RAG",
+      "ambiguity",
+      "short query",
+      "intent menu",
+      "clever answer"
+    ]
+  },
+  {
+    "id": "kb_159",
+    "category": "rag_guidance",
+    "title": "Empathy Plus Action Pattern",
+    "content": "RAG assistant policy: for problem reports, use the pattern: acknowledge, explain likely cause, ask only necessary safe details, give immediate self-service step, and mention hotline or branch for urgent action. This makes answers helpful without pretending to complete authenticated bank operations.",
+    "tags": [
+      "RAG",
+      "empathy",
+      "action pattern",
+      "support",
+      "safe details"
+    ]
+  },
+  {
+    "id": "kb_160",
+    "category": "general",
+    "title": "News and Announcements Freshness",
+    "content": "AccessBank's main page shows latest news and announcements, including updates about branch services, financial reports and private banking changes. For news, campaigns or recent announcements, use the official news page and compare dates before answering. Do not rely on old KB chunks for time-sensitive announcements.",
+    "tags": [
+      "news",
+      "announcements",
+      "campaigns",
+      "freshness",
+      "recent updates"
     ]
   }
 ]
