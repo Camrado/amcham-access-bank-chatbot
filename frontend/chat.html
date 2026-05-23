@@ -612,9 +612,9 @@
     // ── State ──
     let currentConvId = null;
 
-    // ── Unread notification state (in-memory) ──
-    const _lastKnownAt = new Map();   // convId → last_message_at ISO string
-    const _unreadIds   = new Set();   // convIds with unseen admin reply
+    // ── Unread notification state ──
+    const _lastKnownAt     = new Map();  // convId → last_message_at from previous API call
+    const _unreadIds       = new Set();  // convIds with unseen admin reply
     let   _convInitialized = false;
 
     // ── API helpers ──
@@ -690,15 +690,21 @@
       const convs = await res.json();
 
       if (!_convInitialized) {
-        // First load: record current state, nothing is "new" yet
-        for (const c of convs) _lastKnownAt.set(c.id, c.last_message_at || '');
+        // First load: use localStorage to detect admin replies that came in since last visit
+        for (const c of convs) {
+          const lastSeen = localStorage.getItem(`seen_${c.id}`) || '';
+          if (c.last_message_role === 'assistant' && c.last_message_at && c.last_message_at > lastSeen) {
+            _unreadIds.add(c.id);
+          }
+          _lastKnownAt.set(c.id, c.last_message_at || '');
+        }
         _convInitialized = true;
       } else {
-        // Subsequent loads: detect assistant messages newer than our snapshot
+        // Subsequent loads: detect new assistant messages since last snapshot
         for (const c of convs) {
           const prev = _lastKnownAt.get(c.id) || '';
           const curr = c.last_message_at || '';
-          if (curr && curr > prev && c.last_message_role === 'assistant' && c.id !== currentConvId) {
+          if (curr > prev && c.last_message_role === 'assistant' && c.id !== currentConvId) {
             _unreadIds.add(c.id);
           }
           _lastKnownAt.set(c.id, curr);
@@ -767,7 +773,7 @@
     // ── Mark conversation seen (clears unread dot) ──
     function markSeen(id) {
       _unreadIds.delete(id);
-      _lastKnownAt.set(id, new Date().toISOString());
+      localStorage.setItem(`seen_${id}`, new Date().toISOString());
     }
 
     // ── Select conversation ──
@@ -1006,8 +1012,8 @@
 
     // ── Init ──
     loadConversations();
-    // Refresh sidebar every 30s so unread dots appear for admin replies on inactive convs
-    setInterval(loadConversations, 30000);
+    // Refresh sidebar every 5s so unread dots appear quickly for admin replies
+    setInterval(loadConversations, 5000);
   </script>
 </body>
 </html>
