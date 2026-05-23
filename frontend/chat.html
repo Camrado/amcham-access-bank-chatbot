@@ -420,6 +420,64 @@
 
     /* ── Utility ── */
     .hidden { display: none !important; }
+
+    /* ── Mobile: hamburger button (hidden on desktop) ── */
+    .menu-btn {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 34px;
+      height: 34px;
+      flex-shrink: 0;
+      background: transparent;
+      border: none;
+      border-radius: 7px;
+      color: #64748b;
+      cursor: pointer;
+      padding: 0;
+      transition: background 0.1s;
+    }
+    .menu-btn:hover { background: rgba(0,0,0,0.05); }
+
+    /* ── Sidebar overlay backdrop ── */
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.45);
+      z-index: 199;
+    }
+    .sidebar-overlay.show { display: block; }
+
+    @media (max-width: 768px) {
+      /* Sidebar becomes an off-canvas drawer */
+      .sidebar {
+        position: fixed;
+        left: -268px;
+        top: 0;
+        height: 100%;
+        z-index: 200;
+        transition: left 0.25s ease;
+      }
+      .sidebar.open {
+        left: 0;
+        box-shadow: 6px 0 28px rgba(0,0,0,0.35);
+      }
+
+      /* Show hamburger */
+      .menu-btn { display: flex; }
+
+      /* Tighten header */
+      .chat-header { padding: 0 14px; gap: 10px; }
+
+      /* Tighten message area */
+      .messages { padding: 14px 12px; gap: 12px; }
+      .bubble { max-width: 88%; }
+
+      /* Tighten input */
+      .input-area { padding: 10px 12px; }
+      .input-hint { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -463,6 +521,11 @@
     <!-- Main -->
     <main class="main">
       <div class="chat-header">
+        <button class="menu-btn" id="menuBtn" aria-label="Open sidebar">
+          <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+            <path d="M2 4h14M2 9h14M2 14h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+          </svg>
+        </button>
         <div class="chat-header-title" id="chatTitle">AccessBank Support</div>
       </div>
 
@@ -494,6 +557,7 @@
     </main>
 
   </div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
   <div class="toast" id="toast"></div>
 
   <script>
@@ -652,6 +716,7 @@
     // ── Select conversation ──
     async function selectConversation(id, title) {
       stopPolling();
+      closeSidebar();
       currentConvId = id;
       lastMessageId = 0;
       document.getElementById('chatTitle').textContent = title;
@@ -859,6 +924,20 @@
         if (hasNewAssistant) { scrollToBottom(); showToast('New reply from support team'); }
       } catch {}
     }
+
+    // ── Mobile sidebar ──
+    function openSidebar() {
+      document.querySelector('.sidebar').classList.add('open');
+      document.getElementById('sidebarOverlay').classList.add('show');
+    }
+    function closeSidebar() {
+      document.querySelector('.sidebar').classList.remove('open');
+      document.getElementById('sidebarOverlay').classList.remove('show');
+    }
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      document.querySelector('.sidebar').classList.contains('open') ? closeSidebar() : openSidebar();
+    });
+    document.getElementById('sidebarOverlay').addEventListener('click', closeSidebar);
 
     // ── Init ──
     loadConversations();

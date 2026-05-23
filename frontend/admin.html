@@ -503,6 +503,65 @@
     .toast.error { background: #dc2626; }
 
     .no-users { padding: 20px 16px; font-size: 12px; color: #9ca3af; text-align: center; }
+
+    /* ── Mobile: hamburger in topbar (hidden on desktop) ── */
+    .menu-btn-topbar {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      background: transparent;
+      border: none;
+      border-radius: 6px;
+      color: rgba(255,255,255,0.75);
+      cursor: pointer;
+      padding: 0;
+      margin-right: 2px;
+      transition: background 0.1s;
+      flex-shrink: 0;
+    }
+    .menu-btn-topbar:hover { background: rgba(255,255,255,0.12); }
+
+    /* ── Sidebar overlay backdrop ── */
+    .sidebar-overlay {
+      display: none;
+      position: fixed;
+      top: 54px;
+      left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.4);
+      z-index: 199;
+    }
+    .sidebar-overlay.show { display: block; }
+
+    @media (max-width: 768px) {
+      /* Topbar: hide username to save space, show hamburger */
+      .topbar { padding: 0 14px; }
+      .topbar-username { display: none; }
+      .menu-btn-topbar { display: flex; }
+
+      /* Sidebar becomes an off-canvas drawer below the topbar */
+      .sidebar {
+        position: fixed;
+        left: -272px;
+        top: 54px;
+        height: calc(100% - 54px);
+        z-index: 200;
+        border-right: none;
+        transition: left 0.25s ease;
+      }
+      .sidebar.open {
+        left: 0;
+        box-shadow: 4px 0 24px rgba(0,0,0,0.18);
+      }
+
+      /* Tighten content area */
+      .content { padding: 14px 12px; }
+      .main-header { padding: 0 14px; }
+
+      /* On mobile, hide the date in card headers to save space */
+      .conv-card-date { display: none; }
+    }
   </style>
 </head>
 <body>
@@ -510,6 +569,11 @@
 
     <!-- Top bar -->
     <header class="topbar">
+      <button class="menu-btn-topbar" id="menuBtn" aria-label="Toggle sidebar">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none">
+          <path d="M2 4h14M2 9h14M2 14h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+        </svg>
+      </button>
       <img class="topbar-logo" src="/accessbank-logo.svg" alt="AccessBank">
       <div class="topbar-divider"></div>
       <span class="topbar-label">Admin Panel</span>
@@ -565,6 +629,7 @@
 
     </div>
   </div>
+  <div class="sidebar-overlay" id="sidebarOverlay"></div>
   <div class="toast" id="toast"></div>
 
   <script>
@@ -684,6 +749,7 @@
 
     // ── Conversations ──
     async function selectUser(userId, username) {
+      closeSidebar();
       selectedUserId = userId;
       selectedUserName = username;
       document.getElementById('mainTitle').textContent = username;
@@ -829,6 +895,20 @@
         showToast('Failed to send reply. Please try again.', 'error');
       }
     }
+
+    // ── Mobile sidebar ──
+    function openSidebar() {
+      document.querySelector('.sidebar').classList.add('open');
+      document.getElementById('sidebarOverlay').classList.add('show');
+    }
+    function closeSidebar() {
+      document.querySelector('.sidebar').classList.remove('open');
+      document.getElementById('sidebarOverlay').classList.remove('show');
+    }
+    document.getElementById('menuBtn').addEventListener('click', () => {
+      document.querySelector('.sidebar').classList.contains('open') ? closeSidebar() : openSidebar();
+    });
+    document.getElementById('sidebarOverlay').addEventListener('click', closeSidebar);
 
     document.getElementById('logoutBtn').addEventListener('click', logout);
     loadUsers();
