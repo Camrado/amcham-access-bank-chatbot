@@ -282,7 +282,6 @@
       background: #fff;
       border: 1px solid #e5e7eb;
       border-radius: 10px;
-      overflow: hidden;
       transition: box-shadow 0.15s;
     }
     .conv-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
@@ -294,6 +293,7 @@
       padding: 13px 16px;
       cursor: pointer;
       user-select: none;
+      border-radius: 10px 10px 0 0;
       transition: background 0.1s;
     }
     .conv-card-header:hover { background: #fafafa; }
@@ -340,7 +340,7 @@
 
     /* ── Message thread ── */
     .thread-scroll {
-      max-height: 300px;
+      max-height: 200px;
       overflow-y: auto;
       border: 1px solid #f3f4f6;
       border-radius: 8px;
@@ -366,7 +366,6 @@
       border-radius: 12px;
       font-size: 13px;
       line-height: 1.45;
-      white-space: pre-wrap;
       word-break: break-word;
     }
     .msg-row.msg-user .msg-bubble { background: #4338ca; color: #fff; border-bottom-right-radius: 3px; }
@@ -478,6 +477,67 @@
       padding: 9px 12px;
       line-height: 1.5;
     }
+
+    /* ── Tab bar ── */
+    .tab-bar { display: flex; gap: 2px; }
+    .tab-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 13px;
+      border: none;
+      border-radius: 6px;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 500;
+      color: #6b7280;
+      cursor: pointer;
+      font-family: inherit;
+      transition: background 0.1s, color 0.1s;
+    }
+    .tab-btn:hover { background: #f3f4f6; color: #374151; }
+    .tab-btn.active { background: #eef2ff; color: #4338ca; font-weight: 600; }
+    .tab-badge {
+      min-width: 18px;
+      height: 18px;
+      background: #f59e0b;
+      color: #fff;
+      border-radius: 9px;
+      font-size: 10px;
+      font-weight: 700;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 0 4px;
+    }
+    .tab-badge.show { display: inline-flex; }
+
+    /* ── Open case card ── */
+    .open-case-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      transition: box-shadow 0.15s;
+    }
+    .open-case-card:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.07); }
+    .open-case-header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 16px;
+      border-bottom: 1px solid #f3f4f6;
+      background: #fafafa;
+      border-radius: 10px 10px 0 0;
+    }
+    .open-case-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 12px; }
+    .case-user-row { display: flex; align-items: center; gap: 9px; }
+    .case-user-avatar {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: #e0e7ff; display: flex; align-items: center; justify-content: center;
+      font-size: 11px; font-weight: 700; color: #4338ca; flex-shrink: 0;
+    }
+    .case-user-name { font-size: 13px; font-weight: 600; color: #111827; }
+    .case-user-email { font-size: 11px; color: #9ca3af; }
 
     /* ── Toast ── */
     .toast {
@@ -611,7 +671,14 @@
       <!-- Main -->
       <main class="main">
         <div class="main-header">
-          <div class="main-header-title" id="mainTitle">Overview</div>
+          <div class="tab-bar">
+            <button class="tab-btn active" id="tabBtnCustomers">Customers</button>
+            <button class="tab-btn" id="tabBtnOpenCases">
+              Open Cases
+              <span class="tab-badge" id="openCaseCount"></span>
+            </button>
+          </div>
+          <div class="main-header-title" id="mainTitle" style="margin-left:12px"></div>
           <div class="main-header-sub" id="mainSub"></div>
         </div>
         <div class="content" id="content">
@@ -673,6 +740,13 @@
       return String(str).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
 
+    function renderMarkdown(str) {
+      return escapeHtml(str)
+        .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+        .replace(/\*([^*]+?)\*/g, '<em>$1</em>')
+        .replace(/\n/g, '<br>');
+    }
+
     function formatTime(isoString) {
       return new Date(isoString).toLocaleString('en-US', {
         month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit',
@@ -685,6 +759,110 @@
       toast.className = `toast show ${type}`;
       clearTimeout(toast._timer);
       toast._timer = setTimeout(() => { toast.classList.remove('show'); }, 4000);
+    }
+
+    // ── Tab state ──
+    let currentTab = 'customers';
+
+    function switchTab(tab) {
+      currentTab = tab;
+      document.getElementById('tabBtnCustomers').classList.toggle('active', tab === 'customers');
+      document.getElementById('tabBtnOpenCases').classList.toggle('active', tab === 'open-cases');
+
+      if (tab === 'open-cases') {
+        document.getElementById('mainTitle').textContent = '';
+        document.getElementById('mainSub').textContent = '';
+        loadOpenCases();
+      } else {
+        if (selectedUserId) {
+          selectUser(selectedUserId, selectedUserName);
+        } else {
+          document.getElementById('mainTitle').textContent = '';
+          document.getElementById('mainSub').textContent = '';
+          document.getElementById('content').innerHTML = `
+            <div class="empty-state">
+              <div class="empty-state-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </div>
+              <h2>Select a customer</h2>
+              <p>Choose a customer from the sidebar to review their conversations.</p>
+            </div>`;
+        }
+      }
+    }
+
+    async function loadOpenCases() {
+      const content = document.getElementById('content');
+      content.innerHTML = '<div class="loading-text">Loading open cases…</div>';
+      const res = await apiFetch('/admin/open-cases');
+      const cases = await res.json();
+
+      // Update badge
+      const badge = document.getElementById('openCaseCount');
+      if (cases.length > 0) {
+        badge.textContent = cases.length;
+        badge.classList.add('show');
+      } else {
+        badge.classList.remove('show');
+      }
+
+      if (currentTab !== 'open-cases') return;
+
+      if (cases.length === 0) {
+        content.innerHTML = `
+          <div class="empty-state">
+            <div class="empty-state-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" stroke="#9ca3af" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <h2>No open cases</h2>
+            <p>All cases have been resolved.</p>
+          </div>`;
+        return;
+      }
+
+      content.innerHTML = '';
+      for (const c of cases) {
+        const card = document.createElement('div');
+        card.className = 'open-case-card';
+        const { text: accentColor } = deptTagStyle(c.department);
+        card.style.borderLeft = `3px solid ${accentColor}`;
+        card.innerHTML = buildOpenCaseCard(c);
+        content.appendChild(card);
+      }
+    }
+
+    function buildOpenCaseCard(c) {
+      const initial = c.user_name ? c.user_name[0].toUpperCase() : '?';
+      return `
+        <div class="open-case-header">
+          ${deptTagHtml(c.department)}
+          <span class="meta-code">${escapeHtml(c.id)}</span>
+          <div style="flex:1"></div>
+          <span style="font-size:11px;color:#9ca3af">${formatTime(c.created_at)}</span>
+        </div>
+        <div class="open-case-body">
+          <div class="case-user-row">
+            <div class="case-user-avatar">${escapeHtml(initial)}</div>
+            <div>
+              <div class="case-user-name">${escapeHtml(c.user_name)}</div>
+              <div class="case-user-email">${escapeHtml(c.user_contact)}</div>
+            </div>
+          </div>
+          <div class="issue-box">${renderMarkdown(c.summary)}</div>
+          <div class="reply-section">
+            <div class="reply-label">Reply to customer</div>
+            <textarea class="reply-textarea" id="reply-${c.id}" placeholder="Type your response…"></textarea>
+            <div class="reply-actions">
+              <button class="reply-btn" id="reply-btn-${c.id}" onclick="sendReply('${c.id}')">
+                Send Reply &amp; Close Case
+              </button>
+            </div>
+          </div>
+        </div>`;
     }
 
     // ── Department tag colours ──
@@ -798,7 +976,14 @@
 
         card.innerHTML = buildConvCard(conv);
         card.querySelector('.conv-card-header').addEventListener('click', () => {
+          const isOpening = !card.classList.contains('open');
           card.classList.toggle('open');
+          if (isOpening) {
+            setTimeout(() => {
+              const target = card.querySelector('.case-section') || card;
+              target.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            }, 60);
+          }
         });
         content.appendChild(card);
       }
@@ -811,7 +996,7 @@
         ? `<div class="thread-scroll">${conv.messages.map(m => `
             <div class="msg-row msg-${m.role}">
               <div class="msg-sender">${m.role === 'user' ? 'Customer' : 'Support'}</div>
-              <div class="msg-bubble">${escapeHtml(m.content)}</div>
+              <div class="msg-bubble">${renderMarkdown(m.content)}</div>
               <div class="msg-time">${formatTime(m.created_at)}</div>
             </div>`).join('')}
           </div>`
@@ -847,7 +1032,7 @@
           <div class="reply-label">Reply to customer</div>
           <textarea class="reply-textarea" id="reply-${c.id}" placeholder="Type your response…"></textarea>
           <div class="reply-actions">
-            <button class="reply-btn" id="reply-btn-${c.id}" onclick="sendReply(${c.id})">
+            <button class="reply-btn" id="reply-btn-${c.id}" onclick="sendReply('${c.id}')">
               Send Reply &amp; Close Case
             </button>
           </div>
@@ -870,7 +1055,7 @@
               <div class="meta-row"><span class="meta-label">Contact</span>${escapeHtml(c.user_contact)}</div>
               ${emailRef}
             </div>
-            <div class="issue-box">${escapeHtml(c.issue_summary)}</div>
+            <div class="issue-box">${renderMarkdown(c.issue_summary)}</div>
             ${actionHtml}
           </div>
         </div>`;
@@ -893,7 +1078,11 @@
         if (!res.ok) throw new Error('Failed');
         logger.info('admin: reply sent for case', caseId);
         showToast('Reply sent and case closed.', 'success');
-        await Promise.all([loadUsers(), selectUser(selectedUserId, selectedUserName)]);
+        if (currentTab === 'open-cases') {
+          await Promise.all([loadUsers(), loadOpenCases()]);
+        } else {
+          await Promise.all([loadUsers(), selectUser(selectedUserId, selectedUserName)]);
+        }
       } catch (err) {
         logger.error('admin: reply failed for case', caseId, '-', err.message);
         btn.disabled = false;
@@ -917,7 +1106,21 @@
     document.getElementById('sidebarOverlay').addEventListener('click', closeSidebar);
 
     document.getElementById('logoutBtn').addEventListener('click', logout);
-    loadUsers();
+    document.getElementById('tabBtnCustomers').addEventListener('click', () => switchTab('customers'));
+    document.getElementById('tabBtnOpenCases').addEventListener('click', () => switchTab('open-cases'));
+
+    async function init() {
+      await loadUsers();
+      // Pre-load badge count without switching tabs
+      const res = await apiFetch('/admin/open-cases');
+      const cases = await res.json();
+      const badge = document.getElementById('openCaseCount');
+      if (cases.length > 0) {
+        badge.textContent = cases.length;
+        badge.classList.add('show');
+      }
+    }
+    init();
   </script>
 </body>
 </html>

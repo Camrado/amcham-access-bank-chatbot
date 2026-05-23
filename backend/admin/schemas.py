@@ -4,8 +4,6 @@ from typing import Optional
 
 
 class UserSummary(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
-
     id: int
     username: str
     email: str
@@ -23,16 +21,14 @@ class MessageOut(BaseModel):
 
 
 class CaseInConversation(BaseModel):
-    model_config = ConfigDict(from_attributes=True)
-
-    id: int
+    id: str                          # "CASE-XXXXXXXX" from cases.db
     user_name: str
     user_contact: str
     issue_summary: str
     department: str
     status: str
-    email_ref: Optional[str]
-    admin_reply: Optional[str]
+    email_ref: Optional[str] = None
+    admin_reply: Optional[str] = None
 
 
 class ConversationDetail(BaseModel):
@@ -41,20 +37,6 @@ class ConversationDetail(BaseModel):
     created_at: datetime
     messages: list[MessageOut] = []
     case: Optional[CaseInConversation] = None
-
-
-class CaseDetail(BaseModel):
-    id: int
-    user_name: str
-    user_contact: str
-    issue_summary: str
-    department: str
-    status: str
-    email_ref: Optional[str]
-    admin_reply: Optional[str]
-    conversation_id: Optional[int]
-    created_at: datetime
-    messages: list[MessageOut] = []
 
 
 class AdminReplyRequest(BaseModel):
