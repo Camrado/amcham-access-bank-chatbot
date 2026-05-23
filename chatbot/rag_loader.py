@@ -29,7 +29,11 @@ import os
 import math
 import re
 import logging
+from pathlib import Path
+from dotenv import load_dotenv
 from openai import OpenAI
+
+load_dotenv(Path(__file__).parent / ".env")
 
 logger = logging.getLogger("rag_loader")
 
@@ -45,7 +49,7 @@ except ImportError:
 
 client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
 
-KNOWLEDGE_BASE_PATH = "chatbot/knowledge_base.json"
+KNOWLEDGE_BASE_PATH = Path(__file__).parent / "knowledge_base.json"
 
 # Below this dense cosine score → flag for human review
 SIMILARITY_THRESHOLD = 0.40

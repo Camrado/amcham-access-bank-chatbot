@@ -36,9 +36,13 @@ import sqlite3
 import uuid
 from dataclasses import dataclass, field
 from datetime import datetime
+from pathlib import Path
 from typing import Optional
 
+from dotenv import load_dotenv
 from openai import OpenAI
+
+load_dotenv(Path(__file__).parent / ".env")
 
 from chatbot.prompts import (
     ANSWER_PROMPT,
