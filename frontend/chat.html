@@ -560,6 +560,7 @@
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
   <div class="toast" id="toast"></div>
 
+  <script src="/logger.js"></script>
   <script>
     const API = '';
 
@@ -581,6 +582,7 @@
     if (claims.is_admin) window.location.replace('admin.html');
 
     const username = claims.username || claims.email || 'User';
+    logger.info('chat: UI loaded for user', username);
     document.getElementById('userName').textContent = username;
     document.getElementById('userAvatar').textContent = username[0].toUpperCase();
 
@@ -715,6 +717,7 @@
 
     // ── Select conversation ──
     async function selectConversation(id, title) {
+      logger.info('chat: conversation selected', id);
       stopPolling();
       closeSidebar();
       currentConvId = id;
@@ -820,6 +823,7 @@
       scrollToBottom();
 
       try {
+        logger.info('chat: sending message to conv', currentConvId);
         const res = await apiFetch('/chat', {
           method: 'POST',
           body: JSON.stringify({ conversation_id: currentConvId, message: text }),
@@ -839,6 +843,7 @@
           if (syncMsgs.length) lastMessageId = syncMsgs[syncMsgs.length - 1].id;
         }
       } catch (err) {
+        logger.error('chat: send message failed -', err.message);
         typingRow.remove();
         appendBubble('assistant', 'Something went wrong. Please try again.');
         scrollToBottom();

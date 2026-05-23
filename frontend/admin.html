@@ -632,6 +632,7 @@
   <div class="sidebar-overlay" id="sidebarOverlay"></div>
   <div class="toast" id="toast"></div>
 
+  <script src="/logger.js"></script>
   <script>
     const API = '';
     const token = localStorage.getItem('access_token');
@@ -642,6 +643,8 @@
     }
     const claims = parseToken(token);
     if (!claims.is_admin) window.location.replace('chat.html');
+
+    logger.info('admin: panel loaded');
 
     const authHeaders = {
       'Content-Type': 'application/json',
@@ -749,6 +752,7 @@
 
     // ── Conversations ──
     async function selectUser(userId, username) {
+      logger.info('admin: viewing user', userId);
       closeSidebar();
       selectedUserId = userId;
       selectedUserName = username;
@@ -887,9 +891,11 @@
           body: JSON.stringify({ reply_text: replyText }),
         });
         if (!res.ok) throw new Error('Failed');
+        logger.info('admin: reply sent for case', caseId);
         showToast('Reply sent and case closed.', 'success');
         await Promise.all([loadUsers(), selectUser(selectedUserId, selectedUserName)]);
-      } catch {
+      } catch (err) {
+        logger.error('admin: reply failed for case', caseId, '-', err.message);
         btn.disabled = false;
         btn.textContent = 'Send Reply & Close Case';
         showToast('Failed to send reply. Please try again.', 'error');

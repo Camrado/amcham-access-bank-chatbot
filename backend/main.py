@@ -1,10 +1,16 @@
-from fastapi import FastAPI, Depends, HTTPException, status
+from fastapi import FastAPI, Depends, HTTPException, Request, status
 from fastapi.staticfiles import StaticFiles
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from sqlalchemy.orm import Session
 from pathlib import Path
 from typing import Optional, List
+import time
+
+# Configure logging before any chatbot imports so basicConfig in agent.py is a no-op
+from logging_config import setup_logging
+setup_logging()
+
 from database import engine, get_db
 import models
 from models import Conversation, Message
@@ -20,6 +26,7 @@ import sqlite3, json, os, logging
 from datetime import datetime
 
 logger = logging.getLogger("main")
+frontend_logger = logging.getLogger("frontend")
 
 AGENT_DB = os.environ.get("DB_PATH", "cases.db")
 
@@ -39,6 +46,16 @@ app.add_middleware(
 
 app.include_router(auth_router)
 app.include_router(conversations_router)
+
+
+# ─── HTTP request / response logging ─────────────────────────────────────────
+@app.middleware("http")
+async def log_requests(request: Request, call_next):
+    start = time.perf_counter()
+    response = await call_next(request)
+    ms = (time.perf_counter() - start) * 1000
+    logger.info("%s %s %d (%.0fms)", request.method, request.url.path, response.status_code, ms)
+    return response
 
 
 # ═════════════════════════════════════════════════════════════════════════════
@@ -76,6 +93,22 @@ class AdminReplyRequest(BaseModel):
 
 class AnomalyResolveRequest(BaseModel):
     anomaly_id: str
+
+
+class FrontendLogRequest(BaseModel):
+    level: str = Field(..., max_length=10)
+    message: str = Field(..., max_length=2000)
+    url: Optional[str] = Field(None, max_length=300)
+    user_agent: Optional[str] = Field(None, max_length=300)
+
+
+# ═════════════════════════════════════════════════════════════════════════════
+# POST /api/logs  — receives client-side ERROR reports from the browser
+# ═════════════════════════════════════════════════════════════════════════════
+
+@app.post("/api/logs", status_code=204)
+async def receive_frontend_log(body: FrontendLogRequest):
+    frontend_logger.warning("client | url=%s | %s", body.url or "?", body.message)
 
 
 # ═════════════════════════════════════════════════════════════════════════════
