@@ -144,6 +144,7 @@
     </div>
   </div>
 
+  <script src="/logger.js"></script>
   <script>
     const API = '';
 
@@ -172,8 +173,10 @@
         try { data = await res.json(); } catch { /* non-JSON error body */ }
         if (!res.ok) throw new Error(data.detail || `Server error (${res.status})`);
         localStorage.setItem('access_token', data.access_token);
+        logger.info('login: success');
         window.location.replace('chat.html');
       } catch (err) {
+        logger.warn('login: failed -', err.message);
         alert.textContent = err.message;
         alert.style.display = 'block';
         btn.disabled = false;

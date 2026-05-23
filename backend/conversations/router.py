@@ -1,3 +1,4 @@
+import logging
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from datetime import datetime
@@ -7,6 +8,7 @@ from auth.service import TokenClaims, get_claims
 from conversations.schemas import ConversationOut, ConversationUpdate, MessageOut
 
 router = APIRouter(prefix="/conversations", tags=["conversations"])
+logger = logging.getLogger("conversations")
 
 
 @router.post("", response_model=ConversationOut, status_code=status.HTTP_201_CREATED)
@@ -19,6 +21,7 @@ def create_conversation(
     db.add(conv)
     db.commit()
     db.refresh(conv)
+    logger.info("created: user_id=%d conv_id=%d", claims.user_id, conv.id)
     return conv
 
 
@@ -89,3 +92,4 @@ def delete_conversation(
     db.query(Message).filter(Message.conversation_id == conversation_id).delete()
     db.delete(conv)
     db.commit()
+    logger.info("deleted: user_id=%d conv_id=%d", claims.user_id, conversation_id)

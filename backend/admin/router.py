@@ -1,3 +1,4 @@
+import logging
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from database import get_db
@@ -9,6 +10,7 @@ from admin.schemas import (
 )
 
 router = APIRouter(prefix="/admin", tags=["admin"])
+logger = logging.getLogger("admin")
 
 
 @router.get("/users", response_model=list[UserSummary])
@@ -16,6 +18,7 @@ def list_users(
     claims: TokenClaims = Depends(require_admin),
     db: Session = Depends(get_db),
 ):
+    logger.info("list_users: admin_id=%d", claims.user_id)
     users = db.query(User).filter(User.is_admin == False).order_by(User.created_at.desc()).all()
     result = []
     for user in users:
@@ -36,6 +39,7 @@ def get_user_conversations(
     claims: TokenClaims = Depends(require_admin),
     db: Session = Depends(get_db),
 ):
+    logger.info("view_conversations: admin_id=%d target_user_id=%d", claims.user_id, user_id)
     user = db.query(User).filter(User.id == user_id, User.is_admin == False).first()
     if not user:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="User not found")
@@ -119,4 +123,5 @@ def reply_to_case(
     case.status = "resolved"
     case.admin_reply = body.reply_text
     db.commit()
+    logger.info("case_reply: admin_id=%d case_id=%d", claims.user_id, case_id)
     return {"ok": True}
