@@ -49,7 +49,7 @@ from chatbot.case_similarity import index_case, find_similar_cases, format_simil
 
 # ─── Optional email routing ────────────────────────────────────────────────────
 try:
-    from email_service import send_email, DEPARTMENT_EMAILS
+    from email_service import send_email, send_escalation_email, DEPARTMENT_EMAILS
     _EMAIL_AVAILABLE = True
 except Exception as _email_import_err:
     _EMAIL_AVAILABLE = False
@@ -897,6 +897,49 @@ class Agent:
                 else:
                     logger.debug("No anomaly detected | dept=%s", department)
 
+                # ── Send escalation email via SQLAlchemy Case record ──────────
+                email_routed = False
+                if _EMAIL_AVAILABLE:
+                    try:
+                        from models import Case as _Case
+                        from database import SessionLocal as _SessionLocal
+                        _db = _SessionLocal()
+                        try:
+                            _sa_case = _Case(
+                                user_name=user_id,
+                                user_contact="via chat",
+                                issue_summary=summary,
+                                department=department,
+                                status="open",
+                            )
+                            _db.add(_sa_case)
+                            _db.commit()
+                            _db.refresh(_sa_case)
+                            send_escalation_email(
+                                department=_sa_case.department,
+                                case_id=_sa_case.id,
+                                user_name=_sa_case.user_name,
+                                user_contact=_sa_case.user_contact,
+                                issue_summary=_sa_case.issue_summary,
+                            )
+                            email_routed = True
+                            logger.info(
+                                "[EMAIL ROUTING] Escalation email sent | case_id=%s | sa_case_id=%d | dept=%s",
+                                case_id, _sa_case.id, department,
+                            )
+                        finally:
+                            _db.close()
+                    except Exception as _email_err:
+                        logger.error(
+                            "[EMAIL ROUTING] Escalation email failed | case_id=%s | dept=%s | error=%s",
+                            case_id, department, _email_err,
+                        )
+                else:
+                    logger.warning(
+                        "[EMAIL ROUTING] Skipped | case_id=%s | reason=email_service_unavailable",
+                        case_id,
+                    )
+
                 text = (
                     f"I've created support case **{case_id}** and escalated it to our "
                     f"**{department}** team. They will review your case and contact you "
@@ -909,7 +952,7 @@ class Agent:
                     language=detected_language, sentiment=sentiment_data.get("sentiment"),
                     urgency=sentiment_data.get("urgency"),
                     priority_boost=bool(sentiment_data.get("priority_boost", False)),
-                    similar_cases=similar, anomaly=anomaly,
+                    similar_cases=similar, anomaly=anomaly, email_routed=email_routed,
                 )
                 logger.info(
                     "handle complete | user=%s | intent=issue | case_id=%s | dept=%s "
