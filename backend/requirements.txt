@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+sqlalchemy
+python-dotenv
+python-jose[cryptography]
+bcrypt
+email-validator
+pydantic[email]
+aiofiles
+openai
+chromadb

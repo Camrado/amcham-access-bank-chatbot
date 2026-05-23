@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AccessBank Support</title>
+  <style>
+    body {
+      margin: 0;
+      background: #f0f4f8;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      color: #64748b;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <span>Loading...</span>
+  <script>
+    if (localStorage.getItem('access_token')) {
+      window.location.replace('chat.html');
+    } else {
+      window.location.replace('login.html');
+    }
+  </script>
+</body>
+</html>

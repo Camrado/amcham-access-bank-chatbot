@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python init_db.py)",
+      "WebSearch",
+      "WebFetch(domain:www.accessbank.az)",
+      "WebFetch(domain:upload.wikimedia.org)",
+      "WebFetch(domain:en.wikipedia.org)"
+    ]
+  }
+}
