@@ -13,3 +13,4 @@ google-auth-httplib2
 google-api-python-client
 openai
 chromadb
+rank-bm25>=0.2.2
