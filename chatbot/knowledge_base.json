@@ -1,0 +1,142 @@
+[
+  {
+    "id": "kb_001",
+    "category": "general",
+    "title": "Working Hours & Branches",
+    "content": "AccessBank branches are open Monday to Friday from 09:00 to 18:00, and on Saturdays from 10:00 to 15:00. Branches are closed on Sundays and public holidays. AccessBank operates over 40 branches across Azerbaijan, including multiple locations in Baku, Ganja, Sumgayit, Mingachevir, and other major cities. The head office is located in Baku. Customers can find the nearest branch and its exact working hours on the official website accessbank.az or by calling the 24/7 hotline.",
+    "tags": ["hours", "branch", "location", "working hours"]
+  },
+  {
+    "id": "kb_002",
+    "category": "general",
+    "title": "Customer Support Hotline",
+    "content": "AccessBank's customer support hotline is available 24 hours a day, 7 days a week. Customers can call *8880 (free from mobile networks) or +994 12 310 88 80 for international calls. Support is available in Azerbaijani, Russian, and English. The hotline handles queries about accounts, cards, loans, transfers, and mobile banking. For urgent issues such as lost or stolen cards, customers should call immediately to block their card.",
+    "tags": ["hotline", "contact", "support", "phone", "24/7"]
+  },
+  {
+    "id": "kb_003",
+    "category": "cards",
+    "title": "Debit Card Types & Features",
+    "content": "AccessBank offers several types of debit cards including Visa Electron, Visa Classic, and Mastercard Standard. Debit cards are linked directly to the customer's current account. Cards can be used for ATM withdrawals, POS payments, and online purchases. The standard daily ATM withdrawal limit is 1000 AZN. Cards are issued within 3–5 business days. Annual card maintenance fee is 10 AZN for standard cards. Contactless payment (NFC) is supported on all new cards issued after 2022.",
+    "tags": ["debit card", "visa", "mastercard", "ATM", "withdrawal", "limit"]
+  },
+  {
+    "id": "kb_004",
+    "category": "cards",
+    "title": "Credit Card Types & Limits",
+    "content": "AccessBank offers Visa Classic Credit and Visa Gold Credit cards. Credit limits range from 500 AZN to 10,000 AZN depending on income and credit history. The grace period (interest-free period) is up to 55 days. Monthly interest rate is 2.5% on the outstanding balance after the grace period. Minimum monthly payment is 5% of the outstanding balance. Credit cards include cashback on select categories. Annual fee is 30 AZN for Classic and 60 AZN for Gold. Applications can be submitted online or at any branch.",
+    "tags": ["credit card", "limit", "grace period", "interest", "cashback", "gold"]
+  },
+  {
+    "id": "kb_005",
+    "category": "cards",
+    "title": "Lost, Stolen, or Blocked Card",
+    "content": "If a card is lost or stolen, the customer must immediately call the 24/7 hotline at *8880 to block it. The card can also be temporarily blocked through the AccessBank mobile app under Card Settings. A replacement card is issued within 3–5 business days and costs 10 AZN. Emergency cash withdrawal may be available at branches with passport identification. If the card was used fraudulently after loss, the customer should file a dispute claim at any branch with a written statement.",
+    "tags": ["lost card", "stolen card", "block card", "freeze", "replacement"]
+  },
+  {
+    "id": "kb_006",
+    "category": "cards",
+    "title": "Card Payment Failed or Declined",
+    "content": "A card payment may fail due to: insufficient balance, exceeded daily limit, card not activated, merchant not supporting the card type, or a temporary technical issue. Customers should check their balance via the mobile app or ATM. If the balance is sufficient and the card is active but payment still fails, the customer should contact support at *8880. If money was deducted but the transaction shows as failed, this is likely a pending reversal that takes 3–5 business days. If it does not reverse, the customer should file a dispute at a branch.",
+    "tags": ["card declined", "payment failed", "transaction failed", "money deducted", "dispute"]
+  },
+  {
+    "id": "kb_007",
+    "category": "digital_banking",
+    "title": "Mobile App & Internet Banking",
+    "content": "AccessBank's mobile app is available on iOS (App Store) and Android (Google Play). Internet banking is accessible at ibank.accessbank.az. Features include: account balance check, fund transfers, utility payments, card management, loan repayment, and transaction history. To register, customers need their card number and the phone number linked to their account. If login fails, customers should reset their password via the 'Forgot Password' option or call *8880. The app supports biometric login (fingerprint and Face ID).",
+    "tags": ["mobile app", "internet banking", "login", "iOS", "Android", "registration"]
+  },
+  {
+    "id": "kb_008",
+    "category": "digital_banking",
+    "title": "OTP & Login Issues",
+    "content": "OTP (One-Time Password) is sent via SMS to the registered phone number for login and transaction confirmation. If OTP is not received, check that the phone number on file is correct and that SMS is not blocked. OTP expires after 3 minutes. If repeatedly failing to receive OTP, call *8880 or visit a branch to update the registered phone number. Never share your OTP with anyone, including bank staff. AccessBank will never ask for your OTP by phone or message.",
+    "tags": ["OTP", "login", "SMS", "password", "two-factor", "verification"]
+  },
+  {
+    "id": "kb_009",
+    "category": "transfers",
+    "title": "Domestic Transfers",
+    "content": "Transfers between AccessBank accounts are instant and free of charge. Transfers to other Azerbaijani banks take up to 1 business day and incur a fee of 0.5% of the amount (minimum 0.50 AZN, maximum 10 AZN). Transfers can be made via mobile app, internet banking, or at a branch. Daily transfer limit via mobile app is 5,000 AZN for standard accounts and 20,000 AZN for premium accounts. Transfers are processed on business days only; weekend transfers are queued for the next business day.",
+    "tags": ["transfer", "domestic", "bank transfer", "fee", "limit", "instant"]
+  },
+  {
+    "id": "kb_010",
+    "category": "transfers",
+    "title": "International Transfers (SWIFT)",
+    "content": "AccessBank supports international SWIFT transfers to over 100 countries. The fee is 1% of the transfer amount (minimum 5 AZN, maximum 50 AZN) plus correspondent bank fees which vary by country. Processing time is 2–5 business days. Required details: recipient full name, IBAN or account number, bank name, SWIFT/BIC code, country, and purpose of transfer. Transfers over 10,000 USD equivalent may require supporting documents for compliance. SWIFT transfers can be initiated at branches or via internet banking.",
+    "tags": ["SWIFT", "international transfer", "wire transfer", "foreign", "IBAN"]
+  },
+  {
+    "id": "kb_011",
+    "category": "transfers",
+    "title": "Failed Transfer or Missing Payment",
+    "content": "If a transfer was sent but not received by the beneficiary, first check the transaction status in the mobile app or internet banking. Domestic transfers may take up to 1 business day. If the status shows 'completed' but funds not received after 2 business days, the customer should contact support at *8880 with the transaction reference number. If money was deducted but the transfer shows as failed, a reversal is processed automatically within 3–5 business days. For urgent cases, visit a branch with transaction details.",
+    "tags": ["failed transfer", "missing payment", "not received", "reversal", "pending", "transaction reference"]
+  },
+  {
+    "id": "kb_012",
+    "category": "loans",
+    "title": "Consumer Loan Products",
+    "content": "AccessBank offers consumer loans from 500 AZN to 50,000 AZN with terms from 6 to 60 months. Annual interest rates start from 18% depending on credit score and income. No collateral is required for loans up to 20,000 AZN. Required documents: Azerbaijani ID (Vin-kart), ASAN imza or notarized income certificate, and employment confirmation. Loan decisions are made within 1–2 business days. Early repayment is allowed without penalty after the 3rd month.",
+    "tags": ["consumer loan", "personal loan", "interest rate", "documents", "application", "approval"]
+  },
+  {
+    "id": "kb_013",
+    "category": "loans",
+    "title": "Mortgage Loans",
+    "content": "AccessBank offers mortgage loans for property purchase in Azerbaijan. Loan amounts range from 10,000 AZN to 200,000 AZN. Loan term up to 20 years. Down payment minimum 20% of property value. Annual interest rate from 12% for standard mortgages. The property must be located in Azerbaijan and free of legal encumbrances. Required documents include property deed, income proof, ID, and a property valuation report. Processing time is 5–10 business days. MIDA (state mortgage agency) subsidized mortgages are also available through AccessBank.",
+    "tags": ["mortgage", "home loan", "property", "MIDA", "down payment", "real estate"]
+  },
+  {
+    "id": "kb_014",
+    "category": "loans",
+    "title": "Loan Application Status",
+    "content": "Loan application status can be checked via the mobile app under 'My Applications', via internet banking, or by calling *8880. Statuses include: Under Review, Additional Documents Required, Approved, Rejected, and Disbursed. If additional documents are required, the customer will receive an SMS notification. Approved loans are disbursed to the customer's AccessBank account within 1 business day of signing the agreement. If a loan is rejected, the customer may reapply after 3 months.",
+    "tags": ["loan status", "application", "approved", "rejected", "documents", "disbursement"]
+  },
+  {
+    "id": "kb_015",
+    "category": "loans",
+    "title": "Loan Repayment",
+    "content": "Monthly loan repayments are automatically deducted from the customer's AccessBank account on the due date set in the loan agreement. Customers must ensure sufficient balance before the due date to avoid late fees. Late payment fee is 0.1% of the overdue amount per day. Early repayment can be made via mobile app, internet banking, or at a branch. Partial early repayment reduces either the monthly payment or the loan term, based on the customer's preference. Repayment schedule can be viewed in the mobile app.",
+    "tags": ["loan repayment", "monthly payment", "late fee", "early repayment", "schedule"]
+  },
+  {
+    "id": "kb_016",
+    "category": "accounts",
+    "title": "Account Opening",
+    "content": "Azerbaijani citizens can open an AccessBank account at any branch with their national ID (Vin-kart). Foreign nationals require a passport and residence permit. Account opening is free. A basic current account (AZN) includes a free debit card. Accounts can also be opened in USD and EUR. The initial deposit requirement is 0 AZN for current accounts. Savings accounts require a minimum deposit of 100 AZN. Account opening typically takes 15–30 minutes at a branch.",
+    "tags": ["account opening", "current account", "savings account", "documents", "foreign national"]
+  },
+  {
+    "id": "kb_017",
+    "category": "accounts",
+    "title": "Deposit & Savings Products",
+    "content": "AccessBank offers term deposits in AZN, USD, and EUR. AZN deposit rates: 3 months at 9% annually, 6 months at 10% annually, 12 months at 11% annually. USD deposit rates: 12 months at 3% annually. Minimum deposit amount is 100 AZN or 100 USD. Interest can be paid monthly or at maturity. Early withdrawal is allowed but forfeits accrued interest. Deposits up to 100,000 AZN are insured by the Azerbaijan Deposit Insurance Fund (ADIF).",
+    "tags": ["deposit", "savings", "interest rate", "term deposit", "ADIF", "insurance"]
+  },
+  {
+    "id": "kb_018",
+    "category": "fees",
+    "title": "General Fees & Charges",
+    "content": "Common AccessBank fees: SMS notification service 1 AZN/month (optional), account statement at branch 2 AZN per copy, card replacement 10 AZN, cash withdrawal at other bank ATMs 1% (minimum 0.50 AZN), cash deposit at branch 0.5% for amounts over 10,000 AZN, SWIFT transfer 1% (min 5 AZN, max 50 AZN), domestic interbank transfer 0.5% (min 0.50 AZN, max 10 AZN). Internal transfers between AccessBank accounts are always free.",
+    "tags": ["fees", "charges", "ATM fee", "transfer fee", "SMS", "statement"]
+  },
+  {
+    "id": "kb_019",
+    "category": "digital_banking",
+    "title": "Utility & Bill Payments",
+    "content": "Customers can pay utility bills (electricity, gas, water, internet, TV) through the AccessBank mobile app and internet banking under the 'Payments' section. Supported providers include Azərenerji, Azərsu, Azərqaz, Aztelekom, Bakcell, Azercell, Nar Mobile, and many others. Payments are processed instantly. There is no fee for utility payments via the app. Payment history is saved in the app for reference. Customers can set up auto-payment for recurring bills.",
+    "tags": ["utility payment", "electricity", "gas", "water", "internet", "bill payment", "auto-payment"]
+  },
+  {
+    "id": "kb_020",
+    "category": "general",
+    "title": "Complaints & Dispute Resolution",
+    "content": "Customers can file a formal complaint through the following channels: in-person at any AccessBank branch, via email at info@accessbank.az, by calling *8880, or through the official website contact form. Complaints are reviewed within 5 business days. For disputes related to unauthorized transactions, customers must file within 60 days of the transaction date. All complaints receive a reference number for tracking. If the customer is not satisfied with the resolution, they may escalate to the Financial Market Supervisory Authority (FIMSA) of Azerbaijan.",
+    "tags": ["complaint", "dispute", "unauthorized transaction", "FIMSA", "escalation", "claim"]
+  }
+]

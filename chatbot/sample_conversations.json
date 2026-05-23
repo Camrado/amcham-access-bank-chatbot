@@ -1,0 +1,132 @@
+[
+  {
+    "id": "conv_001",
+    "department": "Card Operations",
+    "intent": "issue",
+    "label": "Card declined at POS, money deducted",
+    "conversation": [
+      { "role": "user", "content": "Hi, I tried to pay at a supermarket and my card was declined but the money was taken from my account." },
+      { "role": "assistant", "content": "I'm sorry to hear that. This sounds like a failed POS transaction where the amount may have been placed on hold. Can you tell me approximately when this happened and the amount involved?" },
+      { "role": "user", "content": "It was today around 2pm, the amount was 47 AZN." },
+      { "role": "assistant", "content": "Thank you. In most cases, a hold like this is automatically reversed within 3–5 business days. However, I'll create a case for Card Operations to investigate and ensure it's resolved. Could you confirm the last 4 digits of your card?" },
+      { "role": "user", "content": "It's 4821." },
+      { "role": "assistant", "content": "Got it. I've created case #1042 and escalated it to our Card Operations department. They will review the transaction and contact you within 2 business days. Is there anything else I can help you with?" }
+    ],
+    "case_summary": "Customer reports a failed POS transaction at a supermarket on today's date for 47 AZN. Money was deducted from the account despite the payment being declined. Card last 4 digits: 4821. Requires investigation of the hold and confirmation of reversal timeline."
+  },
+  {
+    "id": "conv_002",
+    "department": "Transfers & Payments",
+    "intent": "issue",
+    "label": "Transfer sent but not received",
+    "conversation": [
+      { "role": "user", "content": "I sent a transfer to another bank 3 days ago and the person still hasn't received it." },
+      { "role": "assistant", "content": "I understand that's frustrating. Interbank transfers usually complete within 1 business day. Do you have the transaction reference number from your mobile app or internet banking?" },
+      { "role": "user", "content": "Yes it's TXN20240522001234." },
+      { "role": "assistant", "content": "Thank you. And which bank was the transfer sent to, and what was the approximate amount?" },
+      { "role": "user", "content": "It was to Kapital Bank, 500 AZN." },
+      { "role": "assistant", "content": "I've logged case #1043 and escalated it to our Transfers & Payments team with the reference TXN20240522001234. They will trace the payment and update you within 1 business day. If the funds are confirmed lost in transit, they will be recovered or reversed." }
+    ],
+    "case_summary": "Customer sent an interbank transfer of 500 AZN to Kapital Bank 3 days ago. Transaction reference TXN20240522001234. Recipient has not received the funds. Requires payment tracing and resolution by Transfers & Payments team."
+  },
+  {
+    "id": "conv_003",
+    "department": "Digital Banking",
+    "intent": "issue",
+    "label": "Cannot log in to mobile app",
+    "conversation": [
+      { "role": "user", "content": "I can't log in to the mobile app, it keeps saying my password is wrong." },
+      { "role": "assistant", "content": "I'm sorry for the inconvenience. Have you tried the 'Forgot Password' option on the login screen? It will send a reset link to your registered phone number." },
+      { "role": "user", "content": "Yes I tried but I'm not receiving the SMS." },
+      { "role": "assistant", "content": "That suggests your registered phone number may need to be updated, or there could be a temporary issue with SMS delivery. I'll create a case for our Digital Banking team to assist you directly. Can you confirm the phone number you're trying to receive the SMS on?" },
+      { "role": "user", "content": "+994 50 123 45 67." },
+      { "role": "assistant", "content": "Thank you. Case #1044 has been created for our Digital Banking team. They will verify your account and restore access within 1 business day. You can also visit any branch with your ID for immediate assistance." }
+    ],
+    "case_summary": "Customer is unable to log into the AccessBank mobile app. Password reset attempted but OTP SMS not being received on +994 50 123 45 67. Possible phone number mismatch or SMS delivery issue. Digital Banking team to verify and restore access."
+  },
+  {
+    "id": "conv_004",
+    "department": "Loans & Applications",
+    "intent": "issue",
+    "label": "No response on loan application",
+    "conversation": [
+      { "role": "user", "content": "I applied for a loan 2 weeks ago and haven't heard anything back." },
+      { "role": "assistant", "content": "Loan decisions are typically made within 1–2 business days. Two weeks without a response is unusual. Do you have the application reference number, or did you apply online or at a branch?" },
+      { "role": "user", "content": "I applied at the Narimanov branch. I don't have a reference number." },
+      { "role": "assistant", "content": "No problem. I'll escalate this to our Loans & Applications team with the details you've provided. Can you confirm your full name so they can locate the application?" },
+      { "role": "user", "content": "Elvin Mammadov." },
+      { "role": "assistant", "content": "Thank you, Elvin. Case #1045 has been created and sent to our Loans & Applications department. They will locate your application and update you on the status within 1 business day." }
+    ],
+    "case_summary": "Customer Elvin Mammadov applied for a consumer loan at the Narimanov branch 2 weeks ago and has not received any status update. No reference number available. Loans & Applications team to locate the application and provide a status update."
+  },
+  {
+    "id": "conv_005",
+    "department": "Customer Service",
+    "intent": "issue",
+    "label": "Poor branch service complaint",
+    "conversation": [
+      { "role": "user", "content": "I waited 2 hours at the Ganjlik branch today and the staff were very rude to me." },
+      { "role": "assistant", "content": "I sincerely apologize for your experience. Long wait times and unprofessional service are not acceptable. Would you like me to formally log this as a complaint so it reaches the branch management?" },
+      { "role": "user", "content": "Yes please, I want someone to know about this." },
+      { "role": "assistant", "content": "Absolutely. Case #1046 has been created and escalated to our Customer Service & Branch Operations team. They will review the incident at Ganjlik branch and a manager will contact you within 2 business days. Your feedback is important in improving our service." }
+    ],
+    "case_summary": "Customer experienced a 2-hour wait and reports rude staff behavior at the Ganjlik branch. Formal complaint requested by customer. Branch Operations team to review the incident and follow up with the customer."
+  },
+  {
+    "id": "conv_006",
+    "department": null,
+    "intent": "question",
+    "label": "Working hours question",
+    "conversation": [
+      { "role": "user", "content": "What are your working hours?" },
+      { "role": "assistant", "content": "AccessBank branches are open Monday to Friday from 09:00 to 18:00, and on Saturdays from 10:00 to 15:00. Branches are closed on Sundays and public holidays. Our 24/7 hotline *8880 is always available if you need support outside branch hours." }
+    ],
+    "case_summary": null
+  },
+  {
+    "id": "conv_007",
+    "department": null,
+    "intent": "question",
+    "label": "Loan interest rate question",
+    "conversation": [
+      { "role": "user", "content": "What interest rate do you offer for personal loans?" },
+      { "role": "assistant", "content": "AccessBank consumer loans start from 18% annual interest rate, depending on your credit score and income level. Loan amounts range from 500 AZN to 50,000 AZN, with terms from 6 to 60 months. No collateral is required for loans up to 20,000 AZN. Would you like to apply or do you have more questions?" }
+    ],
+    "case_summary": null
+  },
+  {
+    "id": "conv_008",
+    "department": null,
+    "intent": "question",
+    "label": "Transfer fee question",
+    "conversation": [
+      { "role": "user", "content": "How much does it cost to transfer money to another bank?" },
+      { "role": "assistant", "content": "For domestic transfers to other Azerbaijani banks, AccessBank charges 0.5% of the transfer amount, with a minimum of 0.50 AZN and a maximum of 10 AZN. Transfers between AccessBank accounts are always free and instant. For international SWIFT transfers, the fee is 1% (minimum 5 AZN, maximum 50 AZN) plus any correspondent bank fees." }
+    ],
+    "case_summary": null
+  },
+  {
+    "id": "conv_009",
+    "department": "Digital Banking",
+    "intent": "issue",
+    "label": "OTP not received",
+    "conversation": [
+      { "role": "user", "content": "I'm trying to confirm a payment but the OTP code is not coming to my phone." },
+      { "role": "assistant", "content": "OTP codes can sometimes be delayed due to network issues. Please wait 1–2 minutes and check if it arrives. Also ensure your phone has signal and SMS is not blocked. Which phone number should be receiving the OTP?" },
+      { "role": "user", "content": "It should be my number +994 77 456 78 90 but nothing is coming even after 10 minutes." },
+      { "role": "assistant", "content": "In that case there may be an issue with your registered number or SMS service. I'll log case #1047 for our Digital Banking team to investigate and restore OTP delivery to your number. In the meantime, you can complete urgent transactions at any branch with your ID." }
+    ],
+    "case_summary": "Customer unable to receive OTP for payment confirmation on +994 77 456 78 90. Issue persisted for over 10 minutes. Possible SMS delivery failure or phone number registration issue. Digital Banking team to investigate and restore OTP service."
+  },
+  {
+    "id": "conv_010",
+    "department": null,
+    "intent": "question",
+    "label": "How to open an account",
+    "conversation": [
+      { "role": "user", "content": "How can I open an account with AccessBank?" },
+      { "role": "assistant", "content": "Opening an account is simple. Just visit any AccessBank branch with your Azerbaijani national ID (Vin-kart). The process takes about 15–30 minutes. Account opening is free and includes a basic debit card. You can also open accounts in USD and EUR. There is no minimum initial deposit required for a current account. Would you like help finding the nearest branch?" }
+    ],
+    "case_summary": null
+  }
+]
